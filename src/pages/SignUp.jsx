@@ -236,8 +236,8 @@ const SignUp = () => {
     <div className="signup-container">
       <div className="signup-box">
         <div className="signup-header">
-          <div className="signup-icon">📝</div>
-          <h2>Create Account</h2>
+        
+          <h2>Create your Account</h2>
           <p className="signup-subtitle">Join our platform</p>
         </div>
 
@@ -349,14 +349,14 @@ const SignUp = () => {
                 Creating Account...
               </>
             ) : (
-              'Create Account'
+              'Create your Account'
             )}
           </button>
         </form>
 
         <div className="signup-footer">
           <p>
-            Already have an account? <a href="/" className="login-link">Sign In</a>
+            Already have an account? <a href="/" className="login-link">Log In</a>
           </p>
         </div>
       </div>

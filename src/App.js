@@ -1,16 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import MyButton from './components/MyButton';
 
+import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from './pages/Layout';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import SignUp from './pages/SignUp';
 
 function App() {
   return (
-    <div className="App">
-       <div>this is abood first app</div>
-    
-       <MyButton />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Default route "/" shows Login */}
+        <Route path="/" element={<Login />} />
+         <Route path="/signup" element={<SignUp />} />
+        {/* Home page uses Layout */}
+        <Route path="/home" element={<Layout />}>
+          <Route index element={<Home />} />
+          
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+

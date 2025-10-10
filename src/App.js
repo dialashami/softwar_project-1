@@ -1,39 +1,11 @@
-
-/*import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from './pages/Layout';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {}
-        <Route path="/" element={<Login />} />
-         <Route path="/signup" element={<SignUp />} />
-        {}
-        <Route path="/home" element={<Layout />}>
-          <Route index element={<Home />} />
-          
-
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default App;
-
-*/
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './pages/Layout';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
-import Welcome from './pages/Welcome'; // استيراد صفحة Welcome
+import Welcome from './pages/Welcome';
+import StudentHome from './pages/StudentHome';
 
 function App() {
   return (
@@ -51,7 +23,10 @@ function App() {
         {/* Home page uses Layout */}
         <Route path="/home" element={<Layout />}>
           <Route index element={<Home />} />
+          { }
+          <Route path="student" element={<StudentHome />} />
         </Route>
+
       </Routes>
     </BrowserRouter>
   );

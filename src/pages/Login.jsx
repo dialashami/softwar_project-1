@@ -25,6 +25,7 @@ export default function Login() {
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/home");
+      //navigate('/student/home');
     }
   }, [isLoggedIn, navigate]);
 
@@ -55,6 +56,7 @@ export default function Login() {
       
       console.log('Google user:', user);
       navigate("/home");
+      //navigate('/student/home');
     } catch (error) {
       console.error('Google login error:', error);
       // تجاهل أخطاء الإلغاء

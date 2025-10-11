@@ -759,9 +759,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './Login.jsx'
 import '../CSS/Signup.css'
 
+
+
 const SignUp = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // إضافة useNavigate للتوجيه
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -778,45 +781,32 @@ const SignUp = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // قراءة الـ role من query parameters
+  // قراءة الدور (role) من رابط الصفحة
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const roleFromUrl = searchParams.get('role');
-    
     if (roleFromUrl) {
-      setFormData(prev => ({
-        ...prev,
-        role: roleFromUrl
-      }));
+      setFormData(prev => ({ ...prev, role: roleFromUrl }));
     }
   }, [location]);
 
+  // تحديث الحقول عند الكتابة
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
+    setFormData(prev => ({ ...prev, [name]: value }));
+
+    // إزالة الخطأ بمجرد أن المستخدم يكتب
     if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
+      setErrors(prev => ({ ...prev, [name]: '' }));
     }
   };
 
+  // التحقق من صحة الإدخال
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = 'First name is required';
-    }
-
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = 'Last name is required';
-    }
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
 
     if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
@@ -836,24 +826,20 @@ const SignUp = () => {
       newErrors.confirmPassword = 'Passwords do not match';
     }
 
-    if (!formData.role) {
-      newErrors.role = 'Please select your role';
+    if (!formData.role) newErrors.role = 'Please select your role';
+
+    // إذا كان المستخدم طالبًا
+    if (formData.role === 'student') {
+      if (!formData.studentType) newErrors.studentType = 'Please select student type';
+      if (formData.studentType === 'school' && !formData.schoolGrade) {
+        newErrors.schoolGrade = 'Please select school grade';
+      }
+      if (formData.studentType === 'university' && !formData.universityMajor) {
+        newErrors.universityMajor = 'Please select university major';
+      }
     }
 
-    // Student validation
-    if (formData.role === 'student' && !formData.studentType) {
-      newErrors.studentType = 'Please select student type';
-    }
-
-    if (formData.role === 'student' && formData.studentType === 'school' && !formData.schoolGrade) {
-      newErrors.schoolGrade = 'Please select school grade';
-    }
-
-    if (formData.role === 'student' && formData.studentType === 'university' && !formData.universityMajor) {
-      newErrors.universityMajor = 'Please select university major';
-    }
-
-    // Trainee validation
+    // إذا كان متدربًا
     if (formData.role === 'trainee' && !formData.trainingField) {
       newErrors.trainingField = 'Please select training field';
     }
@@ -861,15 +847,12 @@ const SignUp = () => {
     return newErrors;
   };
 
-  // دالة لإرسال البيانات إلى قاعدة البيانات
+  // إرسال البيانات إلى الخادم
   const saveUserToDatabase = async (userData) => {
     try {
-      // استبدل هذا الرابط برابط API الحقيقي الخاص بك
-      const response = await fetch('http://localhost:3001/api/signup', {
+      const response = await fetch('http://localhost:3000/api/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
 
@@ -880,25 +863,24 @@ const SignUp = () => {
       const result = await response.json();
       return result;
     } catch (error) {
-      console.error('Error saving user to database:', error);
+      console.error('Error saving user:', error);
       throw error;
     }
   };
 
+  // عند الضغط على الزر
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
-    
+
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
-      
       try {
-        // إعداد بيانات المستخدم للإرسال
         const userData = {
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
-          password: formData.password, // في الواقع يجب تشفير الباسوورد قبل الحفظ
+          password: formData.password, // يفضل تشفيرها في السيرفر
           role: formData.role,
           studentType: formData.studentType,
           schoolGrade: formData.schoolGrade,
@@ -907,12 +889,9 @@ const SignUp = () => {
           createdAt: new Date().toISOString()
         };
 
-        // حفظ المستخدم في قاعدة البيانات
         const result = await saveUserToDatabase(userData);
-        
         console.log('User created successfully:', result);
-        
-        // حفظ بيانات المستخدم في localStorage أو context
+
         localStorage.setItem('user', JSON.stringify({
           id: result.userId,
           firstName: formData.firstName,
@@ -921,13 +900,11 @@ const SignUp = () => {
           role: formData.role
         }));
 
-        // عرض رسالة نجاح
-        alert('Account created successfully! Redirecting to home page...');
-        
-        // توجيه المستخدم إلى صفحة Home
-        navigate('/home');
-       //navigate('/student/home');
-        
+        alert('Account created successfully! Redirecting...');
+
+        // التوجيه لصفحة التحقق بالبريد
+        navigate('/verify-email?email=' + encodeURIComponent(formData.email));
+
       } catch (error) {
         console.error('Signup error:', error);
         setErrors({ submit: 'Failed to create account. Please try again.' });
@@ -939,6 +916,7 @@ const SignUp = () => {
     }
   };
 
+  // الحقول الخاصة حسب الدور
   const renderRoleSpecificFields = () => {
     switch (formData.role) {
       case 'student':
@@ -971,18 +949,9 @@ const SignUp = () => {
                   className={errors.schoolGrade ? 'error' : ''}
                 >
                   <option value="">Select Grade</option>
-                  <option value="grade1">Grade 1</option>
-                  <option value="grade2">Grade 2</option>
-                  <option value="grade3">Grade 3</option>
-                  <option value="grade4">Grade 4</option>
-                  <option value="grade5">Grade 5</option>
-                  <option value="grade6">Grade 6</option>
-                  <option value="grade7">Grade 7</option>
-                  <option value="grade8">Grade 8</option>
-                  <option value="grade9">Grade 9</option>
-                  <option value="grade10">Grade 10</option>
-                  <option value="grade11">Grade 11</option>
-                  <option value="grade12">Grade 12</option>
+                  {[...Array(12)].map((_, i) => (
+                    <option key={i} value={`grade${i + 1}`}>Grade {i + 1}</option>
+                  ))}
                 </select>
                 {errors.schoolGrade && <span className="field-error">{errors.schoolGrade}</span>}
               </div>
@@ -994,7 +963,7 @@ const SignUp = () => {
                 <select
                   id="universityMajor"
                   name="universityMajor"
-                  value={formData.universityMajor}
+                  value={formData.universityMajor || null}
                   onChange={handleChange}
                   className={errors.universityMajor ? 'error' : ''}
                 >
@@ -1002,7 +971,7 @@ const SignUp = () => {
                   <option value="engineering">Engineering</option>
                   <option value="medicine">Medicine</option>
                   <option value="law">Law</option>
-                  <option value="business">Business Administration</option>
+                  <option value="business">Business</option>
                   <option value="computer-science">Computer Science</option>
                   <option value="arts">Arts</option>
                   <option value="science">Science</option>
@@ -1021,7 +990,7 @@ const SignUp = () => {
             <select
               id="trainingField"
               name="trainingField"
-              value={formData.trainingField}
+              value={formData.trainingField || null}
               onChange={handleChange}
               className={errors.trainingField ? 'error' : ''}
             >
@@ -1057,9 +1026,7 @@ const SignUp = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="signup-form">
-          {errors.submit && (
-            <div className="error-text">{errors.submit}</div>
-          )}
+          {errors.submit && <div className="error-text">{errors.submit}</div>}
 
           <div className="form-row">
             <div className="form-group">
@@ -1153,11 +1120,7 @@ const SignUp = () => {
             {errors.confirmPassword && <span className="field-error">{errors.confirmPassword}</span>}
           </div>
 
-          <button 
-            type="submit" 
-            className="signup-btn"
-            disabled={isSubmitting}
-          >
+          <button type="submit" className="signup-btn" disabled={isSubmitting}>
             {isSubmitting ? (
               <>
                 <div className="spinner"></div>
@@ -1180,3 +1143,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+

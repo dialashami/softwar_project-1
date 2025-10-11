@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
 import StudentHome from './pages/StudentHome';
+import VerifyEmail from './pages/verifemail'; 
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         
         {/* Signup route */}
         <Route path="/signup" element={<SignUp />} />
+        {/* Email Verification route */}
+        <Route path="/verify-email" element={<VerifyEmail />} />
         
         {/* Home page uses Layout */}
         <Route path="/home" element={<Layout />}>

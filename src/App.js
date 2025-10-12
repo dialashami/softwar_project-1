@@ -6,7 +6,12 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
 import StudentHome from './pages/StudentHome';
+import HomeTeacher from './pages/HomeTeacher';
+import ParentHome from './pages/ParentHome';
+import TranierHome from './pages/TranierHome';
 import VerifyEmail from './pages/verifemail'; 
+import UniversityHome from './pages/UniversityHome';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -25,9 +30,34 @@ function App() {
         
         {/* Home page uses Layout */}
         <Route path="/home" element={<Layout />}>
-          <Route index element={<Home />} />
-          { }
-          <Route path="student" element={<StudentHome />} />
+          <Route index element={
+            <PrivateRoute>
+               <Home />
+            </PrivateRoute>
+            } />
+            <Route path='university' element={
+            <PrivateRoute>
+                <UniversityHome />
+            </PrivateRoute>
+          } />  
+          <Route path="teacher" element={
+            <PrivateRoute>
+                <HomeTeacher />
+            </PrivateRoute>
+          } />
+
+         <Route path="parent" element={
+            <PrivateRoute>
+                <ParentHome />
+            </PrivateRoute>
+          } />
+          <Route path="tranier" element={
+            <PrivateRoute>
+                <TranierHome />
+            </PrivateRoute>
+          } />
+          
+          {/* <Route path="student" element={<StudentHome />} /> */}
         </Route>
 
       </Routes>

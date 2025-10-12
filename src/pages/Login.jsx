@@ -3,15 +3,17 @@
 import '../CSS/login.css';
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../slices/authSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithPopup, signInWithRedirect, getRedirectResult } from 'firebase/auth';
 import { auth, googleProvider, facebookProvider } from '../firebase';
-
+import {getUserRole} from "../utiles/getUserRole";
+import { getIdFromToken } from '../utiles/getIdFromToken';
+import axios from 'axios';
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, isLoggedIn } = useSelector((state) => state.auth);
+  const { loading, error, isLoggedIn,token } = useSelector((state) => state.auth);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,10 +23,49 @@ export default function Login() {
     dispatch(loginUser({ email, password }));
   };
 
+  const handelGetType =async(id)=>{
+    try{
+        const response = await axios.get(`http://localhost:3000/api/studentType`,{
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        return(response.data.studentType);
+        }
+    catch(error){
+      console.error("Error fetching user type:", error);
+      return null;
+    }
+  }
+
   // Redirect to home after login
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      const role = getUserRole(token);
+      // alert(role);
+      if (role === "student") {
+        //  must know if its a university or school student
+       const id = getIdFromToken(token);
+      //  alert(id);
+        handelGetType(id).then((type)=>{
+          if(type==="university"){
+            alert(type);
+            navigate("/home/university");
+          }else if(type==="school"){
+          
+           alert("school student");
+            navigate("/home");
+          }
+        // alert(type)
+        });
+      } else if (role === "teacher") {
+        navigate("/home/teacher");
+      } else if(role==="parent"){
+        navigate("/home");
+      }else if(role==="trainee"){
+        navigate("/home/tranier");
+      }
+      
       //navigate('/student/home');
     }
   }, [isLoggedIn, navigate]);

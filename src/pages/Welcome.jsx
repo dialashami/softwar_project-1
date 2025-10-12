@@ -31,6 +31,12 @@ export default function Welcome() {
       icon: "👨‍👩‍👧‍👦",
       role: "parent",
     
+    },{
+      id: 4,
+      title:"trainer",
+      description:"Provide specialized training sessions",
+      icon:"🧑‍💼",
+      role:"trainee"
     }
   ];
 
@@ -66,16 +72,6 @@ export default function Welcome() {
       {/* Navigation Bar */}
       <nav className="navbar">
         <div className="nav-content">
-          <div className="nav-logo">
-            <h1 className="logo">Ruwwad</h1>
-          </div>
-
-          <div className="nav-links">
-            <a href="#features">Features</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-
           <div className="nav-auth">
             <button 
               className="nav-login"
@@ -90,6 +86,33 @@ export default function Welcome() {
               Sign Up
             </button>
           </div>
+          {/* <div className="nav-logo">
+            <h1 className="logo">RUWWAD</h1>
+          </div> */}
+
+          <div className="nav-links">
+            <a href="#features">Features</a>
+            <a href="#about-us">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+           <div className="nav-logo">
+            <h1 className="logo">RUWWAD</h1>
+          </div>
+
+          {/* <div className="nav-auth">
+            <button 
+              className="nav-login"
+              onClick={() => navigate("/login")}
+            >
+              Log In
+            </button>
+            <button 
+              className="nav-signup"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </button>
+          </div> */}
         </div>
       </nav>
 
@@ -99,7 +122,7 @@ export default function Welcome() {
           {/* Welcome Message Section - الإضافة الجديدة */}
           <div className="welcome-message-section">
             <h2 className="welcome-main-message">
-              Welcome to Ruwwad, your gateway to smarter learning, stronger connections, and a brighter future.
+              Welcome to RUWWAD, your gateway to smarter learning, stronger connections, and a brighter future.
             </h2>
             <h3 className="join-us-title">Join us as:</h3>
             
@@ -120,7 +143,7 @@ export default function Welcome() {
           </div>
 
           <div className="welcome-header">
-            <h1 className="main-title">Ruwwad</h1>
+            <h1 className="main-title">RUWWAD</h1>
             <p className="welcome-tagline">
               Your gateway to smarter learning, stronger connections, and a brighter future
             </p>
@@ -145,7 +168,7 @@ export default function Welcome() {
           {/* App Download Section */}
           <div className="app-download">
             <div className="divider"></div>
-            <h3 className="download-title">Download the Ruwwad App</h3>
+            <h3 className="download-title">Download the RUWWAD App</h3>
             <div className="app-buttons">
               <button className="app-btn google-play">
                 <span className="btn-icon">📱</span>
@@ -190,13 +213,13 @@ export default function Welcome() {
       {/* Features Section */}
       <section id="features" className="features-section">
         <div className="features-container">
-          <h2 className="features-title"> Why Choose Ruwwad </h2>
+          <h2 className="features-title"> Why Choose RUWWAD </h2>
           <p className="features-subtitle">
             Empowering educators, students, and parents with innovative learning solutions
           </p>
 
           {/* Get Started Section within Features */}
-          <div className="get-started-section">
+          <div  className="get-started-section">
             <h3 className="get-started-title">Get started as</h3>
             <div className="user-cards">
               {userTypes.map(user => (
@@ -216,14 +239,17 @@ export default function Welcome() {
             </div>
           </div>
 
-          <div className="features-grid">
-            {features.map((feature, index) => (
-              <div key={index} className="feature-card">
-                <div className="feature-icon">{feature.icon}</div>
-                <h3>{feature.title}</h3>
-                <p>{feature.description}</p>
-              </div>
-            ))}
+          <div className='about-section' id="about-us">
+            <h1>About Us</h1>
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <div key={index} className="feature-card">
+                  <div className="feature-icon">{feature.icon}</div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -235,7 +261,7 @@ export default function Welcome() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-text">
-                "Ruwwad has transformed how I manage my classroom and communicate with parents."
+                "RUWWAD has transformed how I manage my classroom and communicate with parents."
               </div>
               <div className="testimonial-author">
                 <div className="author-name">Sarah Johnson</div>
@@ -265,11 +291,11 @@ export default function Welcome() {
       </section>
 
       {/* Footer */}
-      <footer className="footer">
+      <footer id='contact' className="footer">
         <div className="footer-container">
           <div className="footer-content">
             <div className="footer-section">
-              <h3 className="footer-logo">Ruwwad</h3>
+              <h3 className="footer-logo">RUWWAD</h3>
               <p className="footer-description">
                 Empowering education through technology and innovation.
               </p>
@@ -289,14 +315,14 @@ export default function Welcome() {
             </div>
             <div className="footer-section">
               <h4>Connect</h4>
-              <a href="#facebook">Facebook</a>
-              <a href="#twitter">Twitter</a>
-              <a href="#linkedin">LinkedIn</a>
-              <a href="#instagram">Instagram</a>
+              <a href="https://www.facebook.com/share/14QRZEy9etj/?mibextid=wwXIfr" target="_blank">Facebook</a>
+              <a href="https://x.com/abdalrhmanjyas?s=21" target="_blank"> Twitter</a>
+              <a href="https://www.linkedin.com/in/abdalrhman-yaseen-809202172?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">LinkedIn</a>
+              <a href="https://www.instagram.com/abdalrhmanjyaseen?igsh=NmFkeW00ajNja3h0&utm_source=qr" target="_blank">Instagram</a>
             </div>
           </div>
           <div className="footer-bottom">
-            <p>&copy; 2024 Ruwwad. All rights reserved.</p>
+            <p>&copy; RUWWAD All rights reserved.2025</p>
           </div>
         </div>
       </footer>

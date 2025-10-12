@@ -1,6 +1,7 @@
 
 import '../CSS/welcome.css';
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 
 
@@ -39,7 +40,7 @@ export default function Welcome() {
       role:"trainee"
     }
   ];
-
+/** 
   const features = [
     {
       icon: "🎯",
@@ -61,7 +62,7 @@ export default function Welcome() {
       title: "Free for Teachers",
       description: "Always free for teachers, no hidden fees"
     }
-  ];
+  ];*/
 
   const handleUserSelect = (user) => {
     navigate(`/signup?role=${user.role}`);
@@ -95,9 +96,19 @@ export default function Welcome() {
             <a href="#about-us">About</a>
             <a href="#contact">Contact</a>
           </div>
-           <div className="nav-logo">
-            <h1 className="logo">RUWWAD</h1>
-          </div>
+
+          <div className="nav-logo">
+  <img 
+    src="/logoRUWWAD.png" 
+    alt="RUWWAD Logo" 
+    className="logo-img"
+    onClick={() => {
+      navigate("/");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }}
+    style={{cursor: 'pointer'}}
+  />
+</div>
 
           {/* <div className="nav-auth">
             <button 
@@ -122,7 +133,7 @@ export default function Welcome() {
           {/* Welcome Message Section - الإضافة الجديدة */}
           <div className="welcome-message-section">
             <h2 className="welcome-main-message">
-              Welcome to RUWWAD, your gateway to smarter learning, stronger connections, and a brighter future.
+              Welcome to RUWWAD, your gateway to smarter learning, stronger connections, and a brighter future
             </h2>
             <h3 className="join-us-title">Join us as:</h3>
             
@@ -213,9 +224,9 @@ export default function Welcome() {
       {/* Features Section */}
       <section id="features" className="features-section">
         <div className="features-container">
-          <h2 className="features-title"> Why Choose RUWWAD </h2>
+          <h2 className="features-title"> Where education is a shared journey  </h2>
           <p className="features-subtitle">
-            Empowering educators, students, and parents with innovative learning solutions
+            Ruwwad is the one platform that unites students, educators, and families to help learners succeed at every stage
           </p>
 
           {/* Get Started Section within Features */}
@@ -239,18 +250,101 @@ export default function Welcome() {
             </div>
           </div>
 
+ 
+{/* Stay Connected Section */}
+<div className="stay-connected-section">
+  <div className="chat-visual">
+    <div className="chat-bubble">
+      <div className="message sender animate-message" style={{animationDelay: '0.2s'}}>
+        <span className="sender-name">Ali - Mohammed’s Parent</span>
+        <p>Mohammed was so proud of the A he got on his science test! Thanks for all your help.</p>
+        
+      </div>
+      <div className="message receiver animate-message" style={{animationDelay: '0.5s'}}>
+        <p>We're so proud! She practiced a ton.</p>
+        <span className="read-time">Read 10:20AM</span>
+      </div>
+      <div className="message sender animate-message" style={{animationDelay: '0.8s'}}>
+        <span className="sender-name">Rana - Layan's Parent</span>
+        <p>Elena finally solved that tough math problem she's been stuck on. She said her teacher's example made it click!</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="chat-info animate-fade-in" style={{animationDelay: '1s'}}>
+    <div className="chat-icon">💬</div>
+    <h2>Stay connected—instantly</h2>
+    <p>
+      Messages make it easy to communicate with teachers, families and staff anytime 🌍
+    </p>
+  </div>
+</div>
+
+{/* Build the Best Classroom Section */}
+<section className="toolkit-section">
+  <div className="toolkit-visual">
+    <motion.div 
+      className="monster"
+      initial={{ y: 50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
+      
+    </motion.div>
+
+    <div className="tool-icons">
+      {[
+        { name: "Group Maker", color: "#FF5C5C", delay: 0.2 },
+        { name: "Zoom", color: "#6C63FF", delay: 0.4 },
+        { name: "Timer", color: "#4B9EFF", delay: 0.6 },
+        { name: "Notes", color: "#55D88A", delay: 0.8 },
+        { name: "Brainstorm", color: "#00CFFF", delay: 1.0 },
+        { name: "Google meet", color: "#FFB347", delay: 1.2 },
+        { name: "Chart", color: "#A066FF", delay: 1.4 },
+        { name: "Github", color: "#FFDC60", delay: 1.6 },
+      ].map((tool, index) => (
+        <motion.div
+          key={index}
+          className="tool-icon"
+          style={{ backgroundColor: tool.color }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: tool.delay, type: "spring", stiffness: 150 }}
+        >
+          {tool.name}
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  <motion.div 
+    className="toolkit-info"
+    initial={{ x: 100, opacity: 0 }}
+    whileInView={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.8 }}
+  >
+    <div className="paint-icon">🎨</div>
+    <h2>Build the best classroom </h2>
+    <p>
+      From attendance sheets to timers and everything in between, 
+      the <strong>Teacher Toolkit</strong> will save time and energy for what really matters
+    </p>
+  </motion.div>
+</section>
+
+
           <div className='about-section' id="about-us">
-            <h1>About Us</h1>
-            <div className="features-grid">
-              {features.map((feature, index) => (
-                <div key={index} className="feature-card">
-                  <div className="feature-icon">{feature.icon}</div>
-                  <h3>{feature.title}</h3>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+  
+  <div className="about-content">
+    <h1>?What's Ruwwad</h1>
+    <p>
+      Ruwwad is a comprehensive educational platform that supports learners, educators, and parents at every stage of the educational journey. We provide a unified digital environment that brings together interactive lessons, progress tracking, and communication tools. For students, we offer personalized, flexible learning paths. For teachers, we provide powerful tools to create content and monitor performance. For parents, we ensure transparency and collaboration. By connecting all stakeholders in one adaptive ecosystem, Ruwwad empowers entire learning communities to achieve academic and professional success
+    </p>
+  </div>
+
+ 
+</div>
+          
         </div>
       </section>
 
@@ -261,28 +355,28 @@ export default function Welcome() {
           <div className="testimonials-grid">
             <div className="testimonial-card">
               <div className="testimonial-text">
-                "RUWWAD has transformed how I manage my classroom and communicate with parents."
+                RUWWAD has transformed how I manage my classroom and communicate with parents
               </div>
               <div className="testimonial-author">
-                <div className="author-name">Sarah Johnson</div>
+                <div className="author-name">Sarah Hamad</div>
                 <div className="author-role">Teacher</div>
               </div>
             </div>
             <div className="testimonial-card">
               <div className="testimonial-text">
-                "As a parent, I can easily track my child's progress and stay connected with teachers."
+                As a parent, I can easily track my child's progress and stay connected with teachers
               </div>
               <div className="testimonial-author">
-                <div className="author-name">Michael Chen</div>
+                <div className="author-name">Hamza Suleiman</div>
                 <div className="author-role">Parent</div>
               </div>
             </div>
             <div className="testimonial-card">
               <div className="testimonial-text">
-                "The platform makes learning fun and accessible. I love the interactive lessons!"
+                The platform makes learning fun and accessible. I love the interactive lessons
               </div>
               <div className="testimonial-author">
-                <div className="author-name">Emily Rodriguez</div>
+                <div className="author-name">Rand Qasem</div>
                 <div className="author-role">Student</div>
               </div>
             </div>
@@ -297,7 +391,7 @@ export default function Welcome() {
             <div className="footer-section">
               <h3 className="footer-logo">RUWWAD</h3>
               <p className="footer-description">
-                Empowering education through technology and innovation.
+                Empowering education through technology and innovation
               </p>
             </div>
             <div className="footer-section">

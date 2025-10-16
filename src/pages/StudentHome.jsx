@@ -147,10 +147,10 @@ const StudentHome = () => {
   );
 };
 
-export default StudentHome;*/
+export default StudentHome;
 
 
-
+***********************************************************************************************
 import React from 'react';
 import '../CSS/StudentHome.css';
 
@@ -207,7 +207,7 @@ const StudentHome = () => {
 
   return (
     <div className="student-home">
-      {/* Header */}
+      {/* Header }
       <header className="student-header">
         <div className="header-content">
           <h1 className="welcome-title">Welcome to Your Classroom</h1>
@@ -219,7 +219,7 @@ const StudentHome = () => {
         </div>
       </header>
 
-      {/* Main Content */}
+      {/* Main Content }
       <main className="student-main">
         <section className="subjects-section">
           <h2 className="section-title">Your Subjects</h2>
@@ -246,7 +246,7 @@ const StudentHome = () => {
           </div>
         </section>
 
-        {/* Quick Stats */}
+        {/* Quick Stats }
         <section className="stats-section">
           <div className="stat-card">
             <div className="stat-icon">📚</div>
@@ -272,7 +272,7 @@ const StudentHome = () => {
         </section>
       </main>
 
-      {/* Navigation Footer */}
+      {/* Navigation Footer }
       <footer className="student-footer">
         <nav className="footer-nav">
           <button className="nav-item active">
@@ -297,4 +297,4 @@ const StudentHome = () => {
   );
 };
 
-export default StudentHome;
+export default StudentHome;*/

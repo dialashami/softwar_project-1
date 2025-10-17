@@ -82,7 +82,7 @@ import VerifyEmail from './pages/verifemail';
 import UniversityHome from './pages/UniversityHome';
 import PrivateRoute from './components/PrivateRoute';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
+
 
 function App() {
   return (
@@ -134,7 +134,7 @@ function App() {
               <TranierHome />
             </PrivateRoute>
           } />
-          <Route path="/lessons" component={LessonsManagement} />
+
         </Route>
       </Routes>
     </BrowserRouter>
@@ -170,7 +170,7 @@ import VerifyEmail from './pages/verifemail';
 import UniversityHome from './pages/UniversityHome';
 import PrivateRoute from './components/PrivateRoute';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
+
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -204,7 +204,7 @@ function App() {
           <div className="parent-home">
             <Sidebar />
             <div className="main-content">
-              <LessonsManagement />
+           
             </div>
           </div>
         } />
@@ -252,6 +252,8 @@ export default App;
 بدي الي فوق مباشرة 
 
 */
+
+
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from './pages/Layout';
@@ -259,15 +261,14 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Welcome from './pages/Welcome';
-import StudentHome from './pages/StudentHome';
 import TeacherHome from './pages/TeacherHome/TeacherHome';
 import ParentHome from './pages/ParentHome';
 import TranierHome from './pages/TranierHome';
 import VerifyEmail from './pages/verifemail'; 
 import UniversityHome from './pages/UniversityHome';
 import PrivateRoute from './components/PrivateRoute';
+import LessonManagement from './pages/TeacherHome/components/LessonManagement';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
 
 function App() {
   return (
@@ -276,7 +277,6 @@ function App() {
         {/* Default route "/" shows TeacherHome directly */}
         <Route path="/" element={
           <div className="teacher-home">
-           
             <div className="main-content">
               <TeacherHome />
             </div>
@@ -295,12 +295,11 @@ function App() {
         {/* Email Verification route */}
         <Route path="/verify-email" element={<VerifyEmail />} />
         
-        {/* Lessons route */}
+        {/* ✅ تم التصحيح: Lessons route يستخدم LessonManagement */}
         <Route path="/lessons" element={
           <div className="teacher-home">
-          
             <div className="main-content">
-              <LessonsManagement />
+              <LessonManagement /> {/* ⬅️ أضف هذا السطر */}
             </div>
           </div>
         } />
@@ -343,3 +342,6 @@ function App() {
 }
 
 export default App;
+/*
+***********************************************44444444 الي فوق عشان تبدا واجهة المعلم  */
+

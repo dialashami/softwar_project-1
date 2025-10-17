@@ -2,7 +2,7 @@ import React from 'react';
 import { SidebarProvider } from './components/ui/sidebar';
 import { TeacherSidebar } from './components/TeacherSidebar';
 import { Dashboard } from './components/Dashboard';
-import { LessonManagement } from './components/LessonManagement';
+//import { LessonManagement } from './components/LessonManagement';
 import { AssignmentManagement } from './components/AssignmentManagement';
 import { StudentAnalytics } from './components/StudentAnalytics';
 import { Notifications } from './components/Notifications';
@@ -12,6 +12,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Toaster } from './components/ui/sonner';
 import { useAuth } from './hooks/useAuth';
+import LessonManagement from './components/LessonManagement';
 import './TeacherHome.css';
 
 export default function TeacherHome() {

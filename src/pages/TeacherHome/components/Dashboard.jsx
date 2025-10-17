@@ -1,8 +1,12 @@
+
+/*
+
+
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Users, BookOpen, FileText, TrendingUp } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { useStore } from '../hooks/useStore';
-
+import '../styles/dashboard.css';
 export function Dashboard() {
   const store = useStore();
   const students = store.getStudents();
@@ -68,7 +72,7 @@ const weeklyActivityData = [
         <p className="text-muted-foreground">Here's an overview of your classes and students</p>
       </div>
 
-      {/* Stats Grid */}
+      {/* Stats Grid *}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {statsData.map((stat) => {
           const Icon = stat.icon;
@@ -91,7 +95,7 @@ const weeklyActivityData = [
         })}
       </div>
 
-      {/* Charts Row */}
+      {/* Charts Row *}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
           <CardHeader className="bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.98_0.02_260)]">
@@ -149,7 +153,7 @@ const weeklyActivityData = [
         </Card>
       </div>
 
-      {/* Lists Row */}
+      {/* Lists Row *}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
           <CardHeader className="bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.98_0.02_260)]">
@@ -186,6 +190,173 @@ const weeklyActivityData = [
             </div>
           </CardContent>
         </Card>
+      </div>
+    </div>
+  );
+}
+*/
+
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/dashboard.css';
+
+export function Dashboard() {
+  const navigate = useNavigate();
+
+  const handleNavigation = (page) => {
+    if (page === 'lessons') {
+      navigate('/lessons');
+    }
+    // يمكنك إضافة صفحات أخرى هنا
+  };
+
+  return (
+    <div className="dashboard">
+      {/* Sidebar */}
+      <div className="dashboard-sidebar">
+        <div className="sidebar-header">
+          <h2>Ruwwad</h2>
+          <p>Teacher Portal</p>
+        </div>
+        <ul className="sidebar-nav">
+          <li className="active">Dashboard</li>
+          <li onClick={() => handleNavigation('lessons')} style={{cursor: 'pointer'}}>Lessons</li>
+          <li>Assignments</li>
+          <li>Analytics</li>
+          <li>Notifications</li>
+          <li>A Assistant</li>
+          <li>Account</li>
+        </ul>
+      </div>
+
+      {/* باقي الكود يبقى كما هو */}
+      <div className="dashboard-main">
+        <div className="dashboard-header">
+          <div className="welcome-section">
+            <h1>Welcome back, Sarah!</h1>
+            <p>Here's an overview of your classes and students</p>
+          </div>
+          
+          <div className="search-bar">
+            <input type="text" placeholder="Search Johnson Mathematics" />
+            <i className="fas fa-search"></i>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="stats-grid">
+          <div className="stat-card">
+            <h3>Total Students</h3>
+            <div className="stat-number">5</div>
+            <div className="stat-change positive">+12%</div>
+          </div>
+          <div className="stat-card">
+            <h3>Active Lessons</h3>
+            <div className="stat-number">2</div>
+            <div className="stat-change positive">+3</div>
+          </div>
+          <div className="stat-card">
+            <h3>Pending Assignments</h3>
+            <div className="stat-number">1</div>
+            <div className="stat-change negative">-8</div>
+          </div>
+          <div className="stat-card">
+            <h3>Avg. Performance</h3>
+            <div className="stat-number">82%</div>
+            <div className="stat-change positive">+5%</div>
+          </div>
+        </div>
+
+        {/* Charts Section */}
+        <div className="charts-section">
+          <div className="chart-card class-performance">
+            <h3>Class Performance Overview</h3>
+            <div className="performance-bars">
+              <div className="performance-bar" style={{height: '85%'}}>
+                <span className="performance-bar-label">Grade 9A</span>
+              </div>
+              <div className="performance-bar" style={{height: '78%'}}>
+                <span className="performance-bar-label">Grade 9B</span>
+              </div>
+              <div className="performance-bar" style={{height: '92%'}}>
+                <span className="performance-bar-label">Grade 10A</span>
+              </div>
+              <div className="performance-bar" style={{height: '88%'}}>
+                <span className="performance-bar-label">Grade 10B</span>
+              </div>
+              <div className="performance-bar" style={{height: '81%'}}>
+                <span className="performance-bar-label">Grade 11A</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="chart-card">
+            <h3>Weekly Activity</h3>
+            <div className="weekly-activity">
+              <div className="activity-day">
+                <span className="day-name">Mon</span>
+                <div className="activity-stats">
+                  <div className="submissions">
+                    <div className="count">45</div>
+                    <div className="label">Submissions</div>
+                  </div>
+                  <div className="lessons">
+                    <div className="count">12</div>
+                    <div className="label">Lessons</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Lists Section */}
+        <div className="lists-section">
+          <div className="list-card">
+            <h3>Upcoming Lessons</h3>
+            <div className="lessons-list">
+              <div className="lesson-item">
+                <div className="lesson-info">
+                  <h4>Quadratic Equations</h4>
+                  <p className="class">Grade 10</p>
+                </div>
+                <div className="lesson-time">Today, 10:00 AM</div>
+              </div>
+              <div className="lesson-item">
+                <div className="lesson-info">
+                  <h4>Trigonometry Basics</h4>
+                  <p className="class">Grade 11</p>
+                </div>
+                <div className="lesson-time">Today, 2:00 PM</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="list-card">
+            <h3>Recent Activity</h3>
+            <div className="activity-list">
+              <div className="activity-item">
+                <h4 className="activity-student">Ahmed Hassan</h4>
+                <p className="activity-action">Submitted Assignment: Algebra Quiz</p>
+                <p className="activity-time">5 min ago</p>
+              </div>
+              <div className="activity-item">
+                <h4 className="activity-student">Fatima Ali</h4>
+                <p className="activity-action">Completed Lesson: Geometry Fundamentals</p>
+                <p className="activity-time">12 min ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Teacher Profile */}
+        <div className="teacher-profile">
+          <div className="profile-avatar">SJ</div>
+          <div className="profile-info">
+            <h4>Sarah Johnson</h4>
+            <p>Mathematics</p>
+          </div>
+        </div>
       </div>
     </div>
   );

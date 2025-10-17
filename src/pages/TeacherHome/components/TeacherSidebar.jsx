@@ -14,7 +14,7 @@ export function TeacherSidebar({ activeView, setActiveView }) {
     { id: 'account', label: 'Account', icon: '👤' },
   ];
 
-  return (
+  /**return (
     <aside className="teacher-sidebar">
       <div className="sidebar-header">
         <h2>Teacher Dashboard</h2>
@@ -39,5 +39,5 @@ export function TeacherSidebar({ activeView, setActiveView }) {
         </button>
       </div>
     </aside>
-  );
+  ); */
 }

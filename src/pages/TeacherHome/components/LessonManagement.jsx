@@ -680,7 +680,7 @@ function LessonManagement() {
           </li>
         </ul>
 
-        {/* Teacher Profile in Sidebar
+        {/* Teacher Profile in Sidebar */}
         <div className="teacher-profile-sidebar">
           <div className="profile-avatar">
             <i className="fas fa-user"></i>
@@ -689,7 +689,7 @@ function LessonManagement() {
             <h4>Sarah Johnson</h4>
             <p>Mathematics Teacher</p>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/* Main Content */}

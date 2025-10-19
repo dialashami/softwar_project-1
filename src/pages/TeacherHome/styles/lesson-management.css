@@ -110,7 +110,7 @@ right: 0;
 
 /* Main Content */
 .lesson-main-content {
-    transform: translateX(-25px);
+    transform: translateX(-30px);
 
   min-height: 100vh;
  
@@ -135,13 +135,13 @@ max-width: none;
 }
 
 .lesson-header h1 {
-  color: #2c3e50;
+  color: #ffffff;
   margin: 0 0 15px 0;
   font-size: 2.5rem;
-  font-weight: 700;
-  /**/background: linear-gradient(135deg, #2c3e50, #3498db);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 1000;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  text-align: center;
+  /* -webkit-text-fill-color: transparent; */
 }
 
 .lesson-header p {
@@ -149,6 +149,7 @@ max-width: none;
   margin: 0 0 30px 0;
   font-size: 1.2rem;
   font-weight: 500;
+  text-align: center;
 }
 
 /* Search Bar */

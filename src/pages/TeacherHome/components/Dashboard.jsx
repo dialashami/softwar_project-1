@@ -196,6 +196,7 @@ const weeklyActivityData = [
 }
 */
 
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/dashboard.css';
@@ -206,8 +207,9 @@ export function Dashboard() {
   const handleNavigation = (page) => {
     if (page === 'lessons') {
       navigate('/lessons');
+    } else if (page === 'assignments') {
+      navigate('/assignments');
     }
-    // يمكنك إضافة صفحات أخرى هنا
   };
 
   return (
@@ -221,10 +223,10 @@ export function Dashboard() {
         <ul className="sidebar-nav">
           <li className="active">Dashboard</li>
           <li onClick={() => handleNavigation('lessons')} style={{cursor: 'pointer'}}>Lessons</li>
-          <li>Assignments</li>
+          <li onClick={() => handleNavigation('assignments')} style={{ cursor: 'pointer' }}>Assignments</li>
           <li>Analytics</li>
           <li>Notifications</li>
-          <li>A Assistant</li>
+          <li>AI Assistant</li>
           <li>Account</li>
         </ul>
       </div>

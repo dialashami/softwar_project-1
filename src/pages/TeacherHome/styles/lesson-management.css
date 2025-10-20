@@ -1,8 +1,3 @@
-/* src/pages/TeacherHome/styles/lesson-management.css */
-
-/* .root {
-  background-color: #d61515 !important;
-} */
 
 
 body{
@@ -21,22 +16,31 @@ background: #ffffff;
 
 }
 
-/* Sidebar Styles */
+
+
 
 .lesson-sidebar {
-background: #2c3e50;
+/* background: #2c3e50;
   color: white;
   padding: 20px 0;
 
 
 
 
-  height: 100vh;        /* الطول الكامل للشاشة */
-  position: fixed;      /* ثابت أثناء التمرير */
+  height: 100vh;       
+  position: fixed;    
 right: 0;
-  width: 250px;         /* عرض ثابت */
-  overflow-y: auto;     /* إمكانية التمرير إذا كان المحتوى طويل */
+  width: 250px;        
+  overflow-y: auto;   */
+   width: 305px;
+  border-bottom: 1px solid #34495e;
+    color: white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
 
 .sidebar-header {
   padding: 0 20px 20px;
@@ -49,15 +53,11 @@ right: 0;
   font-size: 1.5rem;
   margin: 0;
 }
-
-.sidebar-header p {
-  color: #bdc3c7;
-  font-size: 0.95rem;
-  margin: 0;
+.sidebar-header p{
+  color: #000;
 }
-
 .sidebar-nav {
-   list-style: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -67,6 +67,7 @@ right: 0;
   cursor: pointer;
   transition: background-color 0.3s;
   border-left: 3px solid transparent;
+  color: #000;
 }
 
 .sidebar-nav li:hover {
@@ -81,36 +82,12 @@ right: 0;
 }
 
 
-/* Teacher Profile in Sidebar 
-.teacher-profile-sidebar {
-  padding: 25px;
-  border-top: 1px solid #34495e;
-  margin-top: auto;
-  background: #34495e;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}*/
-
-/*
-.profile-info-sidebar h4 {
-  margin: 0 0 8px 0;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.profile-info-sidebar p {
-  margin: 0;
-  color: #bdc3c7;
-  font-size: 0.9rem;
-}*/
 
 
 
 /* Main Content */
 .lesson-main-content {
-    transform: translateX(-30px);
+    transform: translateX(-10px);
 
   min-height: 100vh;
  
@@ -123,6 +100,7 @@ right: 0;
     padding: 20px;
 max-width: none;
  }
+  
 
 /* Header Section */
 .lesson-header {
@@ -135,11 +113,11 @@ max-width: none;
 }
 
 .lesson-header h1 {
-  color: #ffffff;
+  color:linear-gradient(135deg, #3d6a97, #3498db);
   margin: 0 0 15px 0;
   font-size: 2.5rem;
   font-weight: 1000;
-  background: linear-gradient(135deg, #2c3e50, #3498db);
+  /* background: linear-gradient(135deg, #2c3e50, #3498db); */
   text-align: center;
   /* -webkit-text-fill-color: transparent; */
 }
@@ -188,9 +166,9 @@ max-width: none;
 /* Content Container */
 .content-container {
  overflow-y: auto;
-     padding-top: 50px;
+     padding-top: 10px;
      background-color: #f2f0f0;
-            
+           padding-right: 0px;  
        scroll-behavior: smooth;
 }
 
@@ -435,9 +413,9 @@ max-width: none;
   }
   
   .lesson-sidebar {
-    position: relative;
+    /* position: relative;
     width: 100%;
-    height: auto;
+    height: auto; */
     display: none;
   }
   
@@ -801,28 +779,7 @@ max-width: none;
   font-weight: 500;
 }
 
-/* Profile Avatar in Sidebar
-.profile-avatar {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #3498db, #2980b9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-}
 
-.profile-avatar i {
-  color: white;
-  font-size: 1.2rem;
-} */
-
-/* Icons in Sidebar 
-.sidebar-nav li i {
-  width: 20px;
-  text-align: center;
-}*/
 
 /* Subject Icon */
 .lesson-subject i {
@@ -833,4 +790,102 @@ max-width: none;
 /* Status Badge Icons */
 .status-badge i {
   margin-right: 5px;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.create-lesson-modal {
+  background: #fff;
+  width: 600px;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 25px 30px;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+.create-lesson-modal h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 22px;
+  color: #333;
+}
+
+/* Form Layout */
+.modal-form .form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.modal-form .form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.modal-form label {
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.modal-form input,
+.modal-form select,
+.modal-form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+}
+
+.modal-form textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+/* Buttons */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cancel-btn,
+.create-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.cancel-btn {
+  background: #f3f3f3;
+}
+
+.create-btn {
+  background: #4a6cf7;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }

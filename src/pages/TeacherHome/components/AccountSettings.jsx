@@ -1,369 +1,381 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Avatar, AvatarFallback } from './ui/avatar';
-import { User, Mail, Phone, BookOpen, Lock, Trash2, Save } from 'lucide-react';
-import { useAuth } from '../hooks/useAuth';
-import { toast } from 'sonner';
+import React, { useState } from 'react';
+import '../styles/AccountSettings.css';
 
 export function AccountSettings() {
-  const { user, updateProfile, changePassword, deleteAccount, logout } = useAuth();
+  const [activeTab, setActiveTab] = useState('profile');
+  const [showProfilePage, setShowProfilePage] = useState(true);
   
+  // User data
+  const [userData, setUserData] = useState({
+    name: "Ahmed Mohamed",
+    email: "ahmed@example.com",
+    phone: "+966 50 123 4567",
+    subject: "math",
+    bio: "Mathematics teacher with 5 years of experience teaching Saudi curriculum",
+    role: "teacher"
+  });
+
+  // Form data
   const [profileForm, setProfileForm] = useState({
-    name: user?.name || '',
-    phone: user?.phone || '',
-    subject: user?.subject || '',
-    bio: user?.bio || '',
+    name: userData.name,
+    phone: userData.phone,
+    subject: userData.subject,
+    bio: userData.bio,
+    email: userData.email,
   });
 
-  const [passwordForm, setPasswordForm] = useState({
-    oldPassword: '',
-    newPassword: '',
-    confirmPassword: '',
-  });
+  const tabs = [
+    { id: 'profile', label: 'Profile', icon: '👤' },
+    { id: 'security', label: 'Security', icon: '🔒' },
+    { id: 'preferences', label: 'Preferences', icon: '⚙️' }
+  ];
 
-  const [isLoadingProfile, setIsLoadingProfile] = useState(false);
-  const [isLoadingPassword, setIsLoadingPassword] = useState(false);
-
-  const handleUpdateProfile = async (e) => {
+  // Save profile function
+  const handleSaveProfile = (e) => {
     e.preventDefault();
-    setIsLoadingProfile(true);
+    
+    // Update user data
+    setUserData(prevData => ({
+      ...prevData,
+      name: profileForm.name,
+      phone: profileForm.phone,
+      subject: profileForm.subject,
+      bio: profileForm.bio,
+        email: profileForm.email,
+    }));
 
-    setTimeout(() => {
-      const result = updateProfile(profileForm);
-      if (result.success) {
-        toast.success('Profile updated successfully!');
-      } else {
-        toast.error(result.error || 'Failed to update profile');
-      }
-      setIsLoadingProfile(false);
-    }, 500);
+    // Show profile page
+    setShowProfilePage(true);
+    
+    // Success message
+    alert('Profile updated successfully! 🎉');
   };
 
-  const handleChangePassword = async (e) => {
-    e.preventDefault();
-
-    if (!passwordForm.oldPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
-      toast.error('Please fill in all password fields');
-      return;
-    }
-
-    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      toast.error('New passwords do not match');
-      return;
-    }
-
-    if (passwordForm.newPassword.length < 6) {
-      toast.error('Password must be at least 6 characters');
-      return;
-    }
-
-    setIsLoadingPassword(true);
-
-    setTimeout(() => {
-      const result = changePassword(passwordForm.oldPassword, passwordForm.newPassword);
-      if (result.success) {
-        toast.success('Password changed successfully!');
-        setPasswordForm({ oldPassword: '', newPassword: '', confirmPassword: '' });
-      } else {
-        toast.error(result.error || 'Failed to change password');
-      }
-      setIsLoadingPassword(false);
-    }, 500);
+  // Back to settings function
+  const handleBackToSettings = () => {
+    setShowProfilePage(false);
   };
 
-  const handleDeleteAccount = () => {
-    if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-      if (window.confirm('This will permanently delete all your data. Are you absolutely sure?')) {
-        const result = deleteAccount();
-        if (result.success) {
-          toast.success('Account deleted successfully');
-        } else {
-          toast.error(result.error || 'Failed to delete account');
-        }
-      }
-    }
-  };
+  // Show profile page
+  if (showProfilePage) {
+    return (
+      <div className="profile-page">
+        <div className="profile-header">
+          <button 
+            className="back-button"
+            onClick={handleBackToSettings}
+          >
+            ← Back to Settings
+          </button>
+          <h1>Profile</h1>
+        </div>
 
-  const getInitials = (name) => {
-    return name
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
-  };
+        <div className="profile-card">
+          <div className="profile-avatar">
+            <div className="avatar-circle">
+              {userData.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+            </div>
+            <div className="profile-info-main">
+              <h2>{userData.name}</h2>
+              <p className="profile-role">{userData.role === 'teacher' ? 'Teacher' : 'Student'} • {getSubjectName(userData.subject)}</p>
+            </div>
+          </div>
+
+          <div className="profile-info-grid">
+            <div className="info-card">
+              {/* <div className="info-icon"></div> */}
+              <div className="info-content">
+                <h3>Email</h3>
+                <p>{userData.email}</p>
+              </div>
+            </div>
+
+            <div className="info-card">
+              {/* <div className="info-icon"></div> */}
+              <div className="info-content">
+                <h3>Phone Number</h3>
+                <p>{userData.phone}</p>
+              </div>
+            </div>
+
+            <div className="info-card">
+              {/* <div className="info-icon"></div> */}
+              <div className="info-content">
+                <h3>Subject</h3>
+                <p>{getSubjectName(userData.subject)}</p>
+              </div>
+            </div>
+
+            <div className="info-card">
+              {/* <div className="info-icon">🎓</div> */}
+              <div className="info-content">
+                <h3>Experience</h3>
+                <p>5 years</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bio-section">
+            <h3>About Me</h3>
+            <div className="bio-content">
+              <p>{userData.bio}</p>
+            </div>
+          </div>
+
+          <div className="profile-actions">
+            <button 
+              className="btn btn-primary"
+              onClick={handleBackToSettings}
+            >
+              ✏️ Edit Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="p-8 space-y-6 max-w-4xl mx-auto">
-      <div className="mb-8">
-        <h1 className="gradient-text">Account Settings</h1>
-        <p className="text-muted-foreground">Manage your account information and preferences</p>
-      </div>
-
-      {/* Profile Header */}
-      <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
-        <CardContent className="p-8">
-          <div className="flex items-center gap-6">
-            <Avatar className="h-24 w-24 rounded-2xl gradient-primary shadow-lg">
-              <AvatarFallback className="text-white text-2xl bg-transparent">
-                {user ? getInitials(user.name) : 'U'}
-              </AvatarFallback>
-            </Avatar>
-            <div className="flex-1">
-              <h2>{user?.name}</h2>
-              <p className="text-muted-foreground">{user?.email}</p>
-              <p className="text-muted-foreground capitalize">{user?.role} • {user?.subject}</p>
-            </div>
-            <Button
-              variant="outline"
-              onClick={logout}
-              className="rounded-xl border-[oklch(0.92_0.04_270)] hover:bg-gradient-to-r hover:from-[oklch(0.98_0.02_280)] hover:to-[oklch(0.98_0.02_260)] transition-all"
+    <div className="account-settings">
+      {/* Tabs Navigation */}
+      <div className="tabs-container">
+        <div className="tabs-nav">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
             >
-              Sign Out
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
+              <span className="tab-icon">{tab.icon}</span>
+              <span className="tab-label">{tab.label}</span>
+              <div className="tab-indicator"></div>
+            </button>
+          ))}
+        </div>
 
-      {/* Settings Tabs */}
-      <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="rounded-xl">
-          <TabsTrigger value="profile" className="rounded-lg">Profile</TabsTrigger>
-          <TabsTrigger value="security" className="rounded-lg">Security</TabsTrigger>
-          <TabsTrigger value="preferences" className="rounded-lg">Preferences</TabsTrigger>
-        </TabsList>
-
-        {/* Profile Tab */}
-        <TabsContent value="profile">
-          <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.98_0.02_260)]">
-              <CardTitle>Profile Information</CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <form onSubmit={handleUpdateProfile} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="name"
-                        value={profileForm.name}
-                        onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
-                        className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
-                        placeholder="Your full name"
-                      />
-                    </div>
+        {/* Tab Content */}
+        <div className="tab-content">
+          {/* Profile Tab */}
+          {activeTab === 'profile' && (
+            <div className="tab-panel active">
+              <div className="panel-header">
+                <h2>Profile Information</h2>
+                <p>Manage your personal information and profile details</p>
+              </div>
+              
+              <form className="profile-form" onSubmit={handleSaveProfile}>
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label htmlFor="name">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      className="form-input"
+                      placeholder="Enter your full name"
+                      value={profileForm.name}
+                      onChange={(e) => setProfileForm({...profileForm, name: e.target.value})}
+                    />
                   </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input
+  type="email"
+  id="email"
+  className="form-input"
+  placeholder="your@email.com"
+  value={profileForm.email}
+  onChange={(e) => setProfileForm({ ...profileForm, email: e.target.value })}
+/>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="email"
-                        value={user?.email}
-                        disabled
-                        className="pl-10 rounded-xl bg-muted cursor-not-allowed"
-                      />
-                    </div>
-                    <p className="text-xs text-muted-foreground">Email cannot be changed</p>
+                 
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="phone"
-                        value={profileForm.phone}
-                        onChange={(e) => setProfileForm({ ...profileForm, phone: e.target.value })}
-                        className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
-                        placeholder="+966 50 123 4567"
-                      />
-                    </div>
+                <div className="form-grid">
+                  <div className="form-group">
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      className="form-input"
+                      placeholder="+966 50 123 4567"
+                      value={profileForm.phone}
+                      onChange={(e) => setProfileForm({...profileForm, phone: e.target.value})}
+                    />
                   </div>
-
-                  {user?.role === 'teacher' && (
-                    <div className="space-y-2">
-                      <Label htmlFor="subject">Subject</Label>
-                      <div className="relative">
-                        <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input
-                          id="subject"
-                          value={profileForm.subject}
-                          onChange={(e) => setProfileForm({ ...profileForm, subject: e.target.value })}
-                          className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
-                          placeholder="Mathematics"
-                        />
-                      </div>
-                    </div>
-                  )}
+                  
+                  <div className="form-group">
+                    <label htmlFor="subject">Subject</label>
+                    <select 
+                      className="form-input"
+                      value={profileForm.subject}
+                      onChange={(e) => setProfileForm({...profileForm, subject: e.target.value})}
+                    >
+                      <option value="math">Mathematics</option>
+                      <option value="science">Science</option>
+                      <option value="english">English</option>
+                      <option value="history">History</option>
+                      <option value="arabic">Arabic</option>
+                      <option value="islamic">Islamic Studies</option>
+                    </select>
+                  </div>
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="bio">Bio</Label>
-                  <Textarea
+                <div className="form-group">
+                  <label htmlFor="bio">Bio</label>
+                  <textarea
                     id="bio"
-                    value={profileForm.bio}
-                    onChange={(e) => setProfileForm({ ...profileForm, bio: e.target.value })}
-                    className="rounded-xl border-[oklch(0.92_0.04_270)] min-h-[100px]"
+                    className="form-textarea"
                     placeholder="Tell us about yourself..."
-                  />
+                    rows="4"
+                    value={profileForm.bio}
+                    onChange={(e) => setProfileForm({...profileForm, bio: e.target.value})}
+                  ></textarea>
                 </div>
 
-                <div className="flex justify-end">
-                  <Button
-                    type="submit"
-                    className="gradient-primary text-white rounded-xl"
-                    disabled={isLoadingProfile}
-                  >
-                    <Save className="h-4 w-4 mr-2" />
-                    {isLoadingProfile ? 'Saving...' : 'Save Changes'}
-                  </Button>
+                <div className="form-actions">
+                  <button type="submit" className="btn btn-primary">
+                    <span>💾</span>
+                    Save Changes
+                  </button>
                 </div>
               </form>
-            </CardContent>
-          </Card>
-        </TabsContent>
+            </div>
+          )}
 
-        {/* Security Tab */}
-        <TabsContent value="security">
-          <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.98_0.02_260)]">
-              <CardTitle>Security Settings</CardTitle>
-            </CardHeader>
-            <CardContent className="p-8 space-y-8">
-              {/* Change Password */}
-              <div>
-                <h3 className="mb-4">Change Password</h3>
-                <form onSubmit={handleChangePassword} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="oldPassword">Current Password</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="oldPassword"
+          {/* Security Tab */}
+          {activeTab === 'security' && (
+            <div className="tab-panel active">
+              <div className="panel-header">
+                <h2>Security Settings</h2>
+                <p>Manage your password and security preferences</p>
+              </div>
+
+              <div className="security-content">
+                {/* Change Password */}
+                <div className="security-section">
+                  <h3>Change Password</h3>
+                  <form className="password-form">
+                    <div className="form-group">
+                      <label htmlFor="currentPassword">Current Password</label>
+                      <input
                         type="password"
-                        value={passwordForm.oldPassword}
-                        onChange={(e) => setPasswordForm({ ...passwordForm, oldPassword: e.target.value })}
-                        className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
+                        id="currentPassword"
+                        className="form-input"
                         placeholder="Enter current password"
                       />
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="newPassword">New Password</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="newPassword"
+                    <div className="form-group">
+                      <label htmlFor="newPassword">New Password</label>
+                      <input
                         type="password"
-                        value={passwordForm.newPassword}
-                        onChange={(e) => setPasswordForm({ ...passwordForm, newPassword: e.target.value })}
-                        className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
+                        id="newPassword"
+                        className="form-input"
                         placeholder="Enter new password"
                       />
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="confirmPassword">Confirm New Password</Label>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <Input
-                        id="confirmPassword"
+                    <div className="form-group">
+                      <label htmlFor="confirmPassword">Confirm New Password</label>
+                      <input
                         type="password"
-                        value={passwordForm.confirmPassword}
-                        onChange={(e) => setPasswordForm({ ...passwordForm, confirmPassword: e.target.value })}
-                        className="pl-10 rounded-xl border-[oklch(0.92_0.04_270)]"
+                        id="confirmPassword"
+                        className="form-input"
                         placeholder="Confirm new password"
                       />
                     </div>
-                  </div>
 
-                  <div className="flex justify-end">
-                    <Button
-                      type="submit"
-                      className="gradient-primary text-white rounded-xl"
-                      disabled={isLoadingPassword}
-                    >
-                      {isLoadingPassword ? 'Updating...' : 'Update Password'}
-                    </Button>
-                  </div>
-                </form>
+                    <div className="form-actions">
+                      <button type="submit" className="btn btn-primary">
+                        Update Password
+                      </button>
+                    </div>
+                  </form>
+                </div>
+
+                {/* Danger Zone */}
+                <div className="danger-zone">
+                  <h3>Danger Zone</h3>
+                  <p>Once you delete your account, there is no going back. Please be certain.</p>
+                  <button className="btn btn-danger">
+                    <span>🗑️</span>
+                    Delete Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Preferences Tab */}
+          {activeTab === 'preferences' && (
+            <div className="tab-panel active">
+              <div className="panel-header">
+                <h2>Preferences</h2>
+                <p>Customize your application preferences</p>
               </div>
 
-              {/* Delete Account */}
-              <div className="border-t border-[oklch(0.92_0.04_270)] pt-8">
-                <h3 className="mb-2 text-red-600">Danger Zone</h3>
-                <p className="text-muted-foreground mb-4">
-                  Once you delete your account, there is no going back. Please be certain.
-                </p>
-                <Button
-                  variant="outline"
-                  onClick={handleDeleteAccount}
-                  className="rounded-xl border-red-300 text-red-600 hover:bg-red-50"
-                >
-                  <Trash2 className="h-4 w-4 mr-2" />
-                  Delete Account
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Preferences Tab */}
-        <TabsContent value="preferences">
-          <Card className="border-0 shadow-lg bg-white rounded-2xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.98_0.02_260)]">
-              <CardTitle>Preferences</CardTitle>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.99_0.01_260)]">
-                  <div>
+              <div className="preferences-content">
+                <div className="preference-item">
+                  <div className="preference-info">
                     <h4>Email Notifications</h4>
-                    <p className="text-muted-foreground">Receive email updates about your activity</p>
+                    <p>Receive email updates about your activity</p>
                   </div>
-                  <input type="checkbox" defaultChecked className="rounded border-[oklch(0.92_0.04_270)]" />
+                  <label className="toggle-switch">
+                    <input type="checkbox" defaultChecked />
+                    <span className="toggle-slider"></span>
+                  </label>
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.99_0.01_260)]">
-                  <div>
+                <div className="preference-item">
+                  <div className="preference-info">
                     <h4>Push Notifications</h4>
-                    <p className="text-muted-foreground">Get notified about important updates</p>
+                    <p>Get notified about important updates</p>
                   </div>
-                  <input type="checkbox" defaultChecked className="rounded border-[oklch(0.92_0.04_270)]" />
+                  <label className="toggle-switch">
+                    <input type="checkbox" defaultChecked />
+                    <span className="toggle-slider"></span>
+                  </label>
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-[oklch(0.98_0.02_280)] to-[oklch(0.99_0.01_260)]">
-                  <div>
+                <div className="preference-item">
+                  <div className="preference-info">
                     <h4>Weekly Reports</h4>
-                    <p className="text-muted-foreground">Receive weekly summary of your activity</p>
+                    <p>Receive weekly summary of your activity</p>
                   </div>
-                  <input type="checkbox" className="rounded border-[oklch(0.92_0.04_270)]" />
+                  <label className="toggle-switch">
+                    <input type="checkbox" />
+                    <span className="toggle-slider"></span>
+                  </label>
                 </div>
 
-                <div className="flex justify-end pt-4">
-                  <Button className="gradient-primary text-white rounded-xl">
-                    <Save className="h-4 w-4 mr-2" />
+            
+
+                <div className="form-actions">
+                  <button className="btn btn-primary">
+                    <span>💾</span>
                     Save Preferences
-                  </Button>
+                  </button>
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
+}
+
+// Helper function to get subject name
+function getSubjectName(subject) {
+  const subjects = {
+    math: 'Mathematics',
+    science: 'Science',
+    english: 'English',
+    history: 'History',
+    arabic: 'Arabic',
+    islamic: 'Islamic Studies'
+  };
+  return subjects[subject] || subject;
 }

@@ -82,7 +82,7 @@ import VerifyEmail from './pages/verifemail';
 import UniversityHome from './pages/UniversityHome';
 import PrivateRoute from './components/PrivateRoute';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
+
 
 function App() {
   return (
@@ -134,7 +134,7 @@ function App() {
               <TranierHome />
             </PrivateRoute>
           } />
-          <Route path="/lessons" component={LessonsManagement} />
+
         </Route>
       </Routes>
     </BrowserRouter>
@@ -170,7 +170,7 @@ import VerifyEmail from './pages/verifemail';
 import UniversityHome from './pages/UniversityHome';
 import PrivateRoute from './components/PrivateRoute';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
+
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -204,7 +204,7 @@ function App() {
           <div className="parent-home">
             <Sidebar />
             <div className="main-content">
-              <LessonsManagement />
+           
             </div>
           </div>
         } />
@@ -252,94 +252,244 @@ export default App;
 بدي الي فوق مباشرة 
 
 */
-import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from './pages/Layout';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import SignUp from './pages/SignUp';
-import Welcome from './pages/Welcome';
-import StudentHome from './pages/StudentHome';
-import TeacherHome from './pages/TeacherHome/TeacherHome';
-import ParentHome from './pages/ParentHome';
-import TranierHome from './pages/TranierHome';
-import VerifyEmail from './pages/verifemail'; 
-import UniversityHome from './pages/UniversityHome';
-import PrivateRoute from './components/PrivateRoute';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import LessonsManagement from './components/LessonsManagement';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        {/* Default route "/" shows TeacherHome directly */}
+
+// import './App.css';
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Layout from './pages/Layout';
+// import Login from './pages/Login';
+// import Home from './pages/Home';
+// import SignUp from './pages/SignUp';
+// import Welcome from './pages/Welcome';
+// import TeacherHome from './pages/TeacherHome/TeacherHome';
+// import ParentHome from './pages/ParentHome';
+// import TranierHome from './pages/TranierHome';
+// import VerifyEmail from './pages/verifemail'; 
+// import UniversityHome from './pages/UniversityHome';
+// import PrivateRoute from './components/PrivateRoute';
+// import LessonManagement from './pages/TeacherHome/components/LessonManagement';
+// import AssignmentManagement from './pages/TeacherHome/components/AssignmentManagement';
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         {/* Default route "/" shows TeacherHome directly */}
+//         <Route path="/" element={
+//           <div className="teacher-home">
+//             <div className="main-content">
+//               <TeacherHome />
+//             </div>
+//           </div>
+//         } />
+        
+//         {/* Welcome route */}
+//         <Route path="/welcome" element={<Welcome />} />
+        
+//         {/* Login route */}
+//         <Route path="/login" element={<Login />} />
+        
+//         {/* Signup route */}
+//         <Route path="/signup" element={<SignUp />} />
+        
+//         {/* Email Verification route */}
+//         <Route path="/verify-email" element={<VerifyEmail />} />
+        
+//         {/* LessonManagement */}
+//         <Route path="/lessons" element={
+//           <div className="teacher-home">
+//             <div className="main-content">
+//               <LessonManagement /> {}
+//             </div>
+//           </div>
+//         } />
+//             {/* Assignment*/}
+//         <Route path="/Assignments" element={
+//           <div className="teacher-home">
+//             <div className="main-content">
+//               <AssignmentManagement /> {}
+//             </div>
+//           </div>
+//         } />
+//         {/* Home page uses Layout */}
+//         <Route path="/home" element={<Layout />}>
+//           <Route index element={
+//             <PrivateRoute>
+//               <Home />
+//             </PrivateRoute>
+//           } />
+          
+//           <Route path='university' element={
+//             <PrivateRoute>
+//               <UniversityHome />
+//             </PrivateRoute>
+//           } />  
+          
+//           <Route path="teacher" element={
+//             <PrivateRoute>
+//               <TeacherHome />
+//             </PrivateRoute>
+//           } />
+
+//           <Route path="parent" element={
+//             <PrivateRoute>
+//               <ParentHome />
+//             </PrivateRoute>
+//           } />
+          
+//           <Route path="tranier" element={
+//             <PrivateRoute>
+//               <TranierHome />
+//             </PrivateRoute>
+//           } />
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;
+/*
+***********************************************44444444 الي فوق عشان تبدا واجهة المعلم  */
+   
+     import './App.css'; 
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import Layout from './pages/Layout';
+import Login from './pages/Login'; 
+import Home from './pages/Home'; 
+import SignUp from './pages/SignUp'; 
+import Welcome from './pages/Welcome'; 
+import TeacherHome from './pages/TeacherHome/TeacherHome'; 
+import ParentHome from './pages/ParentHome'; 
+import TranierHome from './pages/TranierHome';
+import VerifyEmail from './pages/verifemail';
+import UniversityHome from './pages/UniversityHome';
+import PrivateRoute from './components/PrivateRoute'; 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+function App() { 
+  return ( 
+    <BrowserRouter> 
+      <Routes> 
+        {/* Main Dashboard route */} 
         <Route path="/" element={
           <div className="teacher-home">
-           
-            <div className="main-content">
-              <TeacherHome />
-            </div>
-          </div>
-        } />
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } /> 
         
-        {/* Welcome route */}
-        <Route path="/welcome" element={<Welcome />} />
+        {/* Welcome route */} 
+        <Route path="/welcome" element={<Welcome />} /> 
         
-        {/* Login route */}
+        {/* Login route */} 
         <Route path="/login" element={<Login />} />
         
-        {/* Signup route */}
-        <Route path="/signup" element={<SignUp />} />
+        {/* Signup route */} 
+        <Route path="/signup" element={<SignUp />} /> 
         
         {/* Email Verification route */}
-        <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/verify-email" element={<VerifyEmail />} /> 
         
-        {/* Lessons route */}
+        {/* Teacher Routes */}
+        <Route path="/dashboard" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+        
         <Route path="/lessons" element={
           <div className="teacher-home">
-          
-            <div className="main-content">
-              <LessonsManagement />
-            </div>
-          </div>
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+        
+        <Route path="/assignments" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+        
+        <Route path="/analytics" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
         } />
 
-        {/* Home page uses Layout */}
-        <Route path="/home" element={<Layout />}>
-          <Route index element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          } />
-          
-          <Route path='university' element={
-            <PrivateRoute>
-              <UniversityHome />
-            </PrivateRoute>
-          } />  
-          
-          <Route path="teacher" element={
-            <PrivateRoute>
-              <TeacherHome />
-            </PrivateRoute>
-          } />
+        <Route path="/notifications" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
 
-          <Route path="parent" element={
-            <PrivateRoute>
-              <ParentHome />
-            </PrivateRoute>
+        <Route path="/ai-assistant" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+
+        <Route path="/account" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+        
+        {/* Home page using Layout */}
+        <Route path="/home" element={<Layout />}>
+          <Route index element={ 
+            <PrivateRoute> 
+              <Home /> 
+            </PrivateRoute> 
           } />
-          
-          <Route path="tranier" element={
-            <PrivateRoute>
-              <TranierHome />
-            </PrivateRoute>
+          <Route path='university' element={ 
+            <PrivateRoute> 
+              <UniversityHome /> 
+            </PrivateRoute> 
+          } /> 
+          <Route path="teacher" element={ 
+            <PrivateRoute> 
+              <TeacherHome /> 
+            </PrivateRoute> 
+          } /> 
+          <Route path="parent" element={ 
+            <PrivateRoute> 
+              <ParentHome /> 
+            </PrivateRoute> 
+          } /> 
+          <Route path="tranier" element={ 
+            <PrivateRoute> 
+              <TranierHome /> 
+            </PrivateRoute> 
           } />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+        </Route> 
+
+        {/* Catch all route - redirect to dashboard */}
+        <Route path="*" element={
+          <div className="teacher-home">
+            <div className="main-content"> 
+              <TeacherHome /> 
+            </div> 
+          </div> 
+        } />
+      </Routes> 
+    </BrowserRouter> 
+  ); 
+} 
 
 export default App;

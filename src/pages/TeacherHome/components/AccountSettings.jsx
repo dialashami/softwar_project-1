@@ -350,16 +350,7 @@ export function AccountSettings() {
                   </label>
                 </div>
 
-                <div className="preference-item">
-                  <div className="preference-info">
-                    <h4>Dark Mode</h4>
-                    <p>Switch to dark theme</p>
-                  </div>
-                  <label className="toggle-switch">
-                    <input type="checkbox" />
-                    <span className="toggle-slider"></span>
-                  </label>
-                </div>
+            
 
                 <div className="form-actions">
                   <button className="btn btn-primary">

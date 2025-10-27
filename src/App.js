@@ -351,142 +351,160 @@ export default App;
 
 // export default App;
 /*
-***********************************************44444444 الي فوق عشان تبدا واجهة المعلم  */
+***********************************************44444444 الي تحت عشان تبدا واجهة المعلم  */
    
-     import './App.css'; 
-import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import Layout from './pages/Layout';
-import Login from './pages/Login'; 
-import Home from './pages/Home'; 
-import SignUp from './pages/SignUp'; 
-import Welcome from './pages/Welcome'; 
-import TeacherHome from './pages/TeacherHome/TeacherHome'; 
-import ParentHome from './pages/ParentHome'; 
-import TranierHome from './pages/TranierHome';
-import VerifyEmail from './pages/verifemail';
-import UniversityHome from './pages/UniversityHome';
-import PrivateRoute from './components/PrivateRoute'; 
-import "@fortawesome/fontawesome-free/css/all.min.css";
 
+
+
+
+//وجب الاعتماد للمعلم 
+//      import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import Layout from './pages/Layout';
+// import Login from './pages/Login'; 
+// import Home from './pages/Home'; 
+// import SignUp from './pages/SignUp'; 
+// import Welcome from './pages/Welcome'; 
+// import TeacherHome from './pages/TeacherHome/TeacherHome'; 
+// import ParentHome from './pages/ParentHome'; 
+// import TranierHome from './pages/TranierHome';
+// import VerifyEmail from './pages/verifemail';
+// import UniversityHome from './pages/UniversityHome';
+// import PrivateRoute from './components/PrivateRoute'; 
+// import "@fortawesome/fontawesome-free/css/all.min.css";
+
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         {/* Main Dashboard route */} 
+//         <Route path="/" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } /> 
+        
+//         {/* Welcome route */} 
+//         <Route path="/welcome" element={<Welcome />} /> 
+        
+//         {/* Login route */} 
+//         <Route path="/login" element={<Login />} />
+        
+//         {/* Signup route */} 
+//         <Route path="/signup" element={<SignUp />} /> 
+        
+//         {/* Email Verification route */}
+//         <Route path="/verify-email" element={<VerifyEmail />} /> 
+        
+//         {/* Teacher Routes */}
+//         <Route path="/dashboard" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+        
+//         <Route path="/lessons" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+        
+//         <Route path="/assignments" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+        
+      
+
+//         <Route path="/notifications" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+
+//         <Route path="/ai-assistant" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+
+//         <Route path="/account" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+        
+//         {/* Home page using Layout */}
+//         <Route path="/home" element={<Layout />}>
+//           <Route index element={ 
+//             <PrivateRoute> 
+//               <Home /> 
+//             </PrivateRoute> 
+//           } />
+//           <Route path='university' element={ 
+//             <PrivateRoute> 
+//               <UniversityHome /> 
+//             </PrivateRoute> 
+//           } /> 
+//           <Route path="teacher" element={ 
+//             <PrivateRoute> 
+//               <TeacherHome /> 
+//             </PrivateRoute> 
+//           } /> 
+//           <Route path="parent" element={ 
+//             <PrivateRoute> 
+//               <ParentHome /> 
+//             </PrivateRoute> 
+//           } /> 
+//           <Route path="tranier" element={ 
+//             <PrivateRoute> 
+//               <TranierHome /> 
+//             </PrivateRoute> 
+//           } />
+//         </Route> 
+
+//         {/* Catch all route - redirect to dashboard */}
+//         <Route path="*" element={
+//           <div className="teacher-home">
+//             <div className="main-content"> 
+//               <TeacherHome /> 
+//             </div> 
+//           </div> 
+//         } />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } 
+
+// export default App;
+//وجب الاعتماد الي فوق للمعلم 
+
+import './App.css'; 
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import StudentHome from './pages/StudentHome/StudentHome';
+import './index.css';
 function App() { 
   return ( 
     <BrowserRouter> 
       <Routes> 
-        {/* Main Dashboard route */} 
-        <Route path="/" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } /> 
-        
-        {/* Welcome route */} 
-        <Route path="/welcome" element={<Welcome />} /> 
-        
-        {/* Login route */} 
-        <Route path="/login" element={<Login />} />
-        
-        {/* Signup route */} 
-        <Route path="/signup" element={<SignUp />} /> 
-        
-        {/* Email Verification route */}
-        <Route path="/verify-email" element={<VerifyEmail />} /> 
-        
-        {/* Teacher Routes */}
-        <Route path="/dashboard" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-        
-        <Route path="/lessons" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-        
-        <Route path="/assignments" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-        
-        <Route path="/analytics" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-
-        <Route path="/notifications" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-
-        <Route path="/ai-assistant" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-
-        <Route path="/account" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
-        
-        {/* Home page using Layout */}
-        <Route path="/home" element={<Layout />}>
-          <Route index element={ 
-            <PrivateRoute> 
-              <Home /> 
-            </PrivateRoute> 
-          } />
-          <Route path='university' element={ 
-            <PrivateRoute> 
-              <UniversityHome /> 
-            </PrivateRoute> 
-          } /> 
-          <Route path="teacher" element={ 
-            <PrivateRoute> 
-              <TeacherHome /> 
-            </PrivateRoute> 
-          } /> 
-          <Route path="parent" element={ 
-            <PrivateRoute> 
-              <ParentHome /> 
-            </PrivateRoute> 
-          } /> 
-          <Route path="tranier" element={ 
-            <PrivateRoute> 
-              <TranierHome /> 
-            </PrivateRoute> 
-          } />
-        </Route> 
-
-        {/* Catch all route - redirect to dashboard */}
-        <Route path="*" element={
-          <div className="teacher-home">
-            <div className="main-content"> 
-              <TeacherHome /> 
-            </div> 
-          </div> 
-        } />
+        <Route path="/" element={<StudentHome />} /> 
+        <Route path="/student" element={<StudentHome />} />
+        <Route path="*" element={<StudentHome />} />
       </Routes> 
     </BrowserRouter> 
   ); 

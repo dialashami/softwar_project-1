@@ -45,7 +45,7 @@
 export function Navigation() {
   return (
     <header className="header">
-      <div className="header-content">
+      {/* <div className="header-content">
        
         
         <div className="flex items-center gap-4">
@@ -61,7 +61,7 @@ export function Navigation() {
           </div>
           <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 }

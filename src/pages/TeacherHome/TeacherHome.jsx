@@ -249,7 +249,7 @@ import React from 'react';
 import { SidebarProvider } from './components/ui/sidebar';
 import { Dashboard } from './components/Dashboard';
 import AssignmentManagement from './components/AssignmentManagement';
-import { StudentAnalytics } from './components/StudentAnalytics';
+// import { StudentAnalytics } from './components/StudentAnalytics';
 import Notifications from './components/Notifications';
 import { AIAssistant } from './components/AIAssistant';
 import { AccountSettings } from './components/AccountSettings';
@@ -257,7 +257,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Toaster } from './components/ui/sonner';
 import { useAuth } from './hooks/useAuth';
-import LessonManagement from './components/LessonManagement';
+import { LessonManagement } from './components/LessonManagement';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TeacherHome.css';
 
@@ -291,13 +291,13 @@ function AppSidebar({ activeView, onNavigate }) {
         >
           Assignments
         </li>
-        <li 
+        {/* <li 
           className={activeView === 'analytics' ? 'active' : ''}
           onClick={() => onNavigate('analytics')}
           style={{cursor: 'pointer'}}
         >
           Analytics
-        </li>
+        </li> */}
         <li 
           className={activeView === 'notifications' ? 'active' : ''}
           onClick={() => onNavigate('notifications')}
@@ -335,7 +335,7 @@ export default function TeacherHome() {
     const path = location.pathname;
     if (path === '/lessons' || path.includes('/lessons')) return 'lessons';
     if (path === '/assignments' || path.includes('/assignments')) return 'assignments';
-    if (path === '/analytics' || path.includes('/analytics')) return 'analytics';
+    // if (path === '/analytics' || path.includes('/analytics')) return 'analytics';
     if (path === '/notifications' || path.includes('/notifications')) return 'notifications';
     if (path === '/ai-assistant' || path.includes('/ai-assistant')) return 'ai-assistant';
     if (path === '/account' || path.includes('/account')) return 'account';
@@ -355,9 +355,9 @@ export default function TeacherHome() {
       case 'assignments':
         navigate('/assignments');
         break;
-      case 'analytics':
-        navigate('/analytics');
-        break;
+      // case 'analytics':
+      //   navigate('/analytics');
+      //   break;
       case 'notifications':
         navigate('/notifications');
         break;
@@ -391,8 +391,8 @@ export default function TeacherHome() {
         return <LessonManagement onNavigate={handleNavigation} />;
       case 'assignments':
         return <AssignmentManagement onNavigate={handleNavigation} />;
-      case 'analytics':
-        return <StudentAnalytics onNavigate={handleNavigation} />;
+      // case 'analytics':
+      //   return <StudentAnalytics onNavigate={handleNavigation} />;
       case 'notifications':
         return <Notifications onNavigate={handleNavigation} />;
       case 'ai-assistant':

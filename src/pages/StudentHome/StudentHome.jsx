@@ -4,7 +4,7 @@ import { Navigation } from './components/Navigation';
 import { Dashboard } from './components/Dashboard';
 import { MyLessons } from './components/MyLessons';
 import { Assignments } from './components/Assignments';
-import { ProgressPage } from './components/ProgressPage';
+import  ProgressPage  from './components/ProgressPage';
 import { AITutorPage } from './components/AITutorPage';
 import { Settings } from './components/Settings';
 import './StudentHome.css';

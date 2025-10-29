@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { Navigation } from './components/Navigation';
 import { Dashboard } from './components/Dashboard';
+import  Notifications from './components/Notifications';
 import { MyLessons } from './components/MyLessons';
 import { Assignments } from './components/Assignments';
-import { ProgressPage } from './components/ProgressPage';
-import { AITutorPage } from './components/AITutorPage';
-import { Settings } from './components/Settings';
+import  ProgressPage  from './components/ProgressPage';
+import  AITutorPage  from './components/AITutorPage';
+import  Settings  from './components/Settings';
 import './StudentHome.css';
 
 export default function StudentHome() {
@@ -22,6 +23,8 @@ export default function StudentHome() {
         return <Assignments />;
       case 'progress':
         return <ProgressPage />;
+          case 'notifications':
+        return <Notifications />;
       case 'ai-tutor':
         return <AITutorPage />;
       case 'settings':

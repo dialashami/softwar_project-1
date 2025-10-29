@@ -1,134 +1,207 @@
-import { Card, Badge, Progress } from './ui';
-import { TrendingUp, Award, Star, Brain } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { TrendingUp, Award, Target, Flame, Trophy, Star, BookOpen, Brain } from 'lucide-react';
+ 
 
-const progressData = [
-  {
-    subject: 'Mathematics',
-    progress: 75,
-    grade: 'A-',
-    completedLessons: 12,
-    totalLessons: 16,
-    improvement: '+5%',
-  },
-  {
-    subject: 'Physics',
-    progress: 60,
-    grade: 'B+',
-    completedLessons: 9,
-    totalLessons: 15,
-    improvement: '+8%',
-  },
-  {
-    subject: 'Chemistry',
-    progress: 45,
-    grade: 'B',
-    completedLessons: 7,
-    totalLessons: 15,
-    improvement: '+3%',
-  },
-  {
-    subject: 'Biology',
-    progress: 80,
-    grade: 'A',
-    completedLessons: 12,
-    totalLessons: 15,
-    improvement: '+12%',
-  },
+const subjectProgress = [
+  { name: 'Mathematics', progress: 85, lessons: 24, quizzes: 18, grade: 'A', colorClass: 'subj-math', trend: '+5%' },
+  { name: 'Physics', progress: 72, lessons: 20, quizzes: 15, grade: 'B+', colorClass: 'subj-phys', trend: '+3%' },
+  { name: 'Chemistry', progress: 90, lessons: 22, quizzes: 16, grade: 'A+', colorClass: 'subj-chem', trend: '+8%' },
+  { name: 'Biology', progress: 68, lessons: 18, quizzes: 12, grade: 'B', colorClass: 'subj-bio', trend: '+2%' },
+  { name: 'English', progress: 95, lessons: 26, quizzes: 20, grade: 'A+', colorClass: 'subj-eng', trend: '+6%' },
 ];
 
-export function ProgressPage() {
-  const overallProgress = progressData.reduce((sum, subject) => sum + subject.progress, 0) / progressData.length;
+const achievements = [
+  { id: 1, title: 'Quick Learner', description: 'Completed 10 lessons in one week', icon: '⚡', earned: true },
+  { id: 2, title: 'Perfect Score', description: 'Scored 100% on 5 quizzes', icon: '💯', earned: true },
+  // { id: 3, title: 'Streak Master', description: 'Maintained 30-day learning streak', icon: '🔥', earned: true },
+  { id: 4, title: 'Math Genius', description: 'Completed all Math lessons', icon: '🎯', earned: false },
+  { id: 5, title: 'Science Explorer', description: 'Completed 50 science lessons', icon: '🔬', earned: true },
+  { id: 6, title: 'Early Bird', description: 'Started 10 lessons before deadline', icon: '🌅', earned: false },
+];
+
+const weeklyActivity = [
+  { day: 'Mon', hours: 3.5 },
+  { day: 'Tue', hours: 2.8 },
+  { day: 'Wed', hours: 4.2 },
+  { day: 'Thu', hours: 3.0 },
+  { day: 'Fri', hours: 2.5 },
+  { day: 'Sat', hours: 5.0 },
+  { day: 'Sun', hours: 4.5 },
+];
+
+const stats = [
+  { icon: BookOpen, label: 'Lessons Completed', value: '110', colorClass: 'stat-bg-blue' },
+  { icon: Target, label: 'Quizzes Passed', value: '81', colorClass: 'stat-bg-purple' },
+  { icon: Trophy, label: 'Achievements', value: '12', colorClass: 'stat-bg-yellow' },
+  // { icon: Flame, label: 'Day Streak', value: '23', colorClass: 'stat-bg-orange' },
+];
+
+export default function ProgressPage() {
+  const overallProgress = 82;
+  const maxHours = Math.max(...weeklyActivity.map(d => d.hours));
 
   return (
-    <div className="space-y-8 p-6">
+    <div className="progress-page-wrapper">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Progress Tracking 📈</h1>
-          <p className="text-gray-600 mt-1">Monitor your learning journey and achievements</p>
+      <div>
+        <h1 className="progress-header-title">My Progress 📊</h1>
+        <p className="progress-header-subtitle">
+          Track your learning journey and achievements
+        </p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="stats-grid">
+        {stats.map((stat, index) => {
+          const Icon = stat.icon;
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <div className="stat-card">
+                <div className="stat-card-row">
+                  <div className={`stat-card-icon ${stat.colorClass}`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="stat-card-label">{stat.label}</p>
+                    <p className="stat-card-value">{stat.value}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* Main Grid */}
+      <div className="main-grid">
+        {/* LEFT SIDE */}
+        <div className="left-col">
+          {/* Overall Progress */}
+          <div className="overall-progress-card">
+            <div className="overall-progress-top">
+              <div>
+                <div className="overall-progress-left-title">Overall Progress</div>
+                <div className="overall-progress-left-sub">
+                  You're doing great! Keep it up 🎉
+                </div>
+              </div>
+              <div className="overall-progress-percent">{overallProgress}%</div>
+            </div>
+            <div className="overall-progress-bar-wrapper">
+              <div
+                className="overall-progress-bar-fill"
+                style={{ width: `${overallProgress}%` }}
+              ></div>
+            </div>
+          </div>
+
+          {/* Progress by Subject */}
+          <div className="subject-card">
+            <div className="subject-card-title">Progress by Subject</div>
+
+            {subjectProgress.map((subject, index) => (
+              <motion.div
+                key={subject.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="subject-row"
+              >
+                <div className="subject-row-header">
+                  <div className="subject-left">
+                    <div className={`subject-icon-bubble ${subject.colorClass}`}>
+                      {subject.name[0]}
+                    </div>
+                    <div>
+                      <div className="subject-text-title">{subject.name}</div>
+                      <div className="subject-text-sub">
+                        {subject.lessons} lessons • {subject.quizzes} quizzes
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="subject-right">
+                    <div className="grade-badge">Grade: {subject.grade}</div>
+                    <div className="subject-numbers">
+                      <div className="subject-percent">{subject.progress}%</div>
+                      <div className="subject-trend">{subject.trend}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="subject-progress-track">
+                  <div
+                    className="subject-progress-fill"
+                    style={{ width: `${subject.progress}%` }}
+                  ></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Weekly Activity */}
+          <div className="weekly-card">
+            <div className="weekly-card-title">Weekly Activity</div>
+
+            <div className="weekly-bars-wrapper">
+              {weeklyActivity.map((day, index) => (
+                <motion.div
+                  key={day.day}
+                  initial={{ scaleY: 0 }}
+                  animate={{ scaleY: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="weekly-bar-col"
+                >
+                  <div className="weekly-bar-outer">
+                    <div
+                      className="weekly-bar-inner"
+                      style={{ height: `${(day.hours / maxHours) * 160}px` }}
+                    ></div>
+                  </div>
+                  <div className="weekly-day">{day.day}</div>
+                  <div className="weekly-hours">{day.hours}h</div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
-        
-        <div className="flex items-center gap-4">
-          <div className="text-center">
-            <p className="text-gray-600 text-sm font-semibold">Overall Progress</p>
-            <p className="text-2xl font-bold text-blue-600">{Math.round(overallProgress)}%</p>
+
+        {/* RIGHT SIDE */}
+        <div className="right-col">
+          <div className="achievements-card">
+            <div className="achievements-card-title">Achievements 🏆</div>
+
+            {achievements.map((achievement, index) => (
+              <motion.div
+                key={achievement.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className={`achievement-item ${
+                  achievement.earned ? 'achievement-earned' : ''
+                }`}
+              >
+                <div className="achievement-icon-box">
+                  {achievement.earned ? achievement.icon : '🔒'}
+                </div>
+
+                <div className="achievement-texts">
+                  <div className="achievement-title">{achievement.title}</div>
+                  <div className="achievement-desc">
+                    {achievement.description}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
-
-      {/* Overall Progress */}
-      <Card className="p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold mb-2">Your Learning Journey</h2>
-            <p className="text-blue-100">Great progress! Keep up the good work</p>
-          </div>
-          <TrendingUp className="w-12 h-12" />
-        </div>
-        <div className="mt-4">
-          <Progress value={overallProgress} className="h-3 bg-white/20" />
-        </div>
-      </Card>
-
-      {/* Subject Progress */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {progressData.map((subject, index) => (
-          <Card key={index} className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">{subject.subject}</h3>
-              <Badge className={
-                subject.grade === 'A' ? 'bg-green-100 text-green-800' :
-                subject.grade === 'A-' ? 'bg-green-100 text-green-800' :
-                subject.grade === 'B+' ? 'bg-blue-100 text-blue-800' :
-                'bg-yellow-100 text-yellow-800'
-              }>
-                {subject.grade}
-              </Badge>
-            </div>
-            
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-600">Progress</span>
-                <span className="text-sm font-semibold text-blue-600">{subject.progress}%</span>
-              </div>
-              <Progress value={subject.progress} />
-              
-              <div className="flex justify-between text-sm text-gray-600">
-                <span>{subject.completedLessons}/{subject.totalLessons} lessons</span>
-                <span className="text-green-600 font-semibold">{subject.improvement}</span>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      {/* Achievements */}
-      <Card className="p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-4">Achievements 🏆</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="flex items-center gap-3 p-4 bg-yellow-50 rounded-lg">
-            <Award className="w-8 h-8 text-yellow-600" />
-            <div>
-              <p className="font-semibold text-gray-900">Quick Learner</p>
-              <p className="text-sm text-gray-600">Complete 5 lessons in a week</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg">
-            <Star className="w-8 h-8 text-blue-600" />
-            <div>
-              <p className="font-semibold text-gray-900">Consistent Student</p>
-              <p className="text-sm text-gray-600">Study for 10 days straight</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-4 bg-purple-50 rounded-lg">
-            <Brain className="w-8 h-8 text-purple-600" />
-            <div>
-              <p className="font-semibold text-gray-900">Problem Solver</p>
-              <p className="text-sm text-gray-600">Solve 50+ practice problems</p>
-            </div>
-          </div>
-        </div>
-      </Card>
     </div>
   );
 }

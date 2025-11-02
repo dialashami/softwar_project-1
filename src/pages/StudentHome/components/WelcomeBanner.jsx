@@ -24,33 +24,11 @@ export function WelcomeBanner() {
         {/* Left Content */}
         <div className="flex-1">
           <h1 className="text-white mb-2" style={{ fontSize: '32px', fontWeight: '700' }}>
-            Welcome back, Amira 👋
+            Welcome back, Amira
           </h1>
         
 
-          {/* Action Buttons */}
-          <div className="flex gap-4">
-            <Button
-              className="bg-white text-[#4F46E5] hover:bg-white/90 rounded-full px-6 py-6 shadow-lg"
-            >
-              <BookOpen className="w-5 h-5 mr-2" />
-              Continue Lesson
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 rounded-full px-6 py-6 backdrop-blur-sm"
-            >
-              <FileText className="w-5 h-5 mr-2" />
-              Start Quiz
-            </Button>
-            <Button
-              variant="outline"
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 rounded-full px-6 py-6 backdrop-blur-sm"
-            >
-              <Award className="w-5 h-5 mr-2" />
-              Submit Assignment
-            </Button>
-          </div>
+        
         </div>
 
         {/* Right Illustration */}

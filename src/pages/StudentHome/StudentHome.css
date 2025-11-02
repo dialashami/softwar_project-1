@@ -1,3 +1,4 @@
+ /* background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%); */
  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
         * {
@@ -20,7 +21,7 @@
     top: 0;
     height: 100vh;
     width: 240px;
-    background: rgba(255, 255, 255, 0.95);
+     color: white;
     backdrop-filter: blur(20px);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
@@ -28,6 +29,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
 }
 
 /* Logo Section */
@@ -35,12 +37,13 @@
     padding: 1.5rem 1.5rem 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
+     background: linear-gradient(180deg, #2c3e50 );
 }
 
 .logo {
     width: 2.5rem;
     height: 2.5rem;
-    background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50  );
     border-radius: 0.75rem;
     display: flex;
     align-items: center;
@@ -50,12 +53,14 @@
     font-size: 1.25rem;
     box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
     margin-right: 0.75rem;
+ 
 }
 
 .sidebar-title {
+  
     font-size: 1.25rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
+background: linear-gradient(180deg, #2c3e50   );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -63,15 +68,18 @@
 
 /* Navigation Menu */
 .sidebar nav {
+background: linear-gradient(180deg, #2c3e50   );
     flex: 1;
     padding: 0 0.75rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
     overflow-y: auto;
+ 
 }
 
 .sidebar nav button {
+  background: linear-gradient(180deg, #2c3e50  );
     width: 100%;
     display: flex;
     align-items: center;
@@ -91,12 +99,12 @@
 
 .sidebar nav button:hover {
     background: rgba(0, 0, 0, 0.05);
-    color: #4F46E5;
+    color: #2c3e50;
 }
 
 .sidebar nav button.active {
     background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
-    color: #4F46E5;
+    color: #2c3e50;
     font-weight: 600;
 }
 
@@ -108,23 +116,26 @@
     transform: translateY(-50%);
     width: 3px;
     height: 60%;
-    background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
+background: linear-gradient(180deg, #2c3e50  );
     border-radius: 0 2px 2px 0;
 }
 
 /* Icons */
 .sidebar nav button svg {
+  
     width: 1.25rem;
     height: 1.25rem;
     transition: all 0.2s ease;
 }
 
-.sidebar nav button:hover svg {
-    color: #4F46E5;
+.sidebar nav button:hover svg {    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+
+    color: #2c3e50;
 }
 
-.sidebar nav button.active svg {
-    color: #4F46E5;
+.sidebar nav button.active svg {    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+
+    color: #2c3e50;
 }
 
 /* Notification Badge 1*/
@@ -179,7 +190,7 @@
 
 /* badge "X Unread" */
 .unread-badge {
-  background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
   color: #FFFFFF;
   border: 0;
   font-size: 14px;
@@ -239,7 +250,7 @@
 }
 
 .tabs-trigger[data-active="true"] {
-  background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
   color: #FFFFFF;
   box-shadow: 0 14px 32px -6px rgba(88, 28, 135, 0.45);
 }
@@ -278,7 +289,7 @@
 /* نسخة UNREAD (مش مقروء) */
 .notification-card.unread {
   background: radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.05) 0%, rgba(147, 51, 234, 0.05) 100%);
-  border-left: 4px solid #4F46E5;
+  border-left: 4px solid #2c3e50;
   box-shadow: 0 28px 48px -10px rgba(79, 70, 229, 0.3);
 }
 
@@ -317,10 +328,10 @@
 .icon-yellow-fg { color: #EAB308; }                            /* yellow-500   */
 
 .icon-blue-bg   { background-color: rgba(59, 130, 246, 0.1); } /* blue-500/10  */
-.icon-blue-fg   { color: #3B82F6; }                            /* blue-500     */
+.icon-blue-fg   { color: #2c3e50; }                            /* blue-500     */
 
 .icon-purple-bg { background-color: rgba(139, 92, 246, 0.1); } /* purple-500/10 */
-.icon-purple-fg { color: #8B5CF6; }                            /* purple-500   */
+.icon-purple-fg { color: #3498db; }                            /* purple-500   */
 
 .icon-green-bg  { background-color: rgba(16, 185, 129, 0.1); } /* green-500/10 -> using emerald-ish tone */
 .icon-green-fg  { color: #10B981; }                            /* green-500    */
@@ -373,7 +384,7 @@
 .unread-dot {
   width: 8px;
   height: 8px;
-  background-color: #4F46E5;
+  background-color: #2c3e50;
   border-radius: 999px;
 }
 
@@ -398,7 +409,7 @@
 
 /* زر View بنفسجي */
 .view-btn {
-  background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
   color: #FFFFFF;
   border: 0;
   border-radius: .5rem;
@@ -472,7 +483,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4F46E5;
+  color: #2c3e50;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -593,10 +604,14 @@
     padding: 1rem;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     margin-top: auto;
+       background: linear-gradient(180deg, #2c3e50 0% );
+
 }
 
 /* Profile Info */
 .sidebar > div:last-child > div:first-child {
+      background: linear-gradient(180deg, #2c3e50 0% );
+
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -610,6 +625,7 @@
 
 .sidebar > div:last-child > div:first-child:hover {
     background: rgba(0, 0, 0, 0.08);
+    
 }
 
 /* Avatar */
@@ -787,7 +803,7 @@
 
 /* ======= Welcome Banner ======= */
 .welcome-banner {
-  background: linear-gradient(135deg, #6d28d9, #6366f1);
+  background: linear-gradient(135deg, #3498db, #2c3e50);
   border-radius: 20px;
   padding: 40px 50px;
   display: flex;
@@ -816,7 +832,7 @@
 
 button.primary {
   background-color: #fff;
-  color: #4f46e5;
+  color: #2c3e50;
   font-weight: 600;
 }
 
@@ -862,318 +878,355 @@ button:hover {
 }
 
 .section-header a {
-  color: #4f46e5;
+  color: #2c3e50;
   font-weight: 500;
   text-decoration: none;
 }
 
 /* ======= AI Recommendations 1======= */
- /* ======= AITutor V3 – looks like the screenshots ======= */
+  
+ /* ========== AI Tutor – full page ========== */
 .AITutorPage {
+    color: #000;
+  --bg: #f4f5fb;
+  --surface: #ffffff;
+  --purple-1: #2c3e50;
+  --purple-2: #3498db;
   --text: #0f172a;
   --muted: #64748b;
-  --muted2: #94a3b8;
-  --card: #ffffff;
-  --bg: #f6f8fc;
-  --g1: #4f46e5;
-  --g2: #9333ea;
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --shadow: 0 18px 35px rgba(15, 23, 42, 0.06);
 
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 20px 24px 28px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
-  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-/* ---------- Header ---------- */
-.AITutorPage > .flex {
-  margin-bottom: 18px;
+/* ========== top header (title + badge) ========== */
+.AITutorPage .flex.items-center.justify-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 78px;           /* عشان يكون تحت السيرش بار زي الصورة */
 }
-.AITutorPage h1 {
-  font-size: 32px !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.01em;
+
+/* ====== main 2-columns layout (sidebar + content) ====== */
+.AITutorPage > .grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 32px;
+  align-items: flex-start;
+  margin-top: 18px;
 }
-.AITutorPage p.text-gray-600 {
-  color: var(--muted) !important;
+
+/* ========== LEFT: Recent Conversations card ========== */
+.AITutorPage > .grid > div:first-child > div {
+  background: #fff;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  padding: 20px 18px 22px;
+  position: sticky;
+  top: 118px;         /* يثبتها تحت السيرش */
 }
-.AITutorPage .bg-gradient-to-r.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  border-radius: 999px;
-  padding: 8px 14px !important;
+
+.AITutorPage > .grid > div:first-child h3 {
+  font-size: 15px;
   font-weight: 600;
-  box-shadow: 0 10px 24px rgba(79,70,229,.28);
+  margin-bottom: 14px;
 }
 
-/* ---------- Layout grid ---------- */
-.AITutorPage .grid {
-  gap: 32px !important;
-}
-@media (min-width: 1024px) {
-  .AITutorPage .grid {
-    grid-template-columns: 320px 1fr !important;
-  }
-}
-
-/* ---------- Left card: Recent conversations ---------- */
-.AITutorPage .lg\:col-span-1 .p-4.rounded-2xl.bg-white {
-  border-radius: 18px !important;
-  box-shadow: 0 12px 28px rgba(16,24,40,.06) !important;
-  border: 1px solid rgba(2,6,23,.04);
-}
-.AITutorPage .lg\:col-span-1 h3 {
-  font-weight: 700 !important;
-  margin-bottom: 14px !important;
-}
-.AITutorPage .lg\:col-span-1 .space-y-2 > button {
-  background: #f8fafc !important;
-  border: 1px solid transparent;
-  border-radius: 14px !important;
-  padding: 12px 14px !important;
-  transition: 180ms ease;
-}
-.AITutorPage .lg\:col-span-1 .space-y-2 > button:hover {
-  background: linear-gradient(90deg, rgba(79,70,229,.08), rgba(147,51,234,.08)) !important;
-  border-color: rgba(79,70,229,.18);
-}
-.AITutorPage .lg\:col-span-1 .space-y-2 > button p.text-\[\#0F172A\] {
-  font-weight: 700 !important;
-  margin-bottom: 4px !important;
-  font-size: 14px !important;
-}
-.AITutorPage .lg\:col-span-1 .space-y-2 > button p.text-gray-600 {
-  font-size: 12px !important;
-  color: var(--muted) !important;
-  margin-bottom: 6px !important;
-}
-.AITutorPage .lg\:col-span-1 .space-y-2 > button .flex > span.text-gray-400 {
-  font-size: 11px !important;
-  color: var(--muted2) !important;
-}
-.AITutorPage .lg\:col-span-1 .mt-4.bg-gradient-to-r.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  border-radius: 12px !important;
-  padding: 12px 0 !important;
-  font-weight: 700;
-  box-shadow: 0 10px 24px rgba(79,70,229,.28);
+/* each conversation row (the grey rounded one) */
+.AITutorPage > .grid > div:first-child button {
+  width: 100%;
+  background: #f6f7fb;
+  border: 0;
+  outline: 0;
+  border-radius: 18px;
+  padding: 11px 12px 10px;
+  cursor: pointer;
+  transition: 0.18s ease-out;
 }
 
-/* ---------- Quick Actions big gradient card ---------- */
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  border-radius: 20px !important;
-  padding: 22px !important;
-  border: 1px solid rgba(255,255,255,.06);
-  box-shadow: 0 22px 44px rgba(79,70,229,.28) !important;
-}
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl h3 {
-  font-size: 18px !important;
-  font-weight: 700 !important;
-  margin-bottom: 14px !important;
-}
-.AITutorPage .lg\:col-span-3 .grid.grid-cols-2.md\:grid-cols-3.gap-3 {
-  gap: 12px !important;
-}
-.AITutorPage .lg\:col-span-3 .grid .p-4.rounded-xl.bg-white\/10 {
-  padding: 16px !important;
-  border-radius: 14px !important;
-  background: rgba(255,255,255,.10) !important;
-  border: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(6px);
-  transition: 150ms ease-in-out;
-}
-.AITutorPage .lg\:col-span-3 .grid .p-4.rounded-xl.bg-white\/10:hover {
-  transform: translateY(-2px);
-  background: rgba(255,255,255,.22) !important;
+.AITutorPage > .grid > div:first-child button + button {
+  margin-top: 9px;
 }
 
-/* ---------- Chat card ---------- */
-.AITutorPage .lg\:col-span-3 .rounded-2xl.border-0.bg-white.overflow-hidden {
-  border-radius: 20px !important;
-  box-shadow: 0 12px 28px rgba(16,24,40,.06) !important;
-}
-.AITutorPage .h-\[500px\].overflow-y-auto.p-6.space-y-4.bg-gray-50 {
-  height: 520px !important;
-  background: #f8fafc !important;
-  padding: 20px 24px !important;
-  gap: 14px !important;
-}
-.AITutorPage .h-\[500px\]::-webkit-scrollbar { width: 8px; }
-.AITutorPage .h-\[500px\]::-webkit-scrollbar-thumb {
-  background: rgba(79,70,229,.32); border-radius: 10px;
+.AITutorPage > .grid > div:first-child button:hover {
+  background: radial-gradient(circle at top, rgba(79, 70, 229, 0.12), rgba(147, 51, 234, 0.12));
 }
 
-/* message rows */
-.AITutorPage .h-\[500px\] .flex.justify-start > .w-10.h-10 {
-  background: linear-gradient(135deg, var(--g1), var(--g2)) !important;
+.AITutorPage > .grid > div:first-child button p:first-child {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.AITutorPage > .grid > div:first-child button p:nth-child(2) {
+  font-size: 12px;
+  color: #758296;
+  margin-top: 1px;
+  max-width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.AITutorPage > .grid > div:first-child button .flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.AITutorPage > .grid > div:first-child button .flex span:first-child {
+  font-size: 11px;
+  color: #a1aec6;
+}
+
+/* tiny badge "12 msgs" */
+.AITutorPage > .grid > div:first-child button .flex .text-xs,
+.AITutorPage > .grid > div:first-child button .flex [class*="Badge"] {
+  background: #fff;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 65px;
+  height: 26px;
+  padding: 0 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #2c3e50;
+  box-shadow: 0 5px 13px rgba(79, 70, 229, 0.12);
+  border: 1px solid rgba(79, 70, 229, 0.1);
+}
+
+/* new conversation button (bottom purple) */
+.AITutorPage > .grid > div:first-child button.w-full.mt-4,
+.AITutorPage > .grid > div:first-child .w-full.mt-4 {
+  background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
   color: #fff;
-}
-.AITutorPage .h-\[500px\] .flex.justify-end > .w-10.h-10 {
-  background: #e2e8f0 !important;
-}
-.AITutorPage .h-\[500px\] .max-w-\[75\%\].p-4.rounded-2xl {
-  border-radius: 18px !important;
-  box-shadow: 0 6px 16px rgba(0,0,0,.06);
-  font-size: 15px !important;
-  line-height: 1.6 !important;
-}
-.AITutorPage .h-\[500px\] .flex.justify-end .max-w-\[75\%\] {
-  background: linear-gradient(90deg, var(--g1), var(--g2)) !important;
-  color: #fff !important;
-  box-shadow: none !important;
-}
-.AITutorPage .h-\[500px\] .flex.justify-start .max-w-\[75\%\] {
-  background: #fff !important;
-  color: var(--text) !important;
+  border-radius: 16px;
+  height: 42px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  box-shadow: 0 12px 24px rgba(79, 70, 229, 0.25);
 }
 
-/* input area */
-.AITutorPage .p-4.bg-white.border-t.border-gray-200 {
-  border-top: 1px solid #e2e8f0 !important;
+/* ========== RIGHT COLUMN ========== */
+.AITutorPage > .grid > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
-.AITutorPage .p-4 .flex.gap-3 .flex-1.rounded-full.border-gray-300 {
-  background: #f4f6fb !important;
-  border: 1px solid #cbd5e1 !important;
-  height: 48px;
-  padding: 0 18px !important;
-  font-size: 14px !important;
+
+/* -------- purple quick actions card -------- */
+.AITutorPage > .grid > div:last-child > div:first-child {
+  background: linear-gradient(130deg, #2c3e50 0%, #3498db 100%);
+  border-radius: 26px;
+  padding: 25px 28px 24px;
+  box-shadow: 0 24px 35px rgba(127, 92, 237, 0.25);
+  min-height: 210px;
+}
+
+.AITutorPage > .grid > div:last-child > div:first-child h3 {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* 6 purple rounded buttons inside */
+.AITutorPage > .grid > div:last-child > div:first-child .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.AITutorPage > .grid > div:last-child > div:first-child .grid button,
+.AITutorPage > .grid > div:last-child > div:first-child .grid .p-4 {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  padding: 14px 16px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: 0.18s ease-out;
+  cursor: pointer;
+}
+
+.AITutorPage > .grid > div:last-child > div:first-child .grid button:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.AITutorPage > .grid > div:last-child > div:first-child .grid p {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+/* -------- white chat card -------- */
+.AITutorPage > .grid > div:last-child > div:last-child {
+  background: #fff;
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
+/* scroll area (messages) */
+.AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"],
+.AITutorPage > .grid > div:last-child > div:last-child .messages-area {
+  height: 460px;
+  background: #f6f7fb;
+  padding: 20px 22px 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* single message wrapper */
+.AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] .flex {
+  display: flex;
+  gap: 10px;
+}
+
+/* AI bubble */
+.AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] .flex.justify-start > div:last-child {
+  background: #fff;
+  border-radius: 22px;
+  padding: 13px 15px 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+}
+
+/* user bubble (purple) */
+/* user bubble (white with black text) */
+.AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] .flex.justify-end > div:nth-child(2) {
+  background: #ffffff; /* الخلفية بيضاء */
+  color: #000000;      /* الكتابة سوداء */
+  border-radius: 22px;
+  padding: 13px 15px 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+
+/* avatar circles */
+.AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] .w-10.h-10 {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* input bar at bottom */
+.AITutorPage > .grid > div:last-child > div:last-child > .p-4,
+.AITutorPage > .grid > div:last-child > div:last-child .input-wrapper {
+  background: #fff;
+  border-top: 1px solid #edf0f5;
+  padding: 14px 16px 16px;
+}
+
+.AITutorPage > .grid > div:last-child > div:last-child > .p-4 .flex {
+  display: flex;
+  gap: 12px;
+}
+
+/* the text box */
+.AITutorPage > .grid > div:last-child > div:last-child input[type="text"],
+.AITutorPage > .grid > div:last-child > div:last-child .flex-1.rounded-full {
+  flex: 1;
+  background: #eceef2;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.03);
+  padding: 12px 20px 12px 18px;
+  font-size: 13.5px;
   outline: none;
-  transition: 160ms ease;
-}
-.AITutorPage .p-4 .flex.gap-3 .flex-1.rounded-full.border-gray-300:focus {
-  background: #fff !important;
-  border-color: var(--g2) !important;
-  box-shadow: 0 0 0 4px rgba(147,51,234,.12);
-}
-.AITutorPage .p-4 .w-12.h-12.rounded-full.p-0.bg-gradient-to-r.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  width: 48px !important; height: 48px !important;
-  box-shadow: 0 12px 26px rgba(79,70,229,.28);
-}
-.AITutorPage .p-4 .text-gray-500.text-center.mt-3 {
-  color: var(--muted2) !important;
-  font-size: 12px !important;
+  transition: 0.18s ease-out;
 }
 
-/* small improvements */
-.AITutorPage .rounded-2xl.border-0.shadow-lg.bg-white,
-.AITutorPage .p-6.rounded-2xl.border-0.shadow-lg.bg-gradient-to-br {
-  border: none !important;
-}
-/* ===== Colored background strip & soft blobs (matches screenshots) ===== */
-
-/* 1) طبقة تأثيرات عامة ناعمة بالخلفية */
-.AITutorPage {
-  position: relative;
-  background: #fff; /* لا نغيّر خلفية التطبيق الأساسية */
-  overflow: hidden;  /* لإخفاء الحواف الناعمة */
+.AITutorPage > .grid > div:last-child > div:last-child input[type="text"]:focus {
+  background: #fff;
+  border-color: rgba(79, 70, 229, 0.4);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.08);
 }
 
-/* بقعتين لونية ناعمة (يمين أعلى + يسار أسفل) */
-.AITutorPage::before,
-.AITutorPage::after {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  filter: blur(50px);
-  opacity: 0.22;               /* نعومة خفيفة */
-  z-index: 0;                  /* خلف كل شيء */
-  transform: translateZ(0);    /* سموث */
+/* send button (circle) */
+.AITutorPage > .grid > div:last-child > div:last-child button.w-12,
+.AITutorPage > .grid > div:last-child > div:last-child .send-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #2c3e50 0%, #3498db 100%);
+  color: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 25px rgba(147, 51, 234, 0.35);
+  cursor: pointer;
 }
 
-.AITutorPage::before {
-  /* يمين أعلى */
-  width: 560px;
-  height: 560px;
-  right: -200px;
-  top: -140px;
-  background: radial-gradient(60% 60% at 50% 50%,
-              rgba(79,70,229,.55) 0%,
-              rgba(48, 2, 154, 0.45) 40%,
-              rgba(147,51,234,0) 70%);
+/* footer note text */
+.AITutorPage > .grid > div:last-child > div:last-child p.text-gray-500 {
+  text-align: center;
+  margin-top: 10px;
+  color: #8a90a6;
+  font-size: 11.5px !important;
 }
 
-.AITutorPage::after {
-  /* يسار أسفل */
-  width: 520px;
-  height: 520px;
-  left: -220px;
-  bottom: -160px;
-  background: radial-gradient(60% 60% at 50% 50%,
-               rgba(79,70,229,.55) 0%,
-              rgba(48, 2, 154, 0.45) 40%,
-              rgba(147,51,234,0) 70%);
-}
+/* ========== responsive ========== */
+@media (max-width: 1100px) {
+  .AITutorPage > .grid {
+    grid-template-columns: 1fr;
+  }
 
-/* 2) الشريط الملوّن الكبير خلف Quick Actions (نفس اللي بالصورة) */
-.AITutorPage .lg\:col-span-3.space-y-6 {
-  position: relative;
-  z-index: 1; /* فوق بقع الخلفية */
-}
+  .AITutorPage > .grid > div:first-child > div {
+    position: static;
+  }
 
-/* لوح خلفي rounded خلف أول جزء من العمود (Quick Actions) */
-.AITutorPage .lg\:col-span-3.space-y-6::before {
-  content: "";
-  position: absolute;
-  z-index: 0;      /* تحت الكروت */
-  left: 0;
-  right: 0;
-  top: -6px;
-  height: 360px;   /* ارتفاع الشريط؛ طابق الصورة */
-  border-radius: 24px;
-  background: linear-gradient(135deg, #a08fff20, #c084fc25);
-  box-shadow:
-    0 18px 40px rgba(79,70,229,.10),
-    inset 0 0 0 1px rgba(255,255,255,.35);
-}
-
-/* نضمن أن الكروت فوق الشريط */
-.AITutorPage .lg\:col-span-3.space-y-6 > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* 3) لمسة ظل ناعم لشريط Quick Actions نفسه لدمجه مع الخلفية */
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  box-shadow:
-    0 20px 40px rgba(79,70,229,.20),
-    0 2px 0 rgba(255,255,255,.08) inset !important;
-}
-
-/* 4) ضبط هامش الكرت الأول ليكون داخل الشريط */
-@media (min-width: 1024px) {
-  .AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.border-0.shadow-lg.bg-gradient-to-br {
-    margin-top: 6px;   /* يطابق تقوّس الشريط */
+  .AITutorPage > .grid > div:last-child > div:first-child .grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-/* 5) تلميعة خفيفة لحقل الإدخال والزر لتتناغم مع الخلفية الجديدة */
-.AITutorPage .p-4 .flex.gap-3 .flex-1.rounded-full.border-gray-300 {
-  background: #f6f7fb !important;
-}
-.AITutorPage .p-4 .w-12.h-12.rounded-full.p-0.bg-gradient-to-r.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  box-shadow: 0 14px 30px rgba(79,70,229,.26);
-}
-/* -------- نصوص Quick Actions باللون الأسود -------- */
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  color: #000 !important; /* يغيّر لون كل النصوص داخل البوكس للأسود */
-}
-
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] p,
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] h3,
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] span {
-  color: #000 !important; /* يضمن أن العناوين والنصوص والعناصر كلها تتحول للأسود */
+@media (max-width: 720px) {
+  .AITutorPage {
+    padding: 18px 16px 24px;
+  }
+  .AITutorPage .flex.items-center.justify-between {
+    margin-top: 110px;
+  }
+  .AITutorPage > .grid > div:last-child > div:first-child .grid {
+    grid-template-columns: 1fr;
+  }
+  .AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] {
+    height: 430px;
+  }
 }
 
-.AITutorPage .lg\:col-span-3 .grid .p-4.rounded-xl.bg-white\/10 .text-white {
-  color: #000 !important; /* يغيّر النصوص داخل الأزرار نفسها للأسود */
-}
-/* -------- "AI Powered" باللون الأسود -------- */
-.AITutorPage .bg-gradient-to-r.from-\[\#4F46E5\].to-\[\#9333EA\].text-white {
-  color: #000 !important;  /* النص يصير أسود */
-  background: #fff !important; /* الخلفية تصير بيضاء بدل التدرج */
-  border: 1px solid #e2e8f0 !important; /* حدود ناعمة */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-/* -------- فراغ بين Quick Actions و Chat Box -------- */
-.AITutorPage .lg\:col-span-3 .p-6.rounded-2xl.bg-gradient-to-br.from-\[\#4F46E5\].to-\[\#9333EA\] {
-  margin-bottom: 20px !important; /* زيدي أو قلّلي الرقم حسب الفراغ اللي بدك إياه */
-}
 
-/* ======= AI Recommendations 2 ======= */
+
+/* ======= AI Recommendations 2======= */
 /* ======= Recent Activity ======= */
 .activity-list {
   display: flex;
@@ -1206,7 +1259,7 @@ button:hover {
 }
 
 .activity-icon.new {
-  color: #3b82f6;
+  color: #2c3e50;
 }
 
 .success {
@@ -1261,7 +1314,7 @@ button:hover {
 
 .header input[type="text"]:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: #2c3e50;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
 }
@@ -1333,7 +1386,7 @@ button:hover {
 }
 
 .sidebar .logo .logo-icon {
-  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  background: linear-gradient(135deg, #3498db, #f107a3);
   color: white;
   border-radius: 12px;
   font-weight: 600;
@@ -1348,7 +1401,7 @@ button:hover {
 .sidebar .logo h2 {
   font-size: 20px;
   font-weight: 600;
-  color: #4a3aff;
+  color: #2c3e50;
 }
 
 /* ====== Sidebar Menu ====== */
@@ -1373,11 +1426,11 @@ button:hover {
 
 .sidebar-item:hover {
   background: #f3f0ff;
-  color: #4a3aff;
+  color: #2c3e50;
 }
 
 .sidebar-item.active {
-  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  background: linear-gradient(135deg, #3498db, #f107a3);
   color: #fff;
   box-shadow: 0 4px 12px rgba(123, 47, 247, 0.3);
 }
@@ -1423,7 +1476,7 @@ button:hover {
   align-items: center;
   gap: 10px;
   background: #f7f7ff;
-  color: #4a3aff;
+  color: #2c3e50;
   padding: 10px 14px;
   border-radius: 12px;
   font-weight: 500;
@@ -1499,13 +1552,13 @@ button:hover {
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  background: linear-gradient(135deg, #3498db, #f107a3);
   color: white;
 }
 
 .action-btn.secondary {
   background: #f7f7ff;
-  color: #4a3aff;
+  color: #2c3e50;
 }
 
 .action-btn:hover {
@@ -1552,7 +1605,7 @@ button:hover {
 
 .progress-percent {
   font-weight: bold;
-  color: #4c6ef5;
+  color: #2c3e50;
   font-size: 1.2rem;
 }
 
@@ -1566,7 +1619,7 @@ button:hover {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4c6ef5, #748ffc);
+  background: linear-gradient(90deg, #2c3e50, #2c3e50);
   border-radius: 4px;
   transition: width 0.5s ease;
 }
@@ -1629,7 +1682,7 @@ button:hover {
 
 .time-badge span {
   font-weight: 600;
-  color: #4c6ef5;
+  color: #2c3e50;
   font-size: 0.9rem;
 }
 
@@ -1669,7 +1722,7 @@ button:hover {
 
 .subject-tag.physics {
   background: #f3e5f5;
-  color: #7b1fa2;
+  color: #3498db;
 }
 
 .subject-tag.chemistry {
@@ -1711,7 +1764,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #4c6ef5, #748ffc);
+  background: linear-gradient(135deg, #2c3e50, #2c3e50);
   color: white;
   padding: 2rem;
   border-radius: 16px;
@@ -1756,7 +1809,7 @@ button:hover {
 }
 
 .section-header a {
-  color: #4c6ef5;
+  color: #2c3e50;
   text-decoration: none;
   font-weight: 500;
 }
@@ -1881,7 +1934,7 @@ button:hover {
 }
 
 .primary {
-  background: linear-gradient(135deg, #4c6ef5, #3b5bdb);
+  background: linear-gradient(135deg, #2c3e50, #2c3e50);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -1895,13 +1948,13 @@ button:hover {
 .primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(76, 110, 245, 0.4);
-  background: linear-gradient(135deg, #3b5bdb, #2f4fd8);
+  background: linear-gradient(135deg, #2c3e50, #2c3e50);
 }
 
 .secondary {
   background: white;
-  color: #4c6ef5;
-  border: 2px solid #4c6ef5;
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;
@@ -1910,7 +1963,7 @@ button:hover {
 }
 
 .secondary:hover {
-  background: #4c6ef5;
+  background: #2c3e50;
   color: white;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(76, 110, 245, 0.3);
@@ -1971,7 +2024,7 @@ button:hover {
 
 /* Link Styles */
 .section-header a {
-  color: #4c6ef5;
+  color: #2c3e50;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -1979,7 +2032,7 @@ button:hover {
 }
 
 .section-header a:hover {
-  color: #3b5bdb;
+  color: #2c3e50;
   text-decoration: underline;
 }
 
@@ -2023,7 +2076,7 @@ button:hover {
 
 .subject-tag.physics {
   background: #f3e5f5;
-  color: #7b1fa2;
+  color: #3498db;
 }
 
 .subject-tag.chemistry {
@@ -2066,7 +2119,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
   color: white;
   padding: 30px;
   border-radius: 12px;
@@ -2117,7 +2170,7 @@ button:hover {
 }
 
 .section-header a {
-  color: #3498db;
+  color: #2c3e50;
   text-decoration: none;
   font-weight: 500;
 }
@@ -2125,90 +2178,7 @@ button:hover {
 .section-header a:hover {
   text-decoration: underline;
 }
-
-/* Progress Tracker 
-.progress-tracker {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.progress-card {
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eaeaea;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.progress-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.progress-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.progress-header h3 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.progress-percent {
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: #2ecc71;
-}
-
-.progress-bar {
-  height: 8px;
-  background-color: #ecf0f1;
-  border-radius: 4px;
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #2ecc71, #1abc9c);
-  border-radius: 4px;
-  transition: width 0.5s ease;
-}
-
-.progress-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-
-.stat {
-  text-align: center;
-}
-
-.stat-value {
-  display: block;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.stat-label {
-  display: block;
-  font-size: 0.8rem;
-  color: #7f8c8d;
-}
-
-.progress-actions {
-  display: flex;
-  gap: 10px;
-}
-*/
+ 
 /* Schedule */
 .schedule-container {
   display: flex;
@@ -2221,7 +2191,7 @@ button:hover {
   align-items: center;
   padding: 15px;
   border-radius: 10px;
-  border-left: 4px solid #3498db;
+  border-left: 4px solid #2c3e50;
 }
 
 .schedule-item.math {
@@ -2229,7 +2199,7 @@ button:hover {
 }
 
 .schedule-item.physics {
-  border-left-color: #3498db;
+  border-left-color: #2c3e50;
 }
 
 .schedule-item.chemistry {
@@ -2412,11 +2382,7 @@ button:hover {
   color: #e74c3c;
 }
 
-/* Lesson Content */
-  /* 🌟 StudentHome.css 🌟 */
-/* تصميم فاخر لصفحة My Lessons */
-
-/* الخلفية العامة */
+ 
  body {
   font-family: "Poppins", sans-serif;
   background-color: #f9fafc;
@@ -2424,15 +2390,13 @@ button:hover {
   margin: 0;
   padding: 0;
 }
-
-/* الحاوية الرئيسية */
+ 
 .my-lessons-container {
   padding: 2rem 3rem;
   min-height: 100vh;
   background-color: #ffffff;
 }
-
-/* شريط البحث العلوي */
+ 
 .search-bar {
   display: flex;
   flex-wrap: wrap;
@@ -2452,13 +2416,13 @@ button:hover {
 }
 
 .search-bar input:focus {
-  border-color: #7c3aed;
+  border-color: #3498db;
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
   outline: none;
 }
 
 .search-bar button {
-  background: linear-gradient(90deg, #7c3aed, #9f67ff);
+  background: linear-gradient(90deg, #3498db, #3498db);
   color: white;
   font-weight: 600;
   padding: 0.9rem 1.5rem;
@@ -2474,7 +2438,7 @@ button:hover {
   box-shadow: 0 6px 14px rgba(124, 58, 237, 0.4);
 }
 
-/* العنوان الرئيسي */
+ 
 .my-lessons-header {
   margin-top: 2rem;
 }
@@ -2492,10 +2456,7 @@ button:hover {
   margin-top: 0.3rem;
 }
 
-/* الصناديق الإحصائية */
  
-
-/* التبويبات */
 .tabs {
   display: flex;
   gap: 2rem;
@@ -2516,11 +2477,11 @@ button:hover {
 }
 
 .tabs button:hover {
-  color: #7c3aed;
+  color: #3498db;
 }
 
 .tabs button.active {
-  color: #7c3aed;
+  color: #3498db;
   font-weight: 600;
 }
 
@@ -2531,11 +2492,11 @@ button:hover {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #7c3aed;
+  background-color: #3498db;
   border-radius: 2px;
 }
 
-/* شبكة الكروت */
+ 
 .lessons-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -2582,7 +2543,7 @@ button:hover {
   overflow: hidden;
 }
 
-/* حالة الدرس */
+
 .lesson-status {
   position: absolute;
   top: 0.8rem;
@@ -2600,12 +2561,12 @@ button:hover {
   color: #fff;
 }
 
-/* الزر العائم */
+ 
 .floating-btn {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: linear-gradient(90deg, #7c3aed, #9f67ff);
+  background: linear-gradient(90deg, #3498db, #3498db);
   border: none;
   border-radius: 50%;
   width: 55px;
@@ -2633,17 +2594,17 @@ button:hover {
 
 .lesson-progress-bar {
   height: 6px;
-  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  background: linear-gradient(90deg, #3498db, #3498db);
   border-radius: 4px;
   transition: width 0.4s ease-in-out;
 }
 
-/* الزر العائم */
+ 
 .floating-btn {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  background: linear-gradient(135deg, #3498db, #3498db);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -2668,7 +2629,7 @@ button:hover {
   background: linear-gradient(135deg, #f5f7fa 0%, #f0f4f8 100%);
 }
 
-/* تحسين شريط البحث */
+ 
 .relative.w-full {
   position: relative;
 }
@@ -2690,7 +2651,7 @@ button:hover {
 
 .relative input:focus {
   background: rgba(255, 255, 255, 0.95);
-  border-color: #8b5cf6;
+  border-color: #3498db;
   box-shadow: 
     0 12px 40px rgba(139, 92, 246, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -2699,7 +2660,7 @@ button:hover {
 
 /* تحسين الأزرار */
 .bg-purple-600 {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
   border: none;
   box-shadow: 
     0 4px 15px rgba(139, 92, 246, 0.3),
@@ -2710,7 +2671,7 @@ button:hover {
 }
 
 .bg-purple-600:hover {
-  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
   transform: translateY(-2px);
   box-shadow: 
     0 8px 25px rgba(139, 92, 246, 0.4),
@@ -2750,7 +2711,7 @@ button:hover {
   left: 0;
   width: 60px;
   height: 4px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
   border-radius: 2px;
 }
 
@@ -2775,7 +2736,7 @@ button:hover {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
 }
 
 .bg-green-50::before {
@@ -2821,7 +2782,7 @@ button:hover {
   transform: translateX(-50%);
   width: 0;
   height: 3px;
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -2836,7 +2797,7 @@ button:hover {
 
 .flex.gap-6 button:hover {
   background: rgba(139, 92, 246, 0.05);
-  color: #7c3aed;
+  color: #3498db;
 }
 
 /* تحسين شبكة الدروس */
@@ -2856,7 +2817,7 @@ button:hover {
 
 /* تحسين الزر العائم */
 .fixed.bottom-8.right-8 {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #3498db 0%, #3498db 100%);
   border: none;
   box-shadow: 
     0 8px 30px rgba(139, 92, 246, 0.4),
@@ -3043,7 +3004,7 @@ button:hover {
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  color: #3498db;
+  color: #2c3e50;
 }
 
 .stat-label {
@@ -3076,7 +3037,7 @@ button:hover {
 }
 
 .tab-trigger.active {
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  background: linear-gradient(135deg, #2c3e50, #3498db);
   color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -3111,7 +3072,7 @@ button:hover {
 }
 
 .tab-trigger.active {
-  background: #7c3aed;
+  background: #3498db;
   color: #fff;
 }
 
@@ -3175,7 +3136,7 @@ button:hover {
 }
 
 .text-primary {
-  color: #4f46e5;
+  color: #2c3e50;
 }
 
 .text-danger {
@@ -3222,7 +3183,7 @@ button:hover {
 }
 
 .badge-primary {
-  background-color: #4f46e5;
+  background-color: #2c3e50;
 }
 
 .badge-danger {
@@ -3363,8 +3324,8 @@ button:hover {
 }
 
 /* اللون لكل ستات (نفس النظام بالصور: خلفية فاتحة + أيقونة باللون) */
-.stat-bg-blue    { background: rgba(59,130,246,.1);  color:#3B82F6; }
-.stat-bg-purple  { background: rgba(139,92,246,.1);  color:#8B5CF6; }
+.stat-bg-blue    { background: rgba(59,130,246,.1);  color:#2c3e50; }
+.stat-bg-purple  { background: rgba(139,92,246,.1);  color:#3498db; }
 .stat-bg-yellow  { background: rgba(251,191,36,.1);  color:#FACC15; }
 .stat-bg-orange  { background: rgba(251,146,60,.1);  color:#FB923C; }
 
@@ -3372,7 +3333,7 @@ button:hover {
    OVERALL PROGRESS BIG CARD
    ========================= */
 .overall-progress-card {
-  background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
   color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 24px 44px -6px rgba(88, 28, 135, 0.45);
@@ -3491,8 +3452,8 @@ button:hover {
 }
 
 /* ألوان دوائر المواد */
-.subj-math    { background-color: #3B82F6; }   /* blue */
-.subj-phys    { background-color: #8B5CF6; }   /* purple */
+.subj-math    { background-color: #2c3e50; }   /* blue */
+.subj-phys    { background-color: #3498db; }   /* purple */
 .subj-chem    { background-color: #10B981; }   /* green */
 .subj-bio     { background-color: #F97316; }   /* orange */
 .subj-eng     { background-color: #EC4899; }   /* pink */
@@ -3515,7 +3476,7 @@ button:hover {
 }
 
 .grade-badge {
-  background: linear-gradient(90deg,#4F46E5 0%,#9333EA 100%);
+  background: linear-gradient(90deg,#2c3e50 0%,#3498db 100%);
   color: #FFFFFF;
   font-size: 13px;
   font-weight: 600;
@@ -3601,7 +3562,7 @@ button:hover {
 .weekly-bar-inner {
   width: 100%;
   border-radius: .5rem .5rem 0 0;
-  background: linear-gradient(0deg,#4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(0deg,#2c3e50 0%, #3498db 100%);
   transition: opacity .2s;
   min-height: 20px;
   cursor: pointer;
@@ -3654,7 +3615,7 @@ button:hover {
 }
 
 .achievement-earned {
-  border-color: #4F46E5;
+  border-color: #2c3e50;
   background: radial-gradient(circle at 0% 0%, rgba(79,70,229,0.07) 0%, rgba(147,51,234,0.07) 100%);
   opacity: 1;
 }
@@ -3804,7 +3765,7 @@ button:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  background: linear-gradient(135deg, #2c3e50, #3498db);
   color: white;
 }
 
@@ -3933,7 +3894,7 @@ button:hover {
 .file-upload-label {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #3498db;
+  background-color: #2c3e50;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -4006,7 +3967,7 @@ button:hover {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 6px;
-  border-left: 3px solid #3498db;
+  border-left: 3px solid #2c3e50;
 }
 
 .time-badge.small {
@@ -4088,7 +4049,7 @@ button:hover {
 
 .quiz-option:hover {
   background: #f8f9fa;
-  border-color: #3498db;
+  border-color: #2c3e50;
 }
 
 .quiz-results {
@@ -4103,7 +4064,7 @@ button:hover {
 
 /* Buttons */
 button.primary {
-  background: linear-gradient(135deg, #3498db, #2980b9);
+  background: linear-gradient(135deg, #2c3e50, #2980b9);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -4117,15 +4078,15 @@ button.primary {
 }
 
 button.primary:hover {
-  background: linear-gradient(135deg, #2980b9, #3498db);
+  background: linear-gradient(135deg, #2980b9, #2c3e50);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button.secondary {
   background: white;
-  color: #3498db;
-  border: 1px solid #3498db;
+  color: #2c3e50;
+  border: 1px solid #2c3e50;
   padding: 10px 20px;
   border-radius: 6px;
   font-weight: 500;
@@ -4293,7 +4254,7 @@ button.small {
 
 .settings-nav-btn:hover {
   background: radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.06) 0%, rgba(147, 51, 234, 0.06) 100%);
-  color: #4F46E5;
+  color: #2c3e50;
 }
 
 .settings-nav-icon {
@@ -4303,7 +4264,7 @@ button.small {
 }
 
 .settings-nav-btn:hover .settings-nav-icon {
-  color: #4F46E5;
+  color: #2c3e50;
 }
 
 .settings-nav-label {
@@ -4332,7 +4293,7 @@ button.small {
 .settings-card-head-icon {
   width: 20px;
   height: 20px;
-  color: #4F46E5; /* بنفسجي */
+  color: #2c3e50; /* بنفسجي */
 }
 
 .settings-card-head-title {
@@ -4370,7 +4331,7 @@ button.small {
   width: 64px;
   height: 64px;
   border-radius: 12px;
-  border: 3px solid #4F46E5;
+  border: 3px solid #2c3e50;
   background-color: #fff;
   overflow: hidden;
 
@@ -4414,7 +4375,7 @@ button.small {
 /* ====== Buttons ====== */
 
 .btn-gradient-primary {
-  background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
+  background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
   color: #fff;
   border: 0;
   border-radius: 8px;
@@ -4550,9 +4511,9 @@ button.small {
 
 .settings-input:focus,
 .settings-select:focus {
-  outline: 2px solid #4F46E5;
+  outline: 2px solid #2c3e50;
   outline-offset: 0;
-  border-color: #4F46E5;
+  border-color: #2c3e50;
   background-color: #fff;
 }
 
@@ -4830,7 +4791,7 @@ button.small {
 .settings-modal-icon {
   width: 20px;
   height: 20px;
-  color: #4F46E5;
+  color: #2c3e50;
 }
 .settings-modal-icon.danger {
   color: #DC2626;

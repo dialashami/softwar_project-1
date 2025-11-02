@@ -1,8 +1,10 @@
+// client/src/components/AIRecommendations.jsx
 import { motion } from 'framer-motion';
+
 import { Sparkles, Clock, BarChart3 } from 'lucide-react';
-import { Card } from './ui/card';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
+import { Card } from './ui';
+import { Badge } from './ui';
+import { Button } from './ui';
 
 const recommendations = [
   {
@@ -47,7 +49,7 @@ const recommendations = [
   },
 ];
 
-export function AIRecommendations() {
+export default function AIRecommendations() {
   return (
     <div className="space-y-4">
       {/* Header */}
@@ -63,7 +65,7 @@ export function AIRecommendations() {
         </Button>
       </div>
 
-      {/* Horizontal Scroll Container */}
+      {/* Cards */}
       <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
         {recommendations.map((rec, index) => (
           <motion.div
@@ -75,26 +77,24 @@ export function AIRecommendations() {
           >
             <Card className="min-w-[320px] p-6 rounded-2xl border-0 shadow-lg hover:shadow-xl transition-all cursor-pointer bg-white relative overflow-hidden">
               {/* Gradient Top Border */}
-              <div 
-                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${rec.color}`}
-              />
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${rec.color}`} />
 
-              {/* Icon */}
+              {/* Icon + badge */}
               <div className="flex items-start justify-between mb-4">
                 <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#F9FAFB] to-gray-100 flex items-center justify-center">
                   <span style={{ fontSize: '28px' }}>{rec.icon}</span>
                 </div>
-                <Badge 
-                  variant="secondary" 
-                  className="bg-[#4F46E5]/10 text-[#4F46E5] border-0"
-                >
+                <Badge variant="secondary" className="bg-[#4F46E5]/10 text-[#4F46E5] border-0">
                   {rec.difficulty}
                 </Badge>
               </div>
 
               {/* Content */}
               <div className="space-y-2 mb-4">
-                <p className="text-gray-500" style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase' }}>
+                <p
+                  className="text-gray-500"
+                  style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase' }}
+                >
                   {rec.subject}
                 </p>
                 <h3 className="text-[#0F172A]" style={{ fontSize: '18px', fontWeight: '600' }}>
@@ -102,7 +102,7 @@ export function AIRecommendations() {
                 </h3>
               </div>
 
-              {/* Meta Info */}
+              {/* Meta */}
               <div className="flex items-center gap-4 text-gray-600 mb-4">
                 <div className="flex items-center gap-1">
                   <Clock className="w-4 h-4" />
@@ -114,7 +114,7 @@ export function AIRecommendations() {
                 </div>
               </div>
 
-              {/* Progress Bar */}
+              {/* Progress */}
               <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-[#4F46E5] to-[#9333EA] rounded-full transition-all"

@@ -181,7 +181,7 @@ export function MyLessons() {
       {/* ✅ العنوان الرئيسي */}
       <div className="my-lessons-header">
         <h1>
-          My Lessons <span role="img" aria-label="book">📘</span>
+          My Lessons  
         </h1>
         <p>Continue your learning journey</p>
       </div>

@@ -483,7 +483,7 @@ export default function Notifications() {
       <div className="notifications-header-row">
         <div className="notifications-header-left">
           <h1>
-            Notifications <span role="img" aria-label="bell">🔔</span>
+            Notifications  
           </h1>
           <p>Stay updated with your learning activities</p>
         </div>

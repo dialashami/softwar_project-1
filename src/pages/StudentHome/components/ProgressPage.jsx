@@ -45,7 +45,7 @@ export default function ProgressPage() {
     <div className="progress-page-wrapper">
       {/* Header */}
       <div>
-        <h1 className="progress-header-title">My Progress 📊</h1>
+        <h1 className="progress-header-title">My Progress </h1>
         <p className="progress-header-subtitle">
           Track your learning journey and achievements
         </p>

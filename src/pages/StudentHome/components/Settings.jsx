@@ -129,7 +129,7 @@ export default function Settings() {
       {/* Header */}
       <div className="settings-header">
         <h1 className="settings-title">
-          Settings <span role="img" aria-label="gear">⚙️</span>
+          Settings
         </h1>
         <p className="settings-subtitle">
           Manage your account and preferences

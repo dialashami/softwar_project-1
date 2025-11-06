@@ -19,22 +19,32 @@ export default function AITutorWidget() {
   const [isLoading, setIsLoading] = useState(false);
 
   const sendToBackend = async (text) => {
-    try {
-      setIsLoading(true);
-      const res = await fetch('http://localhost:5000/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ question: text }),
-      });
-      const data = await res.json();
-      return data.answer || 'Sorry, I could not answer that.';
-    } catch (err) {
-      console.error(err);
-      return 'Error contacting AI server.';
-    } finally {
-      setIsLoading(false);
+  try {
+    setIsLoading(true);
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question: text }),
+    });
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '');
+      console.error('Backend  error:', res.status, detail);
+      return `Server error (${res.status}).`;
     }
-  };
+    const data = await res.json().catch(() => null);
+    return data?.answer ?? 'Invalid JSON from server.';
+  } catch (err) {
+    console.error('Fetch error:', err);
+    return 'Network error: cannot reach backend (check proxy).';
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+ 
+
+ 
+
 
   const handleSend = async () => {
     if (!inputValue.trim()) return;

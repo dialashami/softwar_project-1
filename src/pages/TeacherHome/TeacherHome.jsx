@@ -12,7 +12,7 @@ import { Login } from './components/Login';
 import { Register } from './components/Register';
 import { Toaster } from './components/ui/sonner';
 import { useAuth } from './hooks/useAuth';
-import { LessonManagement } from './components/LessonManagement';
+import   LessonManagement  from './components/LessonManagement';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TeacherHome.css';
 

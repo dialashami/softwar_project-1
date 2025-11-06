@@ -175,7 +175,7 @@ export function MyLessons() {
           />
         </div>
 
-        <button>📚 5 lessons today</button>
+        <button>  5 lessons today</button>
       </div>
 
       {/* ✅ العنوان الرئيسي */}

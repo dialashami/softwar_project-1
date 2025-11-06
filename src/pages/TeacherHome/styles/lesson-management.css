@@ -9,10 +9,14 @@ background: #ffffff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   /* display: flex; */ 
-   min-height: 100vh;
+   min-height: 80vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- padding-left: 190px;
+ 
   display: flex;
+ padding-left: -1000px;
+margin-top: -4.5%;
+
+ 
 
 }
 
@@ -88,7 +92,7 @@ right: 0;
 /* Main Content */
 .lesson-main-content {
     transform: translateX(-10px);
-
+  
   min-height: 100vh;
  
   position: relative;
@@ -104,31 +108,40 @@ max-width: none;
 
 /* Header Section */
 .lesson-header {
-  border-bottom: 3px solid #3498db;
+ 
+   background: linear-gradient(135deg, #3498db, #2c3e50);
+    border-radius: 40px;
+ padding:48px 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
+  width: 76vw; /* العرض الكامل للنافذة */
+  margin-left: calc( -38vw + 50%); /* لتوسيع العنصر خارج حدود الحاوية */
+
+}
+
+.lesson-header .header-text h1{
+   
+ 
   
-   background: white;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.lesson-header h1 {
-  color:linear-gradient(135deg, #3d6a97, #3498db);
-  margin: 0 0 15px 0;
-  font-size: 2.5rem;
-  font-weight: 1000;
   /* background: linear-gradient(135deg, #2c3e50, #3498db); */
-  text-align: center;
+ 
   /* -webkit-text-fill-color: transparent; */
-}
-
-.lesson-header p {
-  color: #7f8c8d;
-  margin: 0 0 30px 0;
-  font-size: 1.2rem;
-  font-weight: 500;
+  
+    color: #ffffff;
+  margin: 0 0 10px 0;
+  font-size: 2.4rem;
   text-align: center;
+  font-weight: 700; 
+}
+.lesson-header .header-text p {
+   color: #ffffff;
+  margin: 0;
+  font-size: 1.1rem;
+   text-align: center;
 }
 
 .search-bar {
@@ -160,8 +173,9 @@ max-width: none;
  overflow-y: auto;
      padding-top: 10px;
      background-color: #f2f0f0;
-           padding-right: 0px;  
+           /* padding-right: 0px;   */
        scroll-behavior: smooth;
+ 
 }
 
 /* Create New Lesson Button */

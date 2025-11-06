@@ -348,10 +348,7 @@ function LessonManagement({ onNavigate }) { // ✅ إضافة onNavigate كـ pr
              
             </div>
 
-            <div className="search-bar">
-          <input type="text" placeholder="Search Johnson Mathematics" />
-          <i className="fas fa-search"></i>
-        </div>
+           
           </div>
 
           {/* Action Bar */}

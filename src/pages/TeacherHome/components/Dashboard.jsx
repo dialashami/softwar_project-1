@@ -376,10 +376,7 @@ export function Dashboard({ onNavigate }) {
           <p>Here's an overview of your classes and students</p>
         </div>
         
-        <div className="search-bar">
-          <input type="text" placeholder="Search Johnson Mathematics" />
-          <i className="fas fa-search"></i>
-        </div>
+        
       </div>
 
       {/* Stats Grid */}

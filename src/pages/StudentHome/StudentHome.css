@@ -809,7 +809,7 @@ background: linear-gradient(180deg, #2c3e50  );
   border-radius: 20px;
   padding: 40px 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content:center;
   align-items: center;
   color: #fff;
   margin-bottom: 40px;

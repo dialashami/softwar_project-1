@@ -1,594 +1,5 @@
 
-// import { useState } from 'react';
-// import { motion } from 'framer-motion';
-// import {
-//   Bot,
-//   Send,
-//   Sparkles,
-//   BookOpen,
-//   Calculator,
-//   Beaker,
-//   Microscope,
-//   Brain,
-//   Lightbulb,
-// } from 'lucide-react';
-
-// import AIRecommendations from './AIRecommendations';
- 
-// import { Card } from './ui';
-// import { Button } from './ui';
-// import { Input } from './ui';
-// import { Badge } from './ui';
-
- 
-
-// const quickActions = [
-//   { icon: Calculator, label: 'Help with Math', prompt: 'Can you help me understand calculus derivatives?' },
-//   { icon: Beaker, label: 'Chemistry Questions', prompt: 'Explain the periodic table structure' },
-//   { icon: Microscope, label: 'Biology Topics', prompt: 'What is cellular respiration?' },
-//   { icon: Brain, label: 'Study Tips', prompt: 'Give me study tips for my upcoming exams' },
-//   { icon: Lightbulb, label: 'Concept Clarification', prompt: 'I need help understanding quantum mechanics' },
-//   { icon: BookOpen, label: 'Practice Problems', prompt: 'Generate practice problems for algebra' },
-// ];
-
-// const conversationHistory = [
-//   {
-//     id: 1,
-//     title: 'Calculus Help',
-//     date: 'Oct 13, 2025',
-//     preview: 'Can you explain derivatives...',
-//     messages: 12,
-//   },
-//   {
-//     id: 2,
-//     title: 'Chemistry Concepts',
-//     date: 'Oct 12, 2025',
-//     preview: 'What are ionic bonds...',
-//     messages: 8,
-//   },
-//   {
-//     id: 3,
-//     title: 'Study Strategy',
-//     date: 'Oct 11, 2025',
-//     preview: 'How can I prepare for exams...',
-//     messages: 15,
-//   },
-// ];
-
-// export default function AITutorPage() {
-//   const [messages, setMessages] = useState([
-//     {
-//       id: 1,
-//       type: 'ai',
-//       text: "Hello! I'm your AI tutor. I'm here to help you with any subject. Ask me anything 🤖",
-//     },
-//   ]);
-//   const [inputValue, setInputValue] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
- 
-//   const sendToBackend = async (text) => {
-//     try {
-//       setIsLoading(true);
-//       const res = await fetch('http://localhost:3000/api/chat', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ question: text }),
-//       });
-//       const data = await res.json();
-//       return data.answer || 'Sorry, I could not answer that.';
-//     } catch (err) {
-//       console.error(err);
-//       return 'Error: could not reach AI server.';
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const handleSend = async (textFromQuickAction) => {
-//     const messageText = textFromQuickAction || inputValue;
-//     if (!messageText.trim()) return;
-
-//     // اضيف رسالة الطالب
-//     const userMessage = {
-//       id: messages.length + 1,
-//       type: 'user',
-//       text: messageText,
-//     };
-//     setMessages((prev) => [...prev, userMessage]);
-//     setInputValue('');
-
-//     // اجيب رد الـ AI من الباك
-//     const aiAnswer = await sendToBackend(messageText);
-
-//     const aiMessage = {
-//       id: messages.length + 2,
-//       type: 'ai',
-//       text: aiAnswer,
-//     };
-//     setMessages((prev) => [...prev, aiMessage]);
-//   };
-
-//   const handleQuickAction = (prompt) => {
-//     handleSend(prompt);
-//   };
-
-//   return (
-//     // 👇 هاد أهم سطر: هذا اللي بيخلي CSS يتطبق
-//     <div className="AITutorPage">
-//       {/* Header */}
-//       <div className="flex items-center justify-between">
-//         <div>
-//           <h1 className="text-[#0F172A] flex items-center gap-2" style={{ fontSize: '32px', fontWeight: '700' }}>
-//             AI Tutor 🤖
-//           </h1>
-//           <p className="text-gray-600 mt-1" style={{ fontSize: '16px' }}>
-//             Your personal AI assistant for learning
-//           </p>
-//         </div>
-//         <Badge className="bg-gradient-to-r from-[#4F46E5] to-[#9333EA] text-white border-0 px-4 py-2">
-//           <Sparkles className="w-4 h-4 mr-2" />
-//           AI Powered
-//         </Badge>
-//       </div>
-
-//       {/* AI Recommendations section */}
-//       <AIRecommendations />
-
-//       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-//         {/* Sidebar - conversation history */}
-//         <div className="lg:col-span-1 space-y-4">
-//           <Card className="p-4 rounded-2xl border-0 shadow-lg bg-white">
-//             <h3 className="text-[#0F172A] mb-4" style={{ fontSize: '16px', fontWeight: '600' }}>
-//               Recent Conversations
-//             </h3>
-//             <div className="space-y-2">
-//               {conversationHistory.map((conv) => (
-//                 <button
-//                   key={conv.id}
-//                   className="w-full p-3 rounded-xl bg-gray-50 hover:bg-gradient-to-r hover:from-[#4F46E5]/10 hover:to-[#9333EA]/10 transition-all text-left"
-//                 >
-//                   <p className="text-[#0F172A] mb-1" style={{ fontSize: '14px', fontWeight: '600' }}>
-//                     {conv.title}
-//                   </p>
-//                   <p className="text-gray-600 text-sm truncate mb-1" style={{ fontSize: '12px' }}>
-//                     {conv.preview}
-//                   </p>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-400" style={{ fontSize: '11px' }}>
-//                       {conv.date}
-//                     </span>
-//                     <Badge variant="secondary" className="text-xs">
-//                       {conv.messages} msgs
-//                     </Badge>
-//                   </div>
-//                 </button>
-//               ))}
-//             </div>
-//             <Button className="w-full mt-4 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90 text-white rounded-xl">
-//               <Bot className="w-4 h-4 mr-2" />
-//               New Conversation
-//             </Button>
-//           </Card>
-//         </div>
-
-//         {/* Main chat area */}
-//         <div className="lg:col-span-3 space-y-6">
-//           {/* Quick Actions */}
-//           <Card className="p-6 rounded-2xl border-0 shadow-lg bg-gradient-to-br from-[#4F46E5] to-[#9333EA]">
-//             <h3 className="text-white mb-4" style={{ fontSize: '18px', fontWeight: '600' }}>
-//               Quick Actions
-//             </h3>
-//             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-//               {quickActions.map((action, index) => {
-//                 const Icon = action.icon;
-//                 return (
-//                   <motion.button
-//                     key={index}
-//                     onClick={() => handleQuickAction(action.prompt)}
-//                     whileHover={{ scale: 1.05 }}
-//                     whileTap={{ scale: 0.95 }}
-//                     className="p-4 rounded-xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all text-left"
-//                   >
-//                     <Icon className="w-6 h-6 text-white mb-2" />
-//                     <p className="text-white" style={{ fontSize: '13px', fontWeight: '600' }}>
-//                       {action.label}
-//                     </p>
-//                   </motion.button>
-//                 );
-//               })}
-//             </div>
-//           </Card>
-
-//           {/* Chat box */}
-//           <Card className="rounded-2xl border-0 shadow-lg bg-white overflow-hidden">
-//             {/* Messages */}
-//             <div className="h-[500px] overflow-y-auto p-6 space-y-4 bg-gray-50">
-//               {messages.map((message) => (
-//                 <motion.div
-//                   key={message.id}
-//                   initial={{ opacity: 0, y: 10 }}
-//                   animate={{ opacity: 1, y: 0 }}
-//                   transition={{ duration: 0.3 }}
-//                   className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-//                 >
-//                   {message.type === 'ai' && (
-//                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#9333EA] flex items-center justify-center mr-3 flex-shrink-0">
-//                       <Bot className="w-6 h-6 text-white" />
-//                     </div>
-//                   )}
-//                   <div
-//                     className={`max-w-[75%] p-4 rounded-2xl ${
-//                       message.type === 'user'
-//                         ? 'bg-gradient-to-r from-[#4F46E5] to-[#9333EA] text-white'
-//                         : 'bg-white text-[#0F172A] shadow-md'
-//                     }`}
-//                   >
-//                     <p style={{ fontSize: '15px', lineHeight: '1.6' }}>{message.text}</p>
-//                   </div>
-//                   {message.type === 'user' && (
-//                     <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center ml-3 flex-shrink-0">
-//                       <span style={{ fontSize: '16px' }}>👤</span>
-//                     </div>
-//                   )}
-//                 </motion.div>
-//               ))}
-
-//               {isLoading && (
-//                 <div className="text-gray-400 text-sm flex items-center gap-2">
-//                   <span className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
-//                   AI is thinking...
-//                 </div>
-//               )}
-//             </div>
-
-//             {/* Input */}
-//             <div className="p-4 bg-white border-t border-gray-200">
-//               <div className="flex gap-3">
-//                 <Input
-//                   type="text"
-//                   placeholder="Ask me anything about your studies..."
-//                   value={inputValue}
-//                   onChange={(e) => setInputValue(e.target.value)}
-//                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-//                   className="flex-1 rounded-full border-gray-300 px-6"
-//                 />
-//                 <Button
-//                   onClick={() => handleSend()}
-//                   className="w-12 h-12 rounded-full p-0 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90"
-//                   disabled={isLoading}
-//                 >
-//                   <Send className="w-5 h-5" />
-//                 </Button>
-//               </div>
-//               <p className="text-gray-500 text-center mt-3" style={{ fontSize: '12px' }}>
-//                 AI can make mistakes. Verify important information.
-//               </p>
-//             </div>
-//           </Card>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import { motion } from 'framer-motion';
-// import {
-//   Bot,
-//   Send,
-//   Sparkles,
-//   BookOpen,
-//   Calculator,
-//   Beaker,
-//   Microscope,
-//   Brain,
-//   Lightbulb,
-// } from 'lucide-react';
-
-// import { Card } from './ui';
-// import { Button } from './ui';
-// import { Input } from './ui';
-// import { Badge } from './ui';
-
-// const quickActions = [
-//   {
-//     icon: Calculator,
-//     label: 'Help with Math',
-//     prompt: 'Can you help me understand calculus derivatives?',
-//   },
-//   {
-//     icon: Beaker,
-//     label: 'Chemistry Questions',
-//     prompt: 'Explain the periodic table structure',
-//   },
-//   {
-//     icon: Microscope,
-//     label: 'Biology Topics',
-//     prompt: 'What is cellular respiration?',
-//   },
-//   {
-//     icon: Brain,
-//     label: 'Study Tips',
-//     prompt: 'Give me study tips for my upcoming exams',
-//   },
-//   {
-//     icon: Lightbulb,
-//     label: 'Concept Clarification',
-//     prompt: 'I need help understanding quantum mechanics',
-//   },
-//   {
-//     icon: BookOpen,
-//     label: 'Practice Problems',
-//     prompt: 'Generate practice problems for algebra',
-//   },
-// ];
-
-// const conversationHistory = [
-//   {
-//     id: 1,
-//     title: 'Calculus Help',
-//     date: 'Oct 13, 2025',
-//     preview: 'Can you explain derivatives...',
-//     messages: 12,
-//   },
-//   {
-//     id: 2,
-//     title: 'Chemistry Concepts',
-//     date: 'Oct 12, 2025',
-//     preview: 'What are ionic bonds...',
-//     messages: 8,
-//   },
-//   {
-//     id: 3,
-//     title: 'Study Strategy',
-//     date: 'Oct 11, 2025',
-//     preview: 'How can I prepare for exams...',
-//     messages: 15,
-//   },
-// ];
-
-// export default function AITutorPage() {
-//   const [messages, setMessages] = useState([
-//     {
-//       id: 1,
-//       type: 'ai',
-//       text: "Hello! I'm your AI tutor. I'm here to help you with any subject. Ask me anything 🤖",
-//     },
-//   ]);
-//   const [inputValue, setInputValue] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const sendToBackend = async (text) => {
-//     try {
-//       setIsLoading(true);
-//       const res = await fetch('http://localhost:3000/api/chat', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ question: text }),
-//       });
-//       const data = await res.json();
-//       return data.answer || 'Sorry, I could not answer that.';
-//     } catch (err) {
-//       console.error(err);
-//       return 'Error: could not reach AI server.';
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const handleSend = async (textFromQuickAction) => {
-//     const messageText = textFromQuickAction || inputValue;
-//     if (!messageText.trim()) return;
-
-//     const userMessage = {
-//       id: messages.length + 1,
-//       type: 'user',
-//       text: messageText,
-//     };
-//     setMessages((prev) => [...prev, userMessage]);
-//     setInputValue('');
-
-//     const aiAnswer = await sendToBackend(messageText);
-
-//     const aiMessage = {
-//       id: messages.length + 2,
-//       type: 'ai',
-//       text: aiAnswer,
-//     };
-//     setMessages((prev) => [...prev, aiMessage]);
-//   };
-
-//   const handleQuickAction = (prompt) => {
-//     handleSend(prompt);
-//   };
-
-//   return (
-//     <div className="AITutorPage">
-//       {/* Header */}
-//       <div className="flex items-center justify-between">
-//         <div>
-//           <h1
-//             className="text-[#0F172A] flex items-center gap-2"
-//             style={{ fontSize: '32px', fontWeight: '700' }}
-//           >
-//             AI Tutor  
-//           </h1>
-//           <p className="text-gray-600 mt-1" style={{ fontSize: '16px' }}>
-//             Your personal AI assistant for learning
-//           </p>
-//         </div>
-//         <Badge className="bg-gradient-to-r from-[#4F46E5] to-[#9333EA] text-white border-0 px-4 py-2">
-//           <Sparkles className="w-4 h-4 mr-2" />
-//           AI Powered
-//         </Badge>
-//       </div>
-
-//       {/* Main layout */}
-//       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-//         {/* Sidebar - conversation history */}
-//         <div className="lg:col-span-1 space-y-4">
-//           <Card className="p-4 rounded-2xl border-0 shadow-lg bg-white">
-//             <h3
-//               className="text-[#0F172A] mb-4"
-//               style={{ fontSize: '16px', fontWeight: '600' }}
-//             >
-//               Recent Conversations
-//             </h3>
-//             <div className="space-y-2">
-//               {conversationHistory.map((conv) => (
-//                 <button
-//                   key={conv.id}
-//                   className="w-full p-3 rounded-xl bg-gray-50 hover:bg-gradient-to-r hover:from-[#4F46E5]/10 hover:to-[#9333EA]/10 transition-all text-left"
-//                 >
-//                   <p
-//                     className="text-[#0F172A] mb-1"
-//                     style={{ fontSize: '14px', fontWeight: '600' }}
-//                   >
-//                     {conv.title}
-//                   </p>
-//                   <p
-//                     className="text-gray-600 text-sm truncate mb-1"
-//                     style={{ fontSize: '12px' }}
-//                   >
-//                     {conv.preview}
-//                   </p>
-//                   <div className="flex items-center justify-between">
-//                     <span className="text-gray-400" style={{ fontSize: '11px' }}>
-//                       {conv.date}
-//                     </span>
-//                     <Badge variant="secondary" className="text-xs">
-//                       {conv.messages} msgs
-//                     </Badge>
-//                   </div>
-//                 </button>
-//               ))}
-//             </div>
-//             <Button className="w-full mt-4 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90 text-white rounded-xl">
-//               <Bot className="w-4 h-4 mr-2" />
-//               New Conversation
-//             </Button>
-//           </Card>
-//         </div>
-
-//         {/* Main chat area */}
-//         <div className="lg:col-span-3 space-y-6">
-//           {/* Quick Actions */}
-//           <Card className="p-6 rounded-2xl border-0 shadow-lg bg-gradient-to-br from-[#4F46E5] to-[#9333EA]">
-//             <h3
-//               className="text-white mb-4"
-//               style={{ fontSize: '18px', fontWeight: '600' }}
-//             >
-//               Quick Actions
-//             </h3>
-//             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-//               {quickActions.map((action, index) => {
-//                 const Icon = action.icon;
-//                 return (
-//                   <motion.button
-//                     key={index}
-//                     onClick={() => handleQuickAction(action.prompt)}
-//                     whileHover={{ scale: 1.05 }}
-//                     whileTap={{ scale: 0.95 }}
-//                     className="p-4 rounded-xl bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all text-left"
-//                   >
-//                     <Icon className="w-6 h-6 text-white mb-2" />
-//                     <p
-//                       className="text-white"
-//                       style={{ fontSize: '13px', fontWeight: '600' }}
-//                     >
-//                       {action.label}
-//                     </p>
-//                   </motion.button>
-//                 );
-//               })}
-//             </div>
-//           </Card>
-
-//           {/* Chat box */}
-//           <Card className="rounded-2xl border-0 shadow-lg bg-white overflow-hidden">
-//             {/* Messages */}
-//             <div className="h-[500px] overflow-y-auto p-6 space-y-4 bg-gray-50">
-//               {messages.map((message) => (
-//                 <motion.div
-//                   key={message.id}
-//                   initial={{ opacity: 0, y: 10 }}
-//                   animate={{ opacity: 1, y: 0 }}
-//                   transition={{ duration: 0.3 }}
-//                   className={`flex ${
-//                     message.type === 'user' ? 'justify-end' : 'justify-start'
-//                   }`}
-//                 >
-//                   {message.type === 'ai' && (
-//                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#4F46E5] to-[#9333EA] flex items-center justify-center mr-3 flex-shrink-0">
-//                       <Bot className="w-6 h-6 text-white" />
-//                     </div>
-//                   )}
-//                   <div
-//                     className={`max-w-[75%] p-4 rounded-2xl ${
-//                       message.type === 'user'
-//                         ? 'bg-gradient-to-r from-[#4F46E5] to-[#9333EA] text-white'
-//                         : 'bg-white text-[#0F172A] shadow-md'
-//                     }`}
-//                   >
-//                     <p style={{ fontSize: '15px', lineHeight: '1.6' }}>
-//                       {message.text}
-//                     </p>
-//                   </div>
-//                   {message.type === 'user' && (
-//                     <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center ml-3 flex-shrink-0">
-//                       <span style={{ fontSize: '16px' }}>👤</span>
-//                     </div>
-//                   )}
-//                 </motion.div>
-//               ))}
-
-//               {isLoading && (
-//                 <div className="text-gray-400 text-sm flex items-center gap-2">
-//                   <span className="w-2 h-2 rounded-full bg-gray-400 animate-pulse" />
-//                   AI is thinking...
-//                 </div>
-//               )}
-//             </div>
-
-//             {/* Input */}
-//             <div className="p-4 bg-white border-t border-gray-200">
-//               <div className="flex gap-3">
-//                 <Input
-//                   type="text"
-//                   placeholder="Ask me anything about your studies..."
-//                   value={inputValue}
-//                   onChange={(e) => setInputValue(e.target.value)}
-//                   onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-//                   className="flex-1 rounded-full border-gray-300 px-6"
-//                 />
-//                 <Button
-//                   onClick={() => handleSend()}
-//                   className="w-12 h-12 rounded-full p-0 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90"
-//                   disabled={isLoading}
-//                 >
-//                   <Send className="w-5 h-5" />
-//                 </Button>
-//               </div>
-//               <p className="text-gray-500 text-center mt-3" style={{ fontSize: '12px' }}>
-//                 AI can make mistakes. Verify important information.
-//               </p>
-//             </div>
-//           </Card>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   Bot,
@@ -600,6 +11,8 @@ import {
   Microscope,
   Brain,
   Lightbulb,
+  Trash2,
+  X,
 } from 'lucide-react';
 
 import { Card } from './ui';
@@ -608,48 +21,93 @@ import { Input } from './ui';
 import { Badge } from './ui';
 
 const quickActions = [
-  { icon: Calculator, label: 'Help with Math', prompt: 'Can you help me understand calculus derivatives?' },
-  { icon: Beaker, label: 'Chemistry Questions', prompt: 'Explain the periodic table structure' },
-  { icon: Microscope, label: 'Biology Topics', prompt: 'What is cellular respiration?' },
-  { icon: Brain, label: 'Study Tips', prompt: 'Give me study tips for my upcoming exams' },
-  { icon: Lightbulb, label: 'Concept Clarification', prompt: 'I need help understanding quantum mechanics' },
-  { icon: BookOpen, label: 'Practice Problems', prompt: 'Generate practice problems for algebra' },
+ { icon: Calculator, label: 'Explain Math Concepts', prompt: 'I need help creating a lesson to explain calculus derivatives to my students.' },
+  { icon: Beaker, label: 'Chemistry Lessons', prompt: 'Design a simple explanation for the structure of the periodic table for a class.' },
+  { icon: Microscope, label: 'Biology Topics', prompt: 'Help me develop a lesson plan to teach the process of cellular respiration.' },
+  { icon: Brain, label: 'Effective Study Strategies', prompt: 'What are the best study strategies I can recommend to my students for their exams?' },
+  { icon: Lightbulb, label: 'Clarify Complex Topics', prompt: 'I need a way to simplify the concepts of quantum mechanics for my students.' },
+  { icon: BookOpen, label: 'Create Practice Problems', prompt: 'Generate a set of practice problems for an algebra class, with varying difficulty.' }
 ];
 
-const conversationHistory = [
-  {
-    id: 1,
-    title: 'Calculus Help',
-    date: 'Oct 13, 2025',
-    preview: 'Can you explain derivatives...',
-    messages: 12,
-  },
-  {
-    id: 2,
-    title: 'Chemistry Concepts',
-    date: 'Oct 12, 2025',
-    preview: 'What are ionic bonds...',
-    messages: 8,
-  },
-  {
-    id: 3,
-    title: 'Study Strategy',
-    date: 'Oct 11, 2025',
-    preview: 'How can I prepare for exams...',
-    messages: 15,
-  },
-];
+const initialMessage = {
+  id: 1,
+  type: 'ai',
+  text: "Hello! I'm your AI tutor. I'm here to help you with any subject. Ask me anything 🤖",
+};
+
+
+const getCurrentDate = () => {
+  const now = new Date();
+  const options = { month: 'short', day: 'numeric', year: 'numeric' };
+  return now.toLocaleDateString('en-US', options);
+};
 
 export default function AITutorPage() {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      type: 'ai',
-      text: "Hello! I'm your AI tutor. I'm here to help you with any subject. Ask me anything 🤖",
-    },
-  ]);
+  const [messages, setMessages] = useState([initialMessage]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [conversationHistory, setConversationHistory] = useState([
+    {
+      id: 1,
+      title: 'Calculus Help',
+      date: 'Oct 13, 2025',
+      preview: 'Can you explain derivatives...',
+      messages: 12,
+    },
+    {
+      id: 2,
+      title: 'Chemistry Concepts',
+      date: 'Oct 12, 2025',
+      preview: 'What are ionic bonds...',
+      messages: 8,
+    },
+    {
+      id: 3,
+      title: 'Study Strategy',
+      date: 'Oct 11, 2025',
+      preview: 'How can I prepare for exams...',
+      messages: 15,
+    },
+  ]);
+  const [conversationToDelete, setConversationToDelete] = useState(null);
+  
+  const isAddingNewMessage = useRef(false);
+
+
+  const generateTitleFromMessage = (text) => {
+    const words = text.split(' ').slice(0, 4); 
+    return words.join(' ') + (text.split(' ').length > 4 ? '...' : '');
+  };
+
+  
+  useEffect(() => {
+ 
+    if (messages.length <= 1 || isAddingNewMessage.current) {
+      isAddingNewMessage.current = false;
+      return;
+    }
+
+    const lastUserMessage = messages.filter(msg => msg.type === 'user').pop();
+    
+    if (lastUserMessage) {
+      const newConversation = {
+        id: Date.now(), 
+        title: generateTitleFromMessage(lastUserMessage.text),
+        date: getCurrentDate(),
+        preview: lastUserMessage.text.length > 30 
+          ? lastUserMessage.text.substring(0, 30) + '...' 
+          : lastUserMessage.text,
+        messages: messages.filter(msg => msg.type === 'user').length,
+      };
+
+
+      setConversationHistory(prev => {
+        const filtered = prev.filter(conv => conv.id !== 'current'); 
+        const updated = [newConversation, ...filtered];
+        return updated.slice(0, 5);
+      });
+    }
+  }, [messages]);
 
   const sendToBackend = async (text) => {
     try {
@@ -673,6 +131,9 @@ export default function AITutorPage() {
     const messageText = textFromQuickAction || inputValue;
     if (!messageText.trim()) return;
 
+   
+    isAddingNewMessage.current = true;
+
     const userMessage = {
       id: messages.length + 1,
       type: 'user',
@@ -693,6 +154,50 @@ export default function AITutorPage() {
 
   const handleQuickAction = (prompt) => {
     handleSend(prompt);
+  };
+
+ 
+  const handleNewConversation = () => {
+    setMessages([initialMessage]);
+  };
+
+
+  const loadConversation = (conversationId) => {
+    const conversation = conversationHistory.find(conv => conv.id === conversationId);
+    if (conversation) {
+      setMessages([
+        initialMessage,
+        {
+          id: 2,
+          type: 'user',
+          text: conversation.preview.replace('...', '') + ' (Loaded chat )',
+        },
+        {
+          id: 3,
+          type: 'ai',
+          text: `This is a previous conversation about "${conversation.title}".You can follow up with questions on this topic.`,
+        }
+      ]);
+    }
+  };
+
+
+  const handleDeleteConversation = (conversationId, e) => {
+    e.stopPropagation(); 
+    setConversationToDelete(conversationId);
+  };
+
+ 
+  const confirmDelete = () => {
+    setConversationHistory(prev => 
+      prev.filter(conv => conv.id !== conversationToDelete)
+    );
+    setConversationToDelete(null);
+  };
+
+
+  const cancelDelete = () => {
+    setConversationToDelete(null);
   };
 
   return (
@@ -728,35 +233,57 @@ export default function AITutorPage() {
               Recent Conversations
             </h3>
             <div className="space-y-2">
-              {conversationHistory.map((conv) => (
-                <button
-                  key={conv.id}
-                  className="w-full p-3 rounded-xl bg-gray-50 hover:bg-gradient-to-r hover:from-[#4F46E5]/10 hover:to-[#9333EA]/10 transition-all text-left"
-                >
-                  <p
-                    className="text-[#0F172A] mb-1"
-                    style={{ fontSize: '14px', fontWeight: '600' }}
-                  >
-                    {conv.title}
-                  </p>
-                  <p
-                    className="text-gray-600 text-sm truncate mb-1"
-                    style={{ fontSize: '12px' }}
-                  >
-                    {conv.preview}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-400" style={{ fontSize: '11px' }}>
-                      {conv.date}
-                    </span>
-                    <Badge variant="secondary" className="text-xs">
-                      {conv.messages} msgs
-                    </Badge>
-                  </div>
-                </button>
-              ))}
+            {conversationHistory.map((conv) => (
+  <div key={conv.id} className="relative group">
+    <button
+      onClick={() => loadConversation(conv.id)}
+      className="w-full p-3 rounded-xl bg-gray-50 hover:bg-gradient-to-r hover:from-[#4F46E5]/10 hover:to-[#9333EA]/10 transition-all text-left"
+    >
+      <div className="flex flex-col">
+        <p
+          className="text-[#0F172A] truncate mb-1"
+          style={{ fontSize: '14px', fontWeight: '600' }}
+        >
+          {conv.title}
+        </p>
+        <p
+          className="text-gray-600 text-sm truncate mb-2"
+          style={{ fontSize: '12px' }}
+        >
+          {conv.preview}
+        </p>
+
+        {}
+        <div className="flex items-center justify-between">
+          <span className="text-gray-400" style={{ fontSize: '11px' }}>
+            {conv.date}
+          </span>
+          <Badge variant="secondary" className="text-xs">
+            {conv.messages} msgs
+          </Badge>
+        </div>
+      </div>
+    </button>
+
+    {}
+    <div className="flex justify-end mt-1 pr-1">
+      <button
+        onClick={(e) => handleDeleteConversation(conv.id, e)}
+        className="p-1.5 rounded-md bg-gray-100 border border-gray-200 hover:bg-red-500 hover:border-red-500 hover:text-white transition-all opacity-70 hover:opacity-100 text-gray-500 text-xs flex items-center gap-1"
+        title="Delete conversation"
+      >
+        <Trash2 className="w-3 h-3" />
+        Delete
+      </button>
+    </div>
+  </div>
+))}
+
             </div>
-            <Button className="w-full mt-4 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90 text-white rounded-xl">
+            <Button 
+              onClick={handleNewConversation}
+              className="w-full mt-4 bg-gradient-to-r from-[#4F46E5] to-[#9333EA] hover:opacity-90 text-white rounded-xl"
+            >
               <Bot className="w-4 h-4 mr-2" />
               New Conversation
             </Button>
@@ -875,6 +402,122 @@ export default function AITutorPage() {
           </Card>
         </div>
       </div>
+
+      {}
+      {conversationToDelete && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="modal-content"
+          >
+            {}
+            <div className="modal-header">
+              <h3 className="text-lg font-semibold text-[#0F172A] mb-2">Delete Conversation</h3>
+              <p className="text-gray-600 text-sm">
+                Are you sure you want to delete this conversation? This action cannot be undone.
+              </p>
+            </div>
+            
+            {}
+            <button 
+              onClick={cancelDelete} 
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {}
+            <div className="flex gap-3 mt-6">
+              <Button
+                onClick={cancelDelete}
+                className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-xl transition-all duration-200 hover:translate-y-[-1px]"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={confirmDelete}
+                className="flex-1 bg-red-500 text-white hover:bg-red-600 rounded-xl transition-all duration-200 hover:translate-y-[-1px] shadow-lg shadow-red-500/25"
+              >
+                Delete
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {}
+      <style jsx>{`
+        .fixed.inset-0.bg-black.bg-opacity-50 {
+          backdrop-filter: blur(6px);
+          background-color: rgba(15, 23, 42, 0.55);
+          animation: fadeIn 0.25s ease-out;
+        }
+
+        .modal-content {
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(249, 249, 255, 0.94)
+          );
+          border: 1px solid rgba(147, 51, 234, 0.08);
+          box-shadow:
+            0 6px 18px rgba(79, 70, 229, 0.1),
+            0 3px 6px rgba(147, 51, 234, 0.06);
+          border-radius: 0.9rem;
+          animation: slideIn 0.25s ease-out;
+          backdrop-filter: blur(8px);
+          transform-origin: center;
+          transition: all 0.25s ease-in-out;
+          max-width: 400px;
+          padding: 1.5rem 1.25rem;
+          width: 90%;
+          position: relative;
+        }
+
+        .modal-header {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(249, 250, 251, 0.98));
+          border-radius: 0.7rem;
+          padding: 1.25rem;
+          margin-bottom: 1rem;
+          border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(20px) scale(0.96); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+     
+        .bg-red-500 {
+          background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+        }
+
+        .bg-red-500:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 18px rgba(239, 68, 68, 0.35);
+        }
+
+        .bg-gray-200:hover {
+          background-color: #e5e7eb !important;
+          transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+          .modal-content {
+            margin: 20px;
+            max-width: calc(100% - 40px);
+            padding: 1.25rem 1rem;
+          }
+        }
+      `}</style>
     </div>
   );
 }

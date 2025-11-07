@@ -494,6 +494,10 @@ export default App;
 // export default App;
 //وجب الاعتماد الي فوق للمعلم 
 
+
+
+
+
 import './App.css'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import StudentHome from './pages/StudentHome/StudentHome';
@@ -511,3 +515,22 @@ function App() {
 } 
 
 export default App;
+
+
+// import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import TeacherHome from './pages/TeacherHome/TeacherHome';
+// import './index.css';
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         <Route path="/" element={<TeacherHome />} /> 
+//         <Route path="/teacher" element={<TeacherHome />} />
+//         <Route path="*" element={<TeacherHome />} />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } 
+
+// export default App;

@@ -99,7 +99,7 @@ export default function Welcome() {
 
           <div className="nav-logo">
   <img 
-    src="/logoRUWWAD.png" 
+    src="/logoRUWWAD1.png" 
     alt="RUWWAD Logo" 
     className="logo-img"
     onClick={() => {

@@ -118,8 +118,8 @@ max-width: none;
   color: #fff;
   margin-bottom: 40px;
   box-shadow: 0 8px 30px rgba(99, 102, 241, 0.3);
-  width: 76vw; /* العرض الكامل للنافذة */
-  margin-left: calc( -38vw + 50%); /* لتوسيع العنصر خارج حدود الحاوية */
+  width: 76vw; 
+  margin-left: calc( -38vw + 50%);  
 
 }
 

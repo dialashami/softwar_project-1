@@ -496,15 +496,15 @@ export default App;
 
 import './App.css'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import TeacherHome from './pages/TeacherHome/TeacherHome';
+import StudentHome from './pages/StudentHome/StudentHome';
 import './index.css';
 function App() { 
   return ( 
     <BrowserRouter> 
       <Routes> 
-        <Route path="/" element={<TeacherHome />} /> 
-        <Route path="/teacher" element={<TeacherHome />} />
-        <Route path="*" element={<TeacherHome />} />
+        <Route path="/" element={<StudentHome />} /> 
+        <Route path="/teacher" element={<StudentHome />} />
+        <Route path="*" element={<StudentHome />} />
       </Routes> 
     </BrowserRouter> 
   ); 

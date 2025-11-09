@@ -10,16 +10,19 @@ import {
   Bot,
   Settings,
   LogOut,
+   MessageCircle, 
 } from 'lucide-react';
 
 const menuItems = [
   { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { id: 'lessons', icon: BookOpen, label: 'My Lessons' },
   { id: 'assignments', icon: CheckSquare, label: 'Assignments' },
+    { id: 'chat', icon: MessageCircle, label: 'Messages' },
   { id: 'progress', icon: TrendingUp, label: 'Progress' },
   { id: 'notifications', icon: Bell, label: 'Notifications' },
   { id: 'ai-tutor', icon: Bot, label: 'AI Tutor' },
   { id: 'settings', icon: Settings, label: 'Settings' },
+   
 ];
 
 export function Sidebar({ activeItem, onItemChange }) {

@@ -1,3 +1,4 @@
+ 
 
 import { motion } from 'framer-motion';
 import {
@@ -10,20 +11,23 @@ import {
   Bot,
   Settings,
   LogOut,
+  MessageCircle,       // ✅ أيقونة الشات
 } from 'lucide-react';
 
 const menuItems = [
   { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { id: 'lessons', icon: BookOpen, label: 'My Lessons' },
   { id: 'assignments', icon: CheckSquare, label: 'Assignments' },
-   
+
+  // ✅ زر الشات الجديد (Teacher ↔ Students & Parents)
+  { id: 'chat', icon: MessageCircle, label: 'Messages' },
+
   { id: 'notifications', icon: Bell, label: 'Notifications' },
   { id: 'ai-tutor', icon: Bot, label: 'AI Tutor' },
   { id: 'settings', icon: Settings, label: 'Settings' },
 ];
 
 export function Sidebar({ activeItem, onItemChange }) {
-  
   // دالة للتعامل مع الضغط على اللوجو
   const handleLogoClick = () => {
     console.log('Logo clicked - changing to dashboard');

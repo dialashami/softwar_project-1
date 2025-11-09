@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
   BookOpen,
-  FileText,
+  // FileText,
   CheckSquare,
   TrendingUp,
   Bell,

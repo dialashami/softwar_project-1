@@ -1,8 +1,7 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { LessonCard } from "./LessonCard";
-import { Button } from "./ui/button";
+ 
 import { Input } from "./ui/input";
  
  const lessons = [

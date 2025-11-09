@@ -5263,3 +5263,12 @@ button.small {
     height: 260px;
   }
 }
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #3b82f6;
+  text-decoration: underline;
+  cursor: pointer;
+  font: inherit;
+}

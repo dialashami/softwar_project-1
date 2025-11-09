@@ -3,7 +3,7 @@ import {
   User,
   Bell,
   Lock,
-  Globe,
+  // Globe,
   Palette,
   Mail,
   Shield,

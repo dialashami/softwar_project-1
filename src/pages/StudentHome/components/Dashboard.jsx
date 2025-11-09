@@ -6,7 +6,7 @@
 
 import { useState } from 'react';
 import { Card, Button, Badge } from './ui';
-import { FaBook, FaClipboardList, FaChartBar, FaBell, FaCalendar, FaCheckCircle, FaPlay, FaFileUpload, FaGraduationCap, FaFlask, FaAtom } from "react-icons/fa";
+import { FaBook, FaClipboardList, FaChartBar, FaBell, FaCalendar, FaCheckCircle,  FaFileUpload, FaGraduationCap, FaFlask, FaAtom } from "react-icons/fa";
  
 export function Dashboard() {
   // State for tracking progress and interactions
@@ -39,46 +39,46 @@ export function Dashboard() {
   });
 
   // Button handlers with actual functionality
-  const handleContinueLesson = () => {
-    setCurrentContent({
-      type: "lesson",
-      title: "Advanced Calculus - Limits and Continuity",
-      content: "In mathematics, a limit is the value that a function approaches as the input approaches some value. Limits are essential to calculus and mathematical analysis...",
-      duration: "45 minutes",
-      progress: 65
-    });
-  };
+  // const handleContinueLesson = () => {
+  //   setCurrentContent({
+  //     type: "lesson",
+  //     title: "Advanced Calculus - Limits and Continuity",
+  //     content: "In mathematics, a limit is the value that a function approaches as the input approaches some value. Limits are essential to calculus and mathematical analysis...",
+  //     duration: "45 minutes",
+  //     progress: 65
+  //   });
+  // };
 
-  const handleStartQuiz = () => {
-    setCurrentQuiz({
-      title: "Mathematics Quiz - Chapter 4",
-      questions: [
-        {
-          id: 1,
-          question: "What is the derivative of x²?",
-          options: ["2x", "x", "2", "x²"],
-          correctAnswer: 0
-        },
-        {
-          id: 2,
-          question: "What is the integral of 2x?",
-          options: ["x²", "x² + C", "2x²", "2x² + C"],
-          correctAnswer: 1
-        }
-      ],
-      currentQuestion: 0,
-      score: 0
-    });
-  };
+  // const handleStartQuiz = () => {
+  //   setCurrentQuiz({
+  //     title: "Mathematics Quiz - Chapter 4",
+  //     questions: [
+  //       {
+  //         id: 1,
+  //         question: "What is the derivative of x²?",
+  //         options: ["2x", "x", "2", "x²"],
+  //         correctAnswer: 0
+  //       },
+  //       {
+  //         id: 2,
+  //         question: "What is the integral of 2x?",
+  //         options: ["x²", "x² + C", "2x²", "2x² + C"],
+  //         correctAnswer: 1
+  //       }
+  //     ],
+  //     currentQuestion: 0,
+  //     score: 0
+  //   });
+  // };
 
-  const handleSubmitAssignment = () => {
-    setCurrentContent({
-      type: "assignment",
-      title: assignmentData.title,
-      description: assignmentData.description,
-      dueDate: assignmentData.dueDate
-    });
-  };
+  // const handleSubmitAssignment = () => {
+  //   setCurrentContent({
+  //     type: "assignment",
+  //     title: assignmentData.title,
+  //     description: assignmentData.description,
+  //     dueDate: assignmentData.dueDate
+  //   });
+  // };
 
   const handleViewDetails = (subject) => {
     setCurrentContent({
@@ -256,9 +256,13 @@ export function Dashboard() {
       <section className="section">
         <div className="section-header">
           <h2><FaChartBar /> Progress Tracker</h2>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleViewDetails('all'); }}>
-            View Details
-          </a>
+          <button
+  type="button"
+  onClick={handleViewDetails.bind(null, 'all')}
+  className="link-button"
+>
+  View Details
+</button>
         </div>
         <div className="progress-tracker">
           {Object.entries(progressData).map(([subject, data]) => (
@@ -310,9 +314,13 @@ export function Dashboard() {
       <section className="section">
         <div className="section-header">
           <h2><FaCalendar /> Today's Schedule</h2>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleViewFullSchedule(); }}>
-            View Full Schedule
-          </a>
+          <button
+  type="button"
+  onClick={handleViewFullSchedule}
+  className="link-button"
+>
+  View Full Schedule
+</button>
         </div>
         <div className="schedule-container">
           {scheduleItems.map((item) => (
@@ -349,9 +357,14 @@ export function Dashboard() {
       <section className="section">
         <div className="section-header">
           <h2><FaBell /> Recent Activity</h2>
-          <a href="#" onClick={(e) => { e.preventDefault(); handleViewAllActivities(); }}>
-            View All
-          </a>
+          
+<button
+  type="button"
+  onClick={handleViewAllActivities}
+  className="link-button"
+>
+  View All
+</button>
         </div>
         <div className="activity-list">
           {activities.map((activity) => (

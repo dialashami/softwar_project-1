@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { TrendingUp, Award, Target, Flame, Trophy, Star, BookOpen, Brain } from 'lucide-react';
+import {  Target,   Trophy,  BookOpen  } from 'lucide-react';
  
 
 const subjectProgress = [

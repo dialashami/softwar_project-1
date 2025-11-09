@@ -8,6 +8,8 @@ import { Assignments } from './components/Assignments';
 import  ProgressPage  from './components/ProgressPage';
 import  AITutorPage  from './components/AITutorPage';
 import  Settings  from './components/Settings';
+import { ChatCenter } from './components/ChatCenter';
+
 import './StudentHome.css';
 
 export default function StudentHome() {
@@ -21,6 +23,8 @@ export default function StudentHome() {
         return <MyLessons />;
       case 'assignments':
         return <Assignments />;
+      case 'chat':
+        return <ChatCenter currentRole="student" />;
       case 'progress':
         return <ProgressPage />;
           case 'notifications':

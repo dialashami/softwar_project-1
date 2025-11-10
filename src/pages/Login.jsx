@@ -52,7 +52,6 @@ export default function Login() {
             alert(type);
             navigate("/home/university");
           }else if(type==="school"){
-          
            alert("school student");
             navigate("/home");
           }

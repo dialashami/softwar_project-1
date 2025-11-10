@@ -2,7 +2,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import "./ChatCenter.css";
+import "../styles/ChatCenter.css";
 
 
 const MOCK_CONVERSATIONS = {

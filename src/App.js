@@ -577,6 +577,8 @@ export default App;
 
 // الكود الي فوق عشان الويلكوم بيج 
 
+
+
 // import './App.css'; 
 // import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 // import TeacherHome from './pages/TeacherHome/TeacherHome';
@@ -594,20 +596,37 @@ export default App;
 // } export default App;
 
 
+// import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import StudentHome from './pages/StudentHome/StudentHome';
+// import './index.css';
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         <Route path="/" element={<StudentHome />} /> 
+//         <Route path="/teacher" element={<StudentHome />} />
+//         <Route path="*" element={<StudentHome />} />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } 
+
+// export default App;
+
+
 import './App.css'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import StudentHome from './pages/StudentHome/StudentHome';
+import ParentHome from './pages/ParentHome/ParentHome';
 import './index.css';
 function App() { 
   return ( 
     <BrowserRouter> 
       <Routes> 
-        <Route path="/" element={<StudentHome />} /> 
-        <Route path="/teacher" element={<StudentHome />} />
-        <Route path="*" element={<StudentHome />} />
+        <Route path="/" element={<ParentHome />} /> 
+        <Route path="/teacher" element={<ParentHome />} />
+        <Route path="*" element={<ParentHome />} />
       </Routes> 
     </BrowserRouter> 
   ); 
-} 
-
-export default App;
+} export default App;

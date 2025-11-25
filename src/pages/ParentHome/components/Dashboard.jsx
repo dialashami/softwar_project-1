@@ -6,14 +6,14 @@ import { Badge } from './ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { BookOpen, Trophy, Target, TrendingUp, CheckCircle } from 'lucide-react';
 
-// دالة بسيطة تاخد الإيميل وترجع اسم مرتب
+ 
 const getNameFromEmail = (email) => {
   if (!email) return '';
 
-  const [localPart] = email.split('@'); // الجزء اللي قبل @
+  const [localPart] = email.split('@');  
   const cleaned = localPart
-    .replace(/\d+/g, '') // يشيل الأرقام
-    .replace(/[._-]+/g, ' '); // يحول . و _ و - لمسافات
+    .replace(/\d+/g, '')  
+    .replace(/[._-]+/g, ' ');  
 
   return cleaned
     .split(' ')

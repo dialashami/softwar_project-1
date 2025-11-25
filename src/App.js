@@ -615,18 +615,95 @@ export default App;
 // export default App;
 
 
+// import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import ParentHome from './pages/ParentHome/ParentHome';
+// import './index.css';
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         <Route path="/" element={<ParentHome />} /> 
+//         <Route path="/teacher" element={<ParentHome />} />
+//         <Route path="*" element={<ParentHome />} />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } export default App;
+
+
+
+//  import './App.css'; 
+// import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"; 
+// import Layout from './pages/Layout';
+// import Login from './pages/Login';
+// import Home from './pages/Home';
+// import SignUp from './pages/SignUp';
+// import Welcome from './pages/Welcome';
+// import VerifyEmail from './pages/verifemail'; 
+// import PrivateRoute from './components/PrivateRoute';
+// import './index.css';
+
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         {/* Redirect root path to welcome page */}
+//         <Route path="/" element={<Navigate to="/welcome" replace />} />
+        
+//         <Route path="/welcome" element={<Welcome />} />
+//         <Route path="/login" element={<Login />} />
+//         <Route path="/signup" element={<SignUp />} />
+//         <Route path="/verify-email" element={<VerifyEmail />} />
+        
+//         <Route path="/home" element={<Layout />}>
+//           <Route index element={
+//             <PrivateRoute>
+//                <Home />
+//             </PrivateRoute>
+//           } />
+//         </Route>
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } 
+
+// export default App;
+
+
+// import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import StudentHome from './pages/StudentHome/StudentHome';
+// import './index.css';
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         <Route path="/" element={<StudentHome />} /> 
+//         <Route path="/teacher" element={<StudentHome />} />
+//         <Route path="*" element={<StudentHome />} />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } 
+
+// export default App;
+
 import './App.css'; 
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import ParentHome from './pages/ParentHome/ParentHome';
+import { Admin } from './pages/Admin/Admin';
 import './index.css';
+
 function App() { 
   return ( 
     <BrowserRouter> 
       <Routes> 
-        <Route path="/" element={<ParentHome />} /> 
-        <Route path="/teacher" element={<ParentHome />} />
-        <Route path="*" element={<ParentHome />} />
+        <Route path="/" element={<Admin />} /> 
+        <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<Admin />} />
       </Routes> 
     </BrowserRouter> 
   ); 
-} export default App;
+} 
+
+export default App;

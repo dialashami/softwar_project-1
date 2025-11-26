@@ -7,7 +7,7 @@ export function NotificationModal({ notification, onClose, onSave }) {
     message: '',
     type: 'info',
     target: 'all',
-    priority: 'medium',
+    
     status: 'draft',
     scheduledFor: '',
     recipients: 0,
@@ -20,7 +20,7 @@ export function NotificationModal({ notification, onClose, onSave }) {
         message: notification.message || '',
         type: notification.type || 'info',
         target: notification.target || 'all',
-        priority: notification.priority || 'medium',
+       
         status: notification.status || 'draft',
         scheduledFor: notification.scheduledFor || '',
         recipients: notification.recipients || 0,
@@ -134,18 +134,7 @@ export function NotificationModal({ notification, onClose, onSave }) {
               </select>
             </div>
 
-            <div>
-              <label className="block text-gray-700 mb-2">Priority</label>
-              <select
-                value={formData.priority}
-                onChange={(e) => setFormData(prev => ({ ...prev, priority: e.target.value }))}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
-            </div>
+           
           </div>
 
           {/* Target Audience */}

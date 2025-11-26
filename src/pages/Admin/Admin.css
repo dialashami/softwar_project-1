@@ -1179,4 +1179,8 @@ background: linear-gradient(180deg, #2c3e50  );
     width: 100%;
   }
 }
- 
+ .modal-overlay {
+  background: rgba(255, 255, 255, 0.6); /* أبيض شفاف */
+  backdrop-filter: blur(8px);           /* التغبيش الفعلي */
+}
+

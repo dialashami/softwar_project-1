@@ -42,28 +42,28 @@ export function AlertsPanel() {
     error: 'text-red-600',
   };
 
-  return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
-      <h3 className="text-gray-900 mb-4">System Alerts</h3>
-      <div className="space-y-3">
-        {alerts.map((alert, index) => {
-          const Icon = alert.icon;
-          return (
-            <div
-              key={index}
-              className={`p-3 rounded-lg border ${colorClasses[alert.type]}`}
-            >
-              <div className="flex gap-3">
-                <Icon className={`w-5 h-5 flex-shrink-0 ${iconColorClasses[alert.type]}`} />
-                <div>
-                  <p className="text-sm">{alert.message}</p>
-                  <p className="text-xs opacity-70 mt-1">{alert.time}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+  // return (
+  //   // <div className="bg-white rounded-lg border border-gray-200 p-6">
+  //   //   <h3 className="text-gray-900 mb-4">System Alerts</h3>
+  //   //   <div className="space-y-3">
+  //   //     {alerts.map((alert, index) => {
+  //   //       const Icon = alert.icon;
+  //   //       return (
+  //   //         <div
+  //   //           key={index}
+  //   //           className={`p-3 rounded-lg border ${colorClasses[alert.type]}`}
+  //   //         >
+  //   //           <div className="flex gap-3">
+  //   //             <Icon className={`w-5 h-5 flex-shrink-0 ${iconColorClasses[alert.type]}`} />
+  //   //             <div>
+  //   //               <p className="text-sm">{alert.message}</p>
+  //   //               <p className="text-xs opacity-70 mt-1">{alert.time}</p>
+  //   //             </div>
+  //   //           </div>
+  //   //         </div>
+  //   //       );
+  //   //     })}
+  //   //   </div>
+  //   // </div>
+  // );
 }

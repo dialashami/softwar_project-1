@@ -14,10 +14,10 @@ import {
 const menuItems = [
   { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { id: 'users', icon: BookOpen, label: 'User Management' },
-  { id: 'content', icon: CheckSquare, label: 'Content Management' },
+   
   { id: 'communication', icon: MessageCircle, label: 'Communication Center' },
   { id: 'notifications', icon: Bell, label: 'Notifications' },
-  { id: 'ai-insights', icon: Bot, label: 'AI Insights' },
+ 
   { id: 'settings', icon: Settings, label: 'Settings' },
 ];
 
@@ -83,15 +83,7 @@ export function Sidebar({ activeSection, onSectionChange }) {
 
       {/* Profile Section */}
       <div className="p-4 space-y-3">
-        <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50">
-          <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-            <span className="text-gray-600 font-medium">AM</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="text-gray-900 font-semibold">Amira Hassan</span>
-            <span className="text-gray-500 text-sm">Grade 10</span>
-          </div>
-        </div>
+        
 
         <button className="w-full flex items-center gap-3 px-4 py-2 rounded-xl border border-gray-300 hover:bg-red-50 hover:text-red-600 transition-colors">
           <LogOut className="w-4 h-4" />

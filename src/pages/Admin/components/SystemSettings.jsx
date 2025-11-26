@@ -142,111 +142,9 @@ export function SystemSettings() {
           </div>
         </div>
 
-        {/* Features */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Cpu className="w-6 h-6 text-blue-600" />
-            <h3 className="text-gray-900">Features</h3>
-          </div>
-          <div className="space-y-4">
-            <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-              <div>
-                <p className="text-gray-900">AI Recommendations</p>
-                <p className="text-sm text-gray-500">Enable AI-powered personalized learning recommendations</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={settings.aiRecommendations}
-                onChange={(e) => handleChange('aiRecommendations', e.target.checked)}
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-              />
-            </label>
-            <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-              <div>
-                <p className="text-gray-900">Real-Time Communication</p>
-                <p className="text-sm text-gray-500">Enable instant messaging and live chat features</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={settings.realTimeCommunication}
-                onChange={(e) => handleChange('realTimeCommunication', e.target.checked)}
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-              />
-            </label>
-            <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-              <div>
-                <p className="text-gray-900">Automatic Backup</p>
-                <p className="text-sm text-gray-500">Automatically backup system data daily</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={settings.autoBackup}
-                onChange={(e) => handleChange('autoBackup', e.target.checked)}
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-              />
-            </label>
-            <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-              <div>
-                <p className="text-gray-900">Maintenance Mode</p>
-                <p className="text-sm text-gray-500">Enable maintenance mode to restrict platform access</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={settings.maintenanceMode}
-                onChange={(e) => handleChange('maintenanceMode', e.target.checked)}
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-              />
-            </label>
-          </div>
-        </div>
+       
 
-        {/* Security Settings */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Shield className="w-6 h-6 text-blue-600" />
-            <h3 className="text-gray-900">Security Settings</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-gray-700 mb-2">
-                Maximum Upload Size (MB)
-              </label>
-              <input
-                type="number"
-                value={settings.maxUploadSize}
-                onChange={(e) => handleChange('maxUploadSize', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <p className="text-sm text-gray-500 mt-1">Maximum file size for uploads</p>
-            </div>
-            <div>
-              <label className="block text-gray-700 mb-2">
-                Session Timeout (minutes)
-              </label>
-              <input
-                type="number"
-                value={settings.sessionTimeout}
-                onChange={(e) => handleChange('sessionTimeout', e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <p className="text-sm text-gray-500 mt-1">Auto logout after inactivity</p>
-            </div>
-          </div>
-          <div className="mt-4">
-            <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
-              <div>
-                <p className="text-gray-900">Two-Factor Authentication</p>
-                <p className="text-sm text-gray-500">Require 2FA for all admin accounts</p>
-              </div>
-              <input
-                type="checkbox"
-                checked={settings.twoFactorAuth}
-                onChange={(e) => handleChange('twoFactorAuth', e.target.checked)}
-                className="w-5 h-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
-              />
-            </label>
-          </div>
-        </div>
+       
 
         {/* Notification Settings */}
         <div className="bg-white rounded-lg border border-gray-200 p-6">
@@ -282,53 +180,7 @@ export function SystemSettings() {
           </div>
         </div>
 
-        {/* Theme Settings */}
-        <div className="bg-white rounded-lg border border-gray-200 p-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Palette className="w-6 h-6 text-blue-600" />
-            <h3 className="text-gray-900">Theme Settings</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-gray-700 mb-2">
-                Primary Color
-              </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={settings.primaryColor}
-                  onChange={(e) => handleChange('primaryColor', e.target.value)}
-                  className="w-12 h-12 rounded-lg cursor-pointer border border-gray-300"
-                />
-                <input
-                  type="text"
-                  value={settings.primaryColor}
-                  onChange={(e) => handleChange('primaryColor', e.target.value)}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </div>
-            <div>
-              <label className="block text-gray-700 mb-2">
-                Secondary Color
-              </label>
-              <div className="flex items-center gap-3">
-                <input
-                  type="color"
-                  value={settings.secondaryColor}
-                  onChange={(e) => handleChange('secondaryColor', e.target.value)}
-                  className="w-12 h-12 rounded-lg cursor-pointer border border-gray-300"
-                />
-                <input
-                  type="text"
-                  value={settings.secondaryColor}
-                  onChange={(e) => handleChange('secondaryColor', e.target.value)}
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   );

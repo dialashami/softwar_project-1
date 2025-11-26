@@ -244,69 +244,7 @@ export function AccountSettings() {
             </div>
           )}
 
-          {/* Security Tab */}
-          {activeTab === 'security' && (
-            <div className="tab-panel active">
-              <div className="panel-header">
-                <h2>Security Settings</h2>
-                <p>Manage your password and security preferences</p>
-              </div>
-
-              <div className="security-content">
-                {/* Change Password */}
-                <div className="security-section">
-                  <h3>Change Password</h3>
-                  <form className="password-form">
-                    <div className="form-group">
-                      <label htmlFor="currentPassword">Current Password</label>
-                      <input
-                        type="password"
-                        id="currentPassword"
-                        className="form-input"
-                        placeholder="Enter current password"
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="newPassword">New Password</label>
-                      <input
-                        type="password"
-                        id="newPassword"
-                        className="form-input"
-                        placeholder="Enter new password"
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="confirmPassword">Confirm New Password</label>
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        className="form-input"
-                        placeholder="Confirm new password"
-                      />
-                    </div>
-
-                    <div className="form-actions">
-                      <button type="submit" className="btn btn-primary">
-                        Update Password
-                      </button>
-                    </div>
-                  </form>
-                </div>
-
-                {/* Danger Zone */}
-                <div className="danger-zone">
-                  <h3>Danger Zone</h3>
-                  <p>Once you delete your account, there is no going back. Please be certain.</p>
-                  <button className="btn btn-danger">
-                    <span>🗑️</span>
-                    Delete Account
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
+          
 
           {/* Preferences Tab */}
           {activeTab === 'preferences' && (

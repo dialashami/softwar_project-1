@@ -10,6 +10,7 @@ import Notifications from './components/Notifications';
 import LessonManagement from './components/LessonManagement';
 import AssignmentManagement from './components/AssignmentManagement';
 import { ChatCenter } from "./components/ChatCenter"; // ✅ شات
+import FeedbackStar from './components/FeedbackStar';  
 
 // import ProgressPage from './components/ProgressPage';
 import AITutorPage from './components/AITutorPage';
@@ -41,14 +42,27 @@ export default function TeacherHome() {
     }
   };
 
+  // return (
+  //   <div className="teacher-home">
+  //     <Sidebar activeItem={activePage} onItemChange={setActivePage} />
+      
+  //     <div className="main-content">
+  //       <Navigation />
+  //       {renderPage()}
+  //     </div>
+  //   </div>
+  // );
   return (
-    <div className="teacher-home">
+    <div className="student-home">
       <Sidebar activeItem={activePage} onItemChange={setActivePage} />
       
       <div className="main-content">
         <Navigation />
         {renderPage()}
       </div>
+
+      { }
+      <FeedbackStar />
     </div>
   );
 }

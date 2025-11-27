@@ -7,7 +7,7 @@ import  Notifications from './components/Notifications';
  import Settings from './components/Settings';
 
 import { ChatCenter } from './components/ChatCenter';
-
+import FeedbackStar from './components/FeedbackStar'; 
 import './ParentHome.css';
 
 export default function StudentHome() {
@@ -32,14 +32,28 @@ export default function StudentHome() {
     }
   };
 
-  return (
-    <div className="parent-home">
-      <Sidebar activeItem={activePage} onItemChange={setActivePage} />
+  // return (
+  //   <div className="parent-home">
+  //     <Sidebar activeItem={activePage} onItemChange={setActivePage} />
       
-      <div className="main-content">
+  //     <div className="main-content">
      
-        {renderPage()}
+  //       {renderPage()}
+  //     </div>
+  //   </div>
+  // );
+  
+    return (
+      <div className="parent-home">
+        <Sidebar activeItem={activePage} onItemChange={setActivePage} />
+        
+        <div className="main-content">
+          {/* <Navigation /> */}
+          {renderPage()}
+        </div>
+  
+        { }
+        <FeedbackStar />
       </div>
-    </div>
-  );
+    );
 }

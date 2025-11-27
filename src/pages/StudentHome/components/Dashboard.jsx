@@ -291,20 +291,7 @@ export function Dashboard() {
                   <span className="stat-label">Avg. Score</span>
                 </div>
               </div>
-              <div className="progress-actions">
-                <Button 
-                  className="small primary" 
-                  onClick={() => handleStartSubjectLesson(subject)}
-                >
-                  Continue
-                </Button>
-                <Button 
-                  className="small secondary" 
-                  onClick={() => handleTakeSubjectQuiz(subject)}
-                >
-                  Take Quiz
-                </Button>
-              </div>
+             
             </Card>
           ))}
         </div>

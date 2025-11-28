@@ -476,13 +476,7 @@ export default function Welcome() {
       icon: "👨‍👩‍👧‍👦",
       role: "parent",
     
-    },{
-      id: 4,
-      title:"trainer",
-      description:"Provide specialized training sessions",
-      icon:"🧑‍💼",
-      role:"trainee"
-    }
+    } 
   ];
  
 
@@ -653,14 +647,14 @@ export default function Welcome() {
 
     <div className="tool-icons">
       {[
-        { name: "Group Maker", color: "#FF5C5C", delay: 0.2 },
+        { name: "Assignments", color: "#FF5C5C", delay: 0.2 },
         { name: "Zoom", color: "#6C63FF", delay: 0.4 },
-        { name: "Timer", color: "#4B9EFF", delay: 0.6 },
-        { name: "Notes", color: "#55D88A", delay: 0.8 },
-        { name: "Brainstorm", color: "#00CFFF", delay: 1.0 },
-        { name: "Google meet", color: "#FFB347", delay: 1.2 },
+        { name: "Schedule", color: "#4B9EFF", delay: 0.6 },
+        { name: "Chattings", color: "#55D88A", delay: 0.8 },
+        { name: "Videos", color: "#00CFFF", delay: 1.0 },
+        { name: "Notes", color: "#FFB347", delay: 1.2 },
         { name: "Chart", color: "#A066FF", delay: 1.4 },
-        { name: "Github", color: "#FFDC60", delay: 1.6 },
+        { name: "Lectures", color: "#FFDC60", delay: 1.6 },
       ].map((tool, index) => (
         <motion.div
           key={index}

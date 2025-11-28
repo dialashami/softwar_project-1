@@ -279,11 +279,19 @@ body {
 }
 
 .visual-container {
-  position: relative;
+  /* position: relative;
   width: 100%;
   height: 100%;
   max-width: 500px;
-  min-height: 400px;
+  min-height: 400px; */
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;          /* المسافة بينهم */
+  flex-wrap: nowrap;  /* نفس السطر */
+  max-width: 900px;
+  width: 100%;
 }
 
 .floating-card {
@@ -306,6 +314,8 @@ body {
   transition: opacity 0.5s ease-in-out;
   cursor: pointer;
   transition: all 0.3s ease;
+
+ 
 }
 
 .floating-card:hover {

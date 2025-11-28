@@ -9,13 +9,14 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
   const [isCreating, setIsCreating] = useState(false);
   const [charCount, setCharCount] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
-  
+  const [instructionFile, setInstructionFile] = useState(null);
+
   // States للنوافذ المنبثقة الجديدة
   const [showSubmissionsModal, setShowSubmissionsModal] = useState(false);
   const [showGradeModal, setShowGradeModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showMoreMenu, setShowMoreMenu] = useState(null);
-  const [selectedAssignment, setSelectedAssignment] = useState(null);
+const [selectedAssignment, setSelectedAssignment] = useState({});
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [gradingMode, setGradingMode] = useState(''); // 'single' or 'bulk'
 
@@ -151,22 +152,27 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
     setShowGradeModal(true);
   };
 
-  // فتح نافذة التعديل
-  const handleEdit = (assignment) => {
-    setSelectedAssignment(assignment);
-    setFormData({
-      title: assignment.title,
-      subject: assignment.subject,
-      grade: assignment.grade,
-      dueDate: assignment.dueDate,
-      totalStudents: assignment.totalStudents,
-      points: assignment.points,
-      passingScore: assignment.passingScore,
-      instructions: assignment.instructions,
-      status: assignment.status
-    });
-    setShowEditModal(true);
-  };
+// فتح نافذة التعديل
+const handleEdit = (assignment) => {
+  setSelectedAssignment(assignment);
+
+  setFormData({
+    title: assignment.title,
+    subject: assignment.subject,
+    grade: assignment.grade,
+    dueDate: assignment.dueDate,
+    totalStudents: assignment.totalStudents,
+    points: assignment.points,
+    passingScore: assignment.passingScore,
+    instructions: assignment.instructionsFileName || assignment.instructions || '',
+    status: assignment.status
+  });
+
+  setInstructionFile(null);
+  setShowEditModal(true);
+};
+
+
 
   // فتح/إغلاق قائمة المزيد
   const toggleMoreMenu = (assignmentId) => {
@@ -185,39 +191,61 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
     setGradingMode('');
   };
 
-  // حفظ التعديلات
-  const handleSaveEdit = () => {
-    if (!formData.title || !formData.subject || !formData.grade || !formData.dueDate) {
-      alert("Please fill in all required fields (*)");
-      return;
+const handleSaveEdit = () => {
+  if (!formData.title || !formData.subject || !formData.grade || !formData.dueDate) {
+    alert("Please fill in all required fields (*)");
+    return;
+  }
+
+  const updatedAssignments = assignments.map((assignment) => {
+    if (assignment.id !== selectedAssignment.id) return assignment;
+
+    const baseUpdated = {
+      ...assignment,
+      title: formData.title,
+      subject: formData.subject,
+      grade: formData.grade,
+      dueDate: formData.dueDate,
+      displayDate: new Date(formData.dueDate).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
+      totalStudents: parseInt(formData.totalStudents),
+      points: parseInt(formData.points),
+      passingScore: parseInt(formData.passingScore),
+      status: formData.status,
+      lastEdited: 'just now',
+    };
+
+    // لو ما اختار PDF جديد → نترك نفس البيانات القديمة
+    if (!instructionFile) {
+      return {
+        ...baseUpdated,
+        instructions: assignment.instructions,
+        instructionsFileName: assignment.instructionsFileName,
+        instructionsFileUrl: assignment.instructionsFileUrl,
+        description: assignment.description,
+      };
     }
 
-    const updatedAssignments = assignments.map(assignment =>
-      assignment.id === selectedAssignment.id
-        ? {
-            ...assignment,
-            title: formData.title,
-            subject: formData.subject,
-            grade: formData.grade,
-            dueDate: formData.dueDate,
-            displayDate: new Date(formData.dueDate).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            }),
-            totalStudents: parseInt(formData.totalStudents),
-            points: parseInt(formData.points),
-            passingScore: parseInt(formData.passingScore),
-            instructions: formData.instructions,
-            status: formData.status,
-            lastEdited: "just now"
-          }
-        : assignment
-    );
+    // لو اختار PDF جديد
+    const newFileUrl = URL.createObjectURL(instructionFile);
 
-    setAssignments(updatedAssignments);
-    closeAllModals();
-  };
+    return {
+      ...baseUpdated,
+      instructions: instructionFile.name,
+      instructionsFileName: instructionFile.name,
+      instructionsFileUrl: newFileUrl,
+      description: instructionFile.name,
+    };
+  });
+
+  setAssignments(updatedAssignments);
+  setInstructionFile(null);
+  closeAllModals();
+};
+
 
   // حفظ التقدير الفردي
   const handleSaveGrade = () => {
@@ -284,57 +312,75 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
     }
   };
 
-  // إنشاء الواجب الجديد
-  const handleCreateAssignment = async () => {
-    if (!formData.title || !formData.subject || !formData.grade || !formData.dueDate) {
-      alert("Please fill in all required fields (*)");
-      return;
-    }
+const handleCreateAssignment = async () => {
+  // ✅ تحقق من الحقول الإلزامية
+  if (!formData.title || !formData.subject || !formData.grade || !formData.dueDate) {
+    alert("Please fill in all required fields (*)");
+    return;
+  }
 
-    setIsCreating(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    const newAssignment = {
-      id: Date.now(), // استخدام timestamp لتجنب تكرار IDs
-      title: formData.title,
-      subject: formData.subject,
-      grade: formData.grade,
-      dueDate: formData.dueDate,
-      displayDate: new Date(formData.dueDate).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric'
-      }),
-      totalStudents: parseInt(formData.totalStudents),
-      submitted: 0,
-      graded: 0,
-      status: formData.status,
-      lastEdited: "just now",
-      description: formData.instructions || "No instructions provided.",
-      points: parseInt(formData.points),
-      passingScore: parseInt(formData.passingScore),
-      instructions: formData.instructions
-    };
+  // ✅ لازم يكون في ملف PDF مرفق للتعليمات
+  if (!instructionFile) {
+    alert("Please attach a PDF file for the assignment instructions.");
+    return;
+  }
 
-    setAssignments([newAssignment, ...assignments]);
-    setIsCreating(false);
-    closeAllModals();
-    
-    // إعادة تعيين النموذج
-    setFormData({
-      title: '',
-      subject: '',
-      grade: '',
-      dueDate: '',
-      totalStudents: 62,
-      points: 100,
-      passingScore: 60,
-      instructions: '',
-      status: 'upcoming'
-    });
-    setCharCount(0);
+  setIsCreating(true);
+
+  // محاكاة انتظار (API call مثلاً)
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  // نعمل URL مؤقت للـ PDF (للـ preview داخل الفرونت)
+  const fileUrl = URL.createObjectURL(instructionFile);
+
+  const newAssignment = {
+    id: Date.now(), // استخدام timestamp لتجنب تكرار IDs
+    title: formData.title,
+    subject: formData.subject,
+    grade: formData.grade,
+    dueDate: formData.dueDate,
+    displayDate: new Date(formData.dueDate).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    totalStudents: parseInt(formData.totalStudents),
+    submitted: 0,
+    graded: 0,
+    status: formData.status,
+    lastEdited: "just now",
+
+    // نستخدم ملف الـ PDF كتعليمات
+    description: instructionFile.name,
+    points: parseInt(formData.points),
+    passingScore: parseInt(formData.passingScore),
+
+    // نخزن اسم + URL ملف التعليمات
+    instructions: instructionFile.name,
+    instructionsFileName: instructionFile.name,
+    instructionsFileUrl: fileUrl,
   };
+
+  setAssignments([newAssignment, ...assignments]);
+  setIsCreating(false);
+  closeAllModals();
+
+  // إعادة تعيين النموذج
+  setFormData({
+    title: '',
+    subject: '',
+    grade: '',
+    dueDate: '',
+    totalStudents: 62,
+    points: 100,
+    passingScore: 60,
+    instructions: '',
+    status: 'upcoming'
+  });
+  setCharCount(0);
+  setInstructionFile(null); // رجع حالة ملف الـ PDF فاضية
+};
+
 
   // فلترة الواجبات حسب التبويب والبحث
   const filteredAssignments = assignments.filter(assignment => {
@@ -658,24 +704,80 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
                   </span>
                 </div>
               </div>
+ 
+ <div className="form-group">
+  <label>Instructions (PDF)</label>
 
-              <div className="form-group">
-                <label>Instructions</label>
-                <textarea 
-                  name="instructions"
-                  className="form-textarea"
-                  value={formData.instructions}
-                  onChange={(e) => {
-                    handleInputChange(e);
-                    setCharCount(e.target.value.length);
-                  }}
-                  placeholder="Enter assignment instructions..."
-                  maxLength={500}
-                ></textarea>
-                <span className={`char-counter ${charCount > 450 ? 'warning' : ''}`}>
-                  {charCount}/500
-                </span>
-              </div>
+  {/* 🔹 عرض ملف الـ PDF الحالي لو موجود */}
+  {selectedAssignment.instructionsFileUrl ? (
+    <div style={{ marginBottom: '10px' }}>
+      <p style={{ fontSize: '13px', color: '#4b5563', marginBottom: '6px' }}>
+        Current file: <strong>{selectedAssignment.instructionsFileName}</strong>
+      </p>
+
+      {/* عرض PDF داخل iframe */}
+      <iframe
+        src={selectedAssignment.instructionsFileUrl}
+        title="Instructions PDF"
+        style={{
+          width: '100%',
+          height: '260px',
+          borderRadius: '10px',
+          border: '1px solid #e5e7eb'
+        }}
+      ></iframe>
+
+      {/* رابط فتحه في تاب جديدة */}
+      <a
+        href={selectedAssignment.instructionsFileUrl}
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          display: 'inline-block',
+          marginTop: '6px',
+          fontSize: '13px',
+          color: '#2563eb',
+          textDecoration: 'none',
+          fontWeight: 500
+        }}
+      >
+        Open PDF in new tab
+      </a>
+    </div>
+  ) : (
+    <p style={{ fontSize: '13px', color: '#6b7280', marginBottom: '6px' }}>
+      No PDF attached for this assignment yet.
+    </p>
+  )}
+
+  {/* 🔹 استبدال ملف الـ PDF بواحد جديد */}
+  <div style={{ marginTop: '10px' }}>
+    <label style={{ fontSize: '13px', color: '#4b5563', display: 'block', marginBottom: '4px' }}>
+      Replace PDF (optional)
+    </label>
+    <input
+      type="file"
+      accept="application/pdf"
+      onChange={(e) => {
+        const file = e.target.files?.[0] || null;
+        setInstructionFile(file);
+
+        setFormData(prev => ({
+          ...prev,
+          instructions: file ? file.name : prev.instructions
+        }));
+      }}
+    />
+    {instructionFile && (
+      <p style={{ marginTop: '4px', fontSize: '12px', color: '#6b7280' }}>
+        New file selected: <strong>{instructionFile.name}</strong>
+      </p>
+    )}
+  </div>
+</div>
+
+
+
 
               <div className="form-row">
                 <div className="form-group">
@@ -861,155 +963,244 @@ function AssignmentManagement({ onNavigate }) { // ✅ إضافة onNavigate ك�
       )}
 
       {/* نافذة التعديل - المحتوى الكامل */}
-      {showEditModal && selectedAssignment && (
-        <div className="modal-overlay" onClick={closeAllModals}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h2>Edit Assignment</h2>
-            <div className="modal-form">
-              <div className="form-group">
-                <label data-required="*">Assignment Title</label>
-                <input 
-                  type="text" 
-                  name="title"
-                  className="form-input"
-                  value={formData.title}
-                  onChange={handleInputChange}
-                  placeholder="Enter assignment title" 
-                />
-              </div>
+       {/* نافذة التعديل - المحتوى الكامل */}
+{showEditModal && selectedAssignment && (
+  <div className="modal-overlay" onClick={closeAllModals}>
+    <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <h2>Edit Assignment</h2>
+      <div className="modal-form">
+        <div className="form-group">
+          <label data-required="*">Assignment Title</label>
+          <input
+            type="text"
+            name="title"
+            className="form-input"
+            value={formData.title}
+            onChange={handleInputChange}
+            placeholder="Enter assignment title"
+          />
+        </div>
 
-              <div className="form-row">
-                <div className="form-group">
-                  <label data-required="*">Subject</label>
-                  <select 
-                    name="subject"
-                    className="form-select"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select subject</option>
-                    <option>Mathematics</option>
-                    <option>English</option>
-                    <option>Science</option>
-                    <option>History</option>
-                    <option>Biology</option>
-                    <option>Physics</option>
-                    <option>Chemistry</option>
-                  </select>
-                </div>
+        <div className="form-row">
+          <div className="form-group">
+            <label data-required="*">Subject</label>
+            <select
+              name="subject"
+              className="form-select"
+              value={formData.subject}
+              onChange={handleInputChange}
+            >
+              <option value="">Select subject</option>
+              <option>Mathematics</option>
+              <option>English</option>
+              <option>Science</option>
+              <option>History</option>
+              <option>Biology</option>
+              <option>Physics</option>
+              <option>Chemistry</option>
+            </select>
+          </div>
 
-                <div className="form-group">
-                  <label data-required="*">Grade</label>
-                  <select 
-                    name="grade"
-                    className="form-select"
-                    value={formData.grade}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select grade</option>
-                    <option>Grade 9</option>
-                    <option>Grade 10</option>
-                    <option>Grade 11</option>
-                    <option>Grade 12</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label data-required="*">Due Date</label>
-                  <input 
-                    type="date" 
-                    name="dueDate"
-                    className="form-input"
-                    value={formData.dueDate}
-                    onChange={handleInputChange}
-                    min={getTomorrowDate()}
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Status</label>
-                  <select 
-                    name="status"
-                    className="form-select"
-                    value={formData.status}
-                    onChange={handleInputChange}
-                  >
-                    <option value="upcoming">Upcoming</option>
-                    <option value="active">Active</option>
-                    <option value="closed">Closed</option>
-                  </select>
-                  <span className={`status-preview ${formData.status}`}>
-                    {formData.status}
-                  </span>
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label>Instructions</label>
-                <textarea 
-                  name="instructions"
-                  className="form-textarea"
-                  value={formData.instructions}
-                  onChange={handleInputChange}
-                  placeholder="Enter assignment instructions..."
-                  rows="4"
-                ></textarea>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label>Total Points</label>
-                  <input 
-                    type="number" 
-                    name="points"
-                    className="form-input"
-                    value={formData.points}
-                    onChange={handleInputChange}
-                    min="0"
-                    max="1000"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Passing Score</label>
-                  <input 
-                    type="number" 
-                    name="passingScore"
-                    className="form-input"
-                    value={formData.passingScore}
-                    onChange={handleInputChange}
-                    min="0"
-                    max={formData.points}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Total Students</label>
-                  <input 
-                    type="number" 
-                    name="totalStudents"
-                    className="form-input"
-                    value={formData.totalStudents}
-                    onChange={handleInputChange}
-                    min="1"
-                    max="100"
-                  />
-                </div>
-              </div>
-
-              <div className="modal-actions">
-                <button className="cancel-btn" onClick={closeAllModals}>
-                  Cancel
-                </button>
-                <button className="create-btn" onClick={handleSaveEdit}>
-                  Save Changes
-                </button>
-              </div>
-            </div>
+          <div className="form-group">
+            <label data-required="*">Grade</label>
+            <select
+              name="grade"
+              className="form-select"
+              value={formData.grade}
+              onChange={handleInputChange}
+            >
+              <option value="">Select grade</option>
+              <option>Grade 9</option>
+              <option>Grade 10</option>
+              <option>Grade 11</option>
+              <option>Grade 12</option>
+            </select>
           </div>
         </div>
-      )}
+
+        <div className="form-row">
+          <div className="form-group">
+            <label data-required="*">Due Date</label>
+            <input
+              type="date"
+              name="dueDate"
+              className="form-input"
+              value={formData.dueDate}
+              onChange={handleInputChange}
+              min={getTomorrowDate()}
+            />
+          </div>
+          <div className="form-group">
+            <label>Status</label>
+            <select
+              name="status"
+              className="form-select"
+              value={formData.status}
+              onChange={handleInputChange}
+            >
+              <option value="upcoming">Upcoming</option>
+              <option value="active">Active</option>
+              <option value="closed">Closed</option>
+            </select>
+            <span className={`status-preview ${formData.status}`}>
+              {formData.status}
+            </span>
+          </div>
+        </div>
+
+        {/* 🔹 PDF Instructions في التعديل */}
+        <div className="form-group">
+          <label>Instructions (PDF)</label>
+
+          {/* عرض الملف الحالي لو موجود */}
+          {selectedAssignment.instructionsFileUrl ? (
+            <div style={{ marginBottom: '10px' }}>
+              <p
+                style={{
+                  fontSize: '13px',
+                  color: '#4b5563',
+                  marginBottom: '6px',
+                }}
+              >
+                Current file:{' '}
+                <strong>
+                  {selectedAssignment.instructionsFileName ||
+                    selectedAssignment.instructions}
+                </strong>
+              </p>
+
+              <iframe
+                src={selectedAssignment.instructionsFileUrl}
+                title="Instructions PDF"
+                style={{
+                  width: '100%',
+                  height: '260px',
+                  borderRadius: '10px',
+                  border: '1px solid #e5e7eb',
+                }}
+              ></iframe>
+
+              <a
+                href={selectedAssignment.instructionsFileUrl}
+                target="_blank"
+                rel="noreferrer"
+                style={{
+                  display: 'inline-block',
+                  marginTop: '6px',
+                  fontSize: '13px',
+                  color: '#2563eb',
+                  textDecoration: 'none',
+                  fontWeight: 500,
+                }}
+              >
+                Open PDF in new tab
+              </a>
+            </div>
+          ) : (
+            <p
+              style={{
+                fontSize: '13px',
+                color: '#6b7280',
+                marginBottom: '6px',
+              }}
+            >
+              No PDF attached for this assignment yet.
+            </p>
+          )}
+
+          {/* استبدال ملف الـ PDF بواحد جديد */}
+          <div style={{ marginTop: '10px' }}>
+            <label
+              style={{
+                fontSize: '13px',
+                color: '#4b5563',
+                display: 'block',
+                marginBottom: '4px',
+              }}
+            >
+              Replace PDF (optional)
+            </label>
+            <input
+              type="file"
+              accept="application/pdf"
+              onChange={(e) => {
+                const file = e.target.files?.[0] || null;
+                setInstructionFile(file);
+
+                setFormData((prev) => ({
+                  ...prev,
+                  instructions: file ? file.name : prev.instructions,
+                }));
+              }}
+            />
+            {instructionFile && (
+              <p
+                style={{
+                  marginTop: '4px',
+                  fontSize: '12px',
+                  color: '#6b7280',
+                }}
+              >
+                New file selected: <strong>{instructionFile.name}</strong>
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="form-row">
+          <div className="form-group">
+            <label>Total Points</label>
+            <input
+              type="number"
+              name="points"
+              className="form-input"
+              value={formData.points}
+              onChange={handleInputChange}
+              min="0"
+              max="1000"
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Passing Score</label>
+            <input
+              type="number"
+              name="passingScore"
+              className="form-input"
+              value={formData.passingScore}
+              onChange={handleInputChange}
+              min="0"
+              max={formData.points}
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Total Students</label>
+            <input
+              type="number"
+              name="totalStudents"
+              className="form-input"
+              value={formData.totalStudents}
+              onChange={handleInputChange}
+              min="1"
+              max="100"
+            />
+          </div>
+        </div>
+
+        <div className="modal-actions">
+          <button className="cancel-btn" onClick={closeAllModals}>
+            Cancel
+          </button>
+          <button className="create-btn" onClick={handleSaveEdit}>
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

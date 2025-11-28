@@ -756,24 +756,62 @@ export default App;
 
 
 
+import './App.css'; 
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+import { Admin } from './pages/Admin/Admin';
+import './index.css';
+
+function App() { 
+  return ( 
+    <BrowserRouter> 
+      <Routes> 
+        <Route path="/" element={<Admin />} /> 
+        <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<Admin />} />
+      </Routes> 
+    </BrowserRouter> 
+  ); 
+} 
+
+export default App;
+
+
+
 // import './App.css'; 
 // import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-// import { Admin } from './pages/Admin/Admin';
+// import ParentHome from './pages/ParentHome/ParentHome';
 // import './index.css';
-
 // function App() { 
 //   return ( 
 //     <BrowserRouter> 
 //       <Routes> 
-//         <Route path="/" element={<Admin />} /> 
-//         <Route path="/admin" element={<Admin />} />
-//         <Route path="*" element={<Admin />} />
+//         <Route path="/" element={<ParentHome />} /> 
+//         <Route path="/teacher" element={<ParentHome />} />
+//         <Route path="*" element={<ParentHome />} />
 //       </Routes> 
 //     </BrowserRouter> 
 //   ); 
-// } 
+// } export default App;
 
-// export default App;
+
+
+// import './App.css'; 
+// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
+// import TeacherHome from './pages/TeacherHome/TeacherHome';
+// import './index.css';
+// function App() { 
+//   return ( 
+//     <BrowserRouter> 
+//       <Routes> 
+//         <Route path="/" element={<TeacherHome />} /> 
+//         <Route path="/teacher" element={<TeacherHome />} />
+//         <Route path="*" element={<TeacherHome />} />
+//       </Routes> 
+//     </BrowserRouter> 
+//   ); 
+// } export default App;
+
+
 
 // import './App.css'; 
 // import { BrowserRouter, Routes, Route } from "react-router-dom"; 
@@ -795,34 +833,31 @@ export default App;
 
 // export default App;
 
-// import './App.css'; 
-// import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-// import ParentHome from './pages/ParentHome/ParentHome';
-// import './index.css';
-// function App() { 
-//   return ( 
-//     <BrowserRouter> 
-//       <Routes> 
-//         <Route path="/" element={<ParentHome />} /> 
-//         <Route path="/teacher" element={<ParentHome />} />
-//         <Route path="*" element={<ParentHome />} />
-//       </Routes> 
-//     </BrowserRouter> 
-//   ); 
-// } export default App;
 
-import './App.css'; 
-import { BrowserRouter, Routes, Route } from "react-router-dom"; 
-import TeacherHome from './pages/TeacherHome/TeacherHome';
-import './index.css';
-function App() { 
-  return ( 
-    <BrowserRouter> 
-      <Routes> 
-        <Route path="/" element={<TeacherHome />} /> 
-        <Route path="/teacher" element={<TeacherHome />} />
-        <Route path="*" element={<TeacherHome />} />
-      </Routes> 
-    </BrowserRouter> 
-  ); 
-} export default App;
+
+// import './App.css';
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import TeacherHome from './pages/TeacherHome/TeacherHome';
+// import LessonVideoEditor from './pages/TeacherHome/components/LessonVideoEditor'; 
+// // ✅ استيراد صفحة الفيديوهات
+// import './index.css';
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         {/* صفحة الهوم تبعت المعلم */}
+//         <Route path="/" element={<TeacherHome />} />
+//         <Route path="/teacher" element={<TeacherHome />} />
+
+//         {/* ✅ صفحة إدارة فيديوهات الدرس */}
+//         <Route path="/lessons/:lessonId" element={<LessonVideoEditor />} />
+
+//         {/* أي مسار غلط يرجع على الهوم */}
+//         <Route path="*" element={<TeacherHome />} />
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
+
+// export default App;

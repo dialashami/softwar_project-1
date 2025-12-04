@@ -12,7 +12,16 @@
             background: #f8fafc;
         }
   
- 
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  transform: none !important;
+  zoom: 1 !important;
+}
+
+
 
         /* Sidebar Styles */
 .sidebar {
@@ -714,7 +723,7 @@ background: linear-gradient(180deg, #2c3e50  );
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .sidebar {
         width: 240px;
         transform: translateX(-100%);
@@ -752,7 +761,7 @@ background: linear-gradient(180deg, #2c3e50  );
         height: 2rem;
         font-size: 1rem;
     }
-}
+} */
 
 /* Animation for menu items */
 @keyframes slideIn {
@@ -787,12 +796,12 @@ background: linear-gradient(180deg, #2c3e50  );
 .main-content {
     margin-left: 240px;
 }
-
+/* 
 @media (max-width: 768px) {
     .main-content {
         margin-left: 0;
     }
-}
+} */
 /* ***************************222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222 */
  
 /* ======= Base Dashboard ======= */
@@ -1197,6 +1206,7 @@ button:hover {
 }
 
 /* ========== responsive ========== */
+/* 
 @media (max-width: 1100px) {
   .AITutorPage > .grid {
     grid-template-columns: 1fr;
@@ -1224,7 +1234,7 @@ button:hover {
   .AITutorPage > .grid > div:last-child > div:last-child [class*="h-[500px]"] {
     height: 430px;
   }
-}
+} */
 
 
 
@@ -1341,11 +1351,15 @@ button:hover {
 }
 
 .header .w-8.h-8:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+
+ zoom: 1;
+  transform: none;
 }
 
 /* ====== Responsive ====== */
+/* 
 @media (max-width: 768px) {
   .header-content {
     justify-content: space-between;
@@ -1354,7 +1368,7 @@ button:hover {
   .header input[type="text"] {
     width: 180px;
   }
-}
+} */
 /* 555555555555555555555555555555555555555555555555555555555555554545654161535 */
 /* ====== Base Layout ====== */
 .student-home {
@@ -1564,7 +1578,12 @@ button:hover {
 }
 
 .action-btn:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05);
+  
+  */
+
+ zoom: 1;
+  transform: none;
 }
 
 /* ====== Scrollbar ====== */
@@ -1889,6 +1908,7 @@ button:hover {
 }
 
 /* Responsive Design */
+/* 
 @media (max-width: 768px) {
   .dashboard-container {
     padding: 1rem;
@@ -1927,7 +1947,7 @@ button:hover {
     align-self: flex-end;
     margin-left: 0;
   }
-}
+} */
 /* Button Styles */
 .banner-buttons {
   display: flex;
@@ -2017,7 +2037,10 @@ button:hover {
 }
 
 .badge:hover {
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
+
+ zoom: 1;
+  transform: none;
 }
 
 .badge.read {
@@ -2092,7 +2115,7 @@ button:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .banner-buttons {
     flex-direction: column;
     align-items: center;
@@ -2106,7 +2129,7 @@ button:hover {
   .progress-actions {
     flex-direction: column;
   }
-}
+} */
 /* Dashboard.css */
 .dashboard-container {
   max-width: 1200px;
@@ -2581,7 +2604,9 @@ button:hover {
 }
 
 .floating-btn:hover {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
+   zoom: 1;
+  transform: none;
   box-shadow: 0 8px 20px rgba(124, 58, 237, 0.5);
 }
 
@@ -2622,7 +2647,9 @@ button:hover {
 }
 
 .floating-btn:hover {
-  transform: scale(1.08);
+  /* transform: scale(1.08); */
+   zoom: 1;
+  transform: none;
   box-shadow: 0 8px 20px rgba(124, 58, 237, 0.6);
 }
 
@@ -2839,7 +2866,9 @@ button:hover {
 }
 
 .fixed.bottom-8.right-8:hover {
-  transform: translateY(-4px) scale(1.05);
+  /* transform: translateY(-4px) scale(1.05); */
+   zoom: 1;
+  transform: none;
   box-shadow: 
     0 15px 40px rgba(139, 92, 246, 0.5),
     0 2px 0 rgba(255, 255, 255, 0.2) inset;
@@ -2870,7 +2899,7 @@ button:hover {
 }
 
 /* تحسينات للشاشات الصغيرة */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .p-8 {
     padding: 20px;
   }
@@ -2892,7 +2921,7 @@ button:hover {
     padding: 10px 15px;
     font-size: 14px;
   }
-}
+} */
 
 /* تأثيرات دخول الصفحة */
 .space-y-8 > * {
@@ -3286,11 +3315,11 @@ button:hover {
   gap: 1.5rem;
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .stats-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-}
+} */
 
 /* أيقونة المربع الملون داخل كل stat */
 .stat-card-icon {
@@ -3393,12 +3422,12 @@ button:hover {
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-
+/* 
 @media (min-width: 1024px) {
   .main-grid {
     grid-template-columns: 2fr 1fr;
   }
-}
+} */
 
 .left-col {
   display: flex;
@@ -3803,7 +3832,7 @@ button:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .assignments-container {
     padding: 1rem;
   }
@@ -3884,7 +3913,7 @@ button:hover {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
   }
-}
+} */
 
 
 /* Assignment Content 2*/
@@ -4111,7 +4140,7 @@ button.small {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .dashboard-container {
     padding: 10px;
   }
@@ -4161,7 +4190,7 @@ button.small {
   .schedule-days {
     grid-template-columns: 1fr;
   }
-}
+} */
 /* Settings 1 */
 /* ====== Base Layout ====== */
 
@@ -4198,12 +4227,12 @@ button.small {
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-
+/* 
 @media (min-width: 1024px) {
   .settings-grid {
     grid-template-columns: 320px 1fr;
   }
-}
+} */
 
 /* ====== Left Nav Card ====== */
 
@@ -4320,12 +4349,12 @@ button.small {
   border: 1px solid rgba(79,70,229,0.08);
 }
 
-@media (min-width: 480px) {
+/* @media (min-width: 480px) {
   .settings-avatar-row {
     gap: 1rem;
     padding: 1.25rem 1.25rem;
   }
-}
+} */
 
 .settings-avatar-circle {
   position: relative;
@@ -4458,11 +4487,11 @@ button.small {
 }
 .w-full-mobile {
   width: 100%;
-}
+/* }
 @media (min-width: 640px) {
   .w-full-mobile {
     width: auto;
-  }
+  } */
 }
 
 /* ====== Form Fields / Inputs ====== */
@@ -4478,11 +4507,11 @@ button.small {
   grid-template-columns: 1fr;
   gap: 1rem;
 }
-@media (min-width: 640px) {
+/* @media (min-width: 640px) {
   .settings-two-col {
     grid-template-columns: 1fr 1fr;
   }
-}
+} */
 
 .settings-field {
   display: flex;
@@ -4681,7 +4710,7 @@ button.small {
 
 /* ====== Responsive tweaks ====== */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .settings-avatar-row {
     flex-direction: column;
     align-items: flex-start;
@@ -4695,7 +4724,7 @@ button.small {
   .switch {
     margin-top: .75rem;
   }
-}
+} */
 /* ===========================
    SAVE TOAST (after Save Changes)
    =========================== */
@@ -5254,7 +5283,7 @@ button.small {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+/* @media (max-width: 900px) {
   .chat-layout {
     grid-template-columns: 1fr;
   }
@@ -5262,7 +5291,7 @@ button.small {
   .chat-sidebar {
     height: 260px;
   }
-}
+} */
 .link-button {
   background: none;
   border: none;
@@ -5272,7 +5301,7 @@ button.small {
   cursor: pointer;
   font: inherit;
 }
-/* الزر العائم */
+ 
 .feedback-star-button {
   position: fixed;
   right: 24px;
@@ -5298,7 +5327,9 @@ transform: none;
 }
 
 .feedback-star-button:hover {
-  transform: translateY(-50%) scale(1.05);
+  /* transform: translateY(-50%) scale(1.05); */
+   zoom: 1;
+  transform: none;
   background: #eab308;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }

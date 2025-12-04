@@ -93,25 +93,55 @@ const SignUp = () => {
   };
 
   // إرسال البيانات إلى الخادم
-  const saveUserToDatabase = async (userData) => {
-    try {
-      const response = await fetch('http://localhost:3000/api/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
-      });
-      console.log('Response status:', userData);
-      if (!response.ok) {
-        throw new Error('Failed to create account');
-      }
+  // const saveUserToDatabase = async (userData) => {
+  //   try {
+  //     const response = await fetch('http://localhost:3000/api/signup', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(userData),
+  //     });
+  //     console.log('Response status:', userData);
+  //     if (!response.ok) {
+  //       throw new Error('Failed to create account');
+  //     }
 
-      const result = await response.json();
-      return result;
-    } catch (error) {
-      console.error('Error saving user:', error);
-      throw error;
+  //     const result = await response.json();
+  //     return result;
+  //   } catch (error) {
+  //     console.error('Error saving user:', error);
+  //     throw error;
+  //   }
+  // };
+
+
+const saveUserToDatabase = async (userData) => {
+  try {
+    const response = await fetch('http://localhost:3000/api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    });
+
+    // اقرأ الرد الحقيقي
+    const data = await response.json().catch(() => null);
+    console.log('Signup response:', response.status, data);
+
+    if (!response.ok) {
+      const message =
+        data?.message ||
+        (data?.errors && data.errors[0]?.msg) ||
+        'Failed to create account';
+
+      throw new Error(message);
     }
-  };
+
+    return data;
+  } catch (error) {
+    console.error('Error saving user:', error);
+    throw error;
+  }
+};
+
 
   // عند الضغط على الزر
   const handleSubmit = async (e) => {
@@ -152,10 +182,18 @@ const SignUp = () => {
         // التوجيه لصفحة التحقق بالبريد
         navigate('/verify-email?email=' + encodeURIComponent(formData.email));
 
+      // } catch (error) {
+      //   console.error('Signup error:', error);
+      //   setErrors({ submit: 'Failed to create account. Please try again.' });
+      // } 
       } catch (error) {
-        console.error('Signup error:', error);
-        setErrors({ submit: 'Failed to create account. Please try again.' });
-      } finally {
+  console.error('Signup error:', error);
+  setErrors({
+    submit: error.message || 'Failed to create account. Please try again.'
+  });
+}
+
+      finally {
         setIsSubmitting(false);
       }
     } else {

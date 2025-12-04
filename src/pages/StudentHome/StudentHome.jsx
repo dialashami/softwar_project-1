@@ -60,7 +60,7 @@ import ProgressPage from './components/ProgressPage';
 import AITutorPage from './components/AITutorPage';
 import Settings from './components/Settings';
 import { ChatCenter } from './components/ChatCenter';
-import FeedbackStar from './components/FeedbackStar'; // ⭐ جديد
+import FeedbackStar from './components/FeedbackStar';  
 
 import './StudentHome.css';
 
@@ -99,7 +99,7 @@ export default function StudentHome() {
         {renderPage()}
       </div>
 
-      {/* ⭐ زر الفيدباك العائم على يمين الصفحة */}
+      { }
       <FeedbackStar />
     </div>
   );

@@ -53,7 +53,7 @@ export default function TeacherHome() {
   //   </div>
   // );
   return (
-    <div className="student-home">
+    <div className="teacher-home">
       <Sidebar activeItem={activePage} onItemChange={setActivePage} />
       
       <div className="main-content">

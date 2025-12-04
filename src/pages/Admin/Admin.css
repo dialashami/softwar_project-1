@@ -661,8 +661,8 @@ background: linear-gradient(180deg, #2c3e50   );
 }
 
 .sidebar nav button:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: #2c3e50;
+    background: #3498db;
+    color: #3498db;
 }
 
 .sidebar nav button.active {
@@ -691,12 +691,12 @@ background: linear-gradient(180deg, #2c3e50  );
     transition: all 0.2s ease;
 }
 
-.sidebar nav button:hover svg {    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+.sidebar nav button:hover svg {    background: linear-gradient(180deg, #3498db 0%, #3498db 100%);
 
     color: #2c3e50;
 }
 
-.sidebar nav button.active svg {    background: linear-gradient(180deg, #2c3e50 0%, #3498db 100%);
+.sidebar nav button.active svg {    background: linear-gradient(180deg,#3498db 0%, #3498db 100%);
 
     color: #2c3e50;
 }

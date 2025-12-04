@@ -61,7 +61,7 @@ export default function Login() {
       } else if (role === "teacher") {
         navigate("/home/teacher");
       } else if(role==="parent"){
-        navigate("/home");
+        navigate("/home/parent");
       }else if(role==="trainee"){
         navigate("/home/tranier");
       }
